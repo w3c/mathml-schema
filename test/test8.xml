@@ -1,0 +1,58 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML" dir="rtl">
+<mstack>
+  <mn>424</mn>
+  <msrow> <mo>+</mo> <none/> <mn>33</mn> </msrow>
+  <msline/>
+</mstack>
+
+
+<mstack>
+  <mscarries>
+    <mscarry crossout='updiagonalstrike'><none/></mscarry>
+    <menclose notation='bottom'> <mn>10</mn> </menclose>
+  </mscarries>
+  <mn>52</mn>
+  <msrow> <mo>-</mo> <mn> 7</mn> </msrow>
+  <msline/>
+  <mn>45</mn>
+</mstack>
+
+
+<mlongdiv longdivstyle="lefttop">
+  <mn> 435.3</mn>
+  <mn> 3 </mn>
+
+  <mn> 1306</mn>  
+
+  <msgroup position="2" shift="-1">
+    <msgroup>
+      <mn> 12</mn>
+      <msline length="2"/>
+    </msgroup>
+    <msgroup>
+      <mn> 10</mn>
+      <mn> 9</mn> 
+      <msline length="2"/>
+    </msgroup>
+    <msgroup>
+      <mn> 16</mn>
+      <mn> 15</mn> 
+      <msline length="2"/>
+    </msgroup>
+    <msgroup position="-1">      <!-- extra shift to move to the right of the "." -->
+      <mn> 1.0</mn>
+      <mn> 9</mn> 
+      <msline length="3"/>
+      <mn> 1</mn>
+    </msgroup>
+  </msgroup>
+</mlongdiv>
+
+
+<apply>
+<ci>a</ci>
+<ci>a</ci>
+<ci>a</ci>
+</apply>
+
+</math>

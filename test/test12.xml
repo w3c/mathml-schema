@@ -1,0 +1,14 @@
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" >
+
+<set>
+<condition>
+    <apply>
+        <eq/>
+	<bind><forall/><bvar><ci>x</ci></bvar></bind>
+        <ci>PolicyNumber</ci>
+        <cs>abc123</cs>
+<z/>    </apply>
+</condition>
+</set>
+</math>

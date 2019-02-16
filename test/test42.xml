@@ -1,0 +1,10 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<cn id="gg" type="integer">9</cn>
+<bind><csymbol cd="quant1">forall</csymbol>
+  <bvar><ci id="var-x">x</ci></bvar>
+  <apply><csymbol cd="relation1">lt</csymbol>
+    <ci xref="var-x">x</ci>
+    <cn>1</cn>
+  </apply>
+</bind>
+</math>

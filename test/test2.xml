@@ -1,0 +1,106 @@
+<math xml:lang="en" dir="rtl" xml:space="preserve" mathcolor="blue"  alignmentscope="true" xmlns="http://www.w3.org/1998/Math/MathML" >
+
+<mi><mglyph/></mi>
+
+<apply><cs/><cbytes/><share/><cerror><csymbol cd="s"/></cerror></apply>
+
+<apply><list/>
+<apply><approx/>
+  <bvar><ci>x</ci></bvar>
+  <eulergamma/>
+  <cn>0.5772156649</cn>
+</apply>
+
+
+
+
+  <apply>
+    <tendsto type="above"></tendsto>  
+    <apply>
+      <power other="ss"></power> 
+      <ci>x</ci>  
+      <cn>2</cn> 
+    </apply> 
+    <apply> 
+      <power></power> 
+      <ci>a</ci>  
+      <cn>2</cn> 
+    </apply> 
+  </apply>  
+
+  <apply>
+    <sum></sum>  
+    <bvar>
+      <ci>x</ci> 
+    </bvar>  
+    <condition>
+      <reln> 
+        <in></in> 
+        <ci>x</ci> 
+        <ci type="set">B</ci> 
+      </reln> 
+    </condition>  
+    <apply>
+      <fn>
+        <ci>f</ci> 
+      </fn> 
+      <ci>x</ci>  
+    </apply> 
+  </apply> 
+
+
+  <apply>
+    <eq></eq> 
+    <apply> 
+      <not></not> 
+      <apply>
+        <forall></forall>  
+        <bvar>
+          <ci>s</ci>  
+        </bvar> 
+        <condition> 
+          <apply>
+            <in></in>  
+            <ci>s</ci> 
+            <ci>S</ci>  
+          </apply> 
+        </condition>  
+        <apply>
+          <in></in> 
+          <apply>
+            <fn> 
+              <ci>f</ci> 
+            </fn>  
+            <ci>x</ci> 
+          </apply>  
+          <ci>T</ci> 
+        </apply> 
+      </apply>  
+    </apply> 
+    <apply>
+      <exists></exists>  
+      <bvar>
+        <ci>s</ci> 
+      </bvar> 
+      <condition>
+        <apply> 
+          <in></in> 
+          <ci>s</ci>  
+          <ci>S</ci> 
+        </apply> 
+      </condition> 
+    </apply> 
+  </apply> 
+
+
+  <apply>
+    <plus></plus> 
+    <sin></sin> 
+    <cos></cos>  
+  </apply> 
+
+
+
+
+</apply>
+</math>

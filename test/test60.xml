@@ -1,0 +1,9 @@
+<!DOCTYPE math SYSTEM "../dtd/mathml4.dtd" [
+<!ENTITY % MathMLstrict "INCLUDE">		
+]><math>
+  <apply>
+     <csymbol>exp</csymbol>
+     <mrow><ci>a</ci><mo>+</mo><ci>b</ci></mrow>
+     <ci>n</ci>
+  </apply>
+</math>

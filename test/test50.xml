@@ -1,0 +1,22 @@
+<!DOCTYPE math SYSTEM "../dtd/mathml4.dtd">
+<math display='block'  xmlns="http://www.w3.org/1998/Math/MathML" >
+   <mrow id="a">
+      <mfrac id="a">
+         <mrow>
+            <mn>1</mn>
+         </mrow>
+         <mrow>
+            <mn>2</mn><mi>x</mi>
+         </mrow>
+      </mfrac>
+      <mspace indentalign='left' linebreak='newline'/>
+      <mfrac>
+         <mrow>
+            <mn>1</mn>
+         </mrow>
+         <mrow>
+            <mn>2</mn>
+         </mrow>
+      </mfrac>
+   </mrow>
+</math>

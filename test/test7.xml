@@ -1,0 +1,52 @@
+<!DOCTYPE math SYSTEM "../dtd/mathml4.dtd">
+<math xmlns="http://www.w3.org/1998/Math/MathML" >
+    <mfrac linethickness="6pt">
+      <mn>1</mn>
+      <semantics><mi>x</mi></semantics>
+    </mfrac> 
+  
+<mn xmlns:x="data:,hello" x:foo="">
+<mglyph />
+</mn>
+
+<semantics>
+<mn/>
+<annotation-xml>
+<jjj xmlns="data:,hello" />
+</annotation-xml>
+</semantics>
+
+<mmultiscripts>
+<mi>&eacute;</mi>
+<mn>1</mn>
+<mtext/>
+</mmultiscripts>
+
+
+<mtable columnalign="right center left" framespacing="1pt 1pt" frame="none" columnlines="none solid">
+<mtr>
+<mtd><mn/></mtd>
+</mtr>
+</mtable>
+    <mstyle color="Red  " background="Green"> 
+              <mfrac linethickness="0"> 
+                <mi>n</mi> 
+                <mi>k</mi>  
+              </mfrac>  
+
+    </mstyle>
+<menclose notation="top madruwb"><mn/></menclose>
+
+<mstack align="top 6" stackalign=".">
+<mn>1234</mn>
+</mstack>
+
+
+<mtable groupalign="{left right} {left right} ">
+</mtable>
+<mfenced separators="||,">
+</mfenced>
+
+<mo mathsize="  3pt">
+</mo>
+</math>

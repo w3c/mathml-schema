@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo trang rng
+for f in rnc/*.rnc
+do
+java -jar build/trang.jar  $f  rng/`basename $f .rnc`.rng
+done
