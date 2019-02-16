@@ -206,4 +206,4 @@ END
 
 
 echo clean up
-echo mathml4-tmp.dtd mathml4.rng
+rm mathml4-tmp.dtd mathml4.rng
