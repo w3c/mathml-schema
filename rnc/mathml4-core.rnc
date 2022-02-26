@@ -240,7 +240,6 @@ mfrac = element mfrac {mfrac.attributes, MathExpression, MathExpression}
 mfrac.attributes = 
   GlobalAttributes,
   attribute linethickness {length}?,
-  attribute bevelled {mathml-boolean}?
 
 msqrt = element msqrt {msqrt.attributes, ImpliedMrow}
 msqrt.attributes = 
