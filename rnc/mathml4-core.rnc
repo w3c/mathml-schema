@@ -4,6 +4,96 @@ start = math
 
 math = element math {math.attributes,MathExpression*}
 
+htmloneventattributes =
+  attribute onabort {text}?,
+  attribute onauxclick {text}?,
+  attribute onblur {text}?,
+  attribute oncancel {text}?,
+  attribute oncanplay {text}?,
+  attribute oncanplaythrough {text}?,
+  attribute onchange {text}?,
+  attribute onclick {text}?,
+  attribute onclose {text}?,
+  attribute oncontextlost {text}?,
+  attribute oncontextmenu {text}?,
+  attribute oncontextrestored {text}?,
+  attribute oncuechange {text}?,
+  attribute ondblclick {text}?,
+  attribute ondrag {text}?,
+  attribute ondragend {text}?,
+  attribute ondragenter {text}?,
+  attribute ondragleave {text}?,
+  attribute ondragover {text}?,
+  attribute ondragstart {text}?,
+  attribute ondrop {text}?,
+  attribute ondurationchange {text}?,
+  attribute onemptied {text}?,
+  attribute onended {text}?,
+  attribute onerror {text}?,
+  attribute onfocus {text}?,
+  attribute onformdata {text}?,
+  attribute oninput {text}?,
+  attribute oninvalid {text}?,
+  attribute onkeydown {text}?,
+  attribute onkeypress {text}?,
+  attribute onkeyup {text}?,
+  attribute onload {text}?,
+  attribute onloadeddata {text}?,
+  attribute onloadedmetadata {text}?,
+  attribute onloadstart {text}?,
+  attribute onmousedown {text}?,
+  attribute onmouseenter {text}?,
+  attribute onmouseleave {text}?,
+  attribute onmousemove {text}?,
+  attribute onmouseout {text}?,
+  attribute onmouseover {text}?,
+  attribute onmouseup {text}?,
+  attribute onpause {text}?,
+  attribute onplay {text}?,
+  attribute onplaying {text}?,
+  attribute onprogress {text}?,
+  attribute onratechange {text}?,
+  attribute onreset {text}?,
+  attribute onresize {text}?,
+  attribute onscroll {text}?,
+  attribute onsecuritypolicyviolation {text}?,
+  attribute onseeked {text}?,
+  attribute onseeking {text}?,
+  attribute onselect {text}?,
+  attribute onslotchange {text}?,
+  attribute onstalled {text}?,
+  attribute onsubmit {text}?,
+  attribute onsuspend {text}?,
+  attribute ontimeupdate {text}?,
+  attribute ontoggle {text}?,
+  attribute onvolumechange {text}?,
+  attribute onwaiting {text}?,
+  attribute onwebkitanimationend {text}?,
+  attribute onwebkitanimationiteration {text}?,
+  attribute onwebkitanimationstart {text}?,
+  attribute onwebkittransitionend {text}?,
+  attribute onwheel {text}?,
+  attribute onafterprint {text}?,
+  attribute onbeforeprint {text}?,
+  attribute onbeforeunload {text}?,
+  attribute onhashchange {text}?,
+  attribute onlanguagechange {text}?,
+  attribute onmessage {text}?,
+  attribute onmessageerror {text}?,
+  attribute onoffline {text}?,
+  attribute ononline {text}?,
+  attribute onpagehide {text}?,
+  attribute onpageshow {text}?,
+  attribute onpopstate {text}?,
+  attribute onrejectionhandled {text}?,
+  attribute onstorage {text}?,
+  attribute onunhandledrejection {text}?,
+  attribute onunload {text}?,
+  attribute oncopy {text}?,
+  attribute oncut {text}?,
+  attribute onpaste {text}?
+
+
 GlobalAttributes = attribute id {xsd:ID}?,
                    attribute class {xsd:NMTOKENS}?,
                    attribute style {xsd:string}?,
@@ -14,7 +104,13 @@ GlobalAttributes = attribute id {xsd:ID}?,
                    attribute mathsize {length}?,
                    attribute mathvariant {"normal" | "bold" | "italic" | "bold-italic" | "double-struck" | "bold-fraktur" | "script" | "bold-script" | "fraktur" | "sans-serif" | "bold-sans-serif" | "sans-serif-italic" | "sans-serif-bold-italic" | "monospace" | "initial" | "tailed" | "looped" | "stretched"}?,
                    attribute displaystyle {"true" | "false"}?,
-                   attribute scriptlevel {xsd:integer}?
+                   attribute scriptlevel {xsd:integer}?,
+                   attribute data-extra {text}?,
+                   attribute tabindex {xsd:integer}?,
+                   attribute nonce {text}?,
+                   htmloneventattributes
+                       
+
 
 math.attributes = GlobalAttributes,
                   attribute display {"block" | "inline"}?
@@ -24,8 +120,8 @@ annotation = element annotation {GlobalAttributes,(src|text)}
 anyElement =  element (* - m:*) {(attribute * {text}|text| anyElement)*}
 
 annotation-xml = element annotation-xml {GlobalAttributes,
-					 encoding?,
-				         (src|MathExpression*|anyElement*)}
+                                         encoding?,
+                                         (src|MathExpression*|anyElement*)}
 
 encoding=attribute encoding {xsd:string}
 src=attribute src {xsd:string}
@@ -210,9 +306,9 @@ munderover.attributes =
   attribute accentunder {"true" | "false"}?
 
 mmultiscripts = element mmultiscripts {mmultiscripts.attributes,
-				       MathExpression,
-				       MultiScriptExpression*,
-				       (mprescripts,MultiScriptExpression*)?}
+                                       MathExpression,
+                                       MultiScriptExpression*,
+                                       (mprescripts,MultiScriptExpression*)?}
 mmultiscripts.attributes = 
   msubsup.attributes
 
