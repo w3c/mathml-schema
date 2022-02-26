@@ -1,7 +1,0 @@
-<math xmlns="http://www.w3.org/1998/Math/MathML">
-  <apply>
-     <csymbol cd="arith1">exp</csymbol>
-     <csymbol type="uninterpreted-presentation"><mrow><ci>a</ci><mo>+</mo><ci>b</ci></mrow></csymbol>
-     <ci>n</ci>
-  </apply>
-</math> 
