@@ -152,47 +152,23 @@ MultiScriptExpression = (MathExpression|none),(MathExpression|none)
 mpadded-length = xsd:string {
   pattern = '\s*([\+\-]?[0-9]*([0-9]\.?|\.[0-9])[0-9]*\s*((%?\s*(height|depth|width)?)|e[mx]|in|cm|mm|p[xtc]|((negative)?((very){0,2}thi(n|ck)|medium)mathspace))?)\s*' }
 
-linestyle = "none" | "solid" | "dashed"
-
-verticalalign =
-      "top" |
-      "bottom" |
-      "center" |
-      "baseline" |
-      "axis"
-
-columnalignstyle = "left" | "center" | "right"
-
-notationstyle =
-     "longdiv" |
-     "actuarial" |
-     "box" |
-     "roundedbox" |
-     "circle" |
-     "left" |
-     "right" |
-     "top" |
-     "bottom" |
-     "updiagonalstrike" |
-     "downdiagonalstrike" |
-     "verticalstrike" |
-     "horizontalstrike" |
-     "madruwb"
 
 color =  xsd:string {
   pattern = '\s*((#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?)|[a-zA-Z]+|[a-zA-Z]+\s*\([0-9, %.]+\))\s*'}
 
 TokenExpression = mi|mn|mo|mtext|mspace|ms
 
-mi = element mi {mi.attributes, text}
+token.content = text
+		    
+mi = element mi {mi.attributes, token.content}
 mi.attributes = 
   GlobalAttributes
 
-mn = element mn {mn.attributes, text}
+mn = element mn {mn.attributes, token.content}
 mn.attributes = 
   GlobalAttributes
 
-mo = element mo {mo.attributes, text}
+mo = element mo {mo.attributes, token.content}
 mo.attributes = 
   GlobalAttributes,
   attribute form {"prefix" | "infix" | "postfix"}?,
@@ -208,7 +184,7 @@ mo.attributes =
   attribute movablelimits {mathml-boolean}?,
   attribute accent {mathml-boolean}?
 
-mtext = element mtext {mtext.attributes, text}
+mtext = element mtext {mtext.attributes, token.content}
 mtext.attributes = 
   GlobalAttributes
 
@@ -219,7 +195,7 @@ mspace.attributes =
   attribute height {length}?,
   attribute depth {length}?
 
-ms = element ms {ms.attributes, text}
+ms = element ms {ms.attributes, token.content}
 ms.attributes = 
   GlobalAttributes
 
