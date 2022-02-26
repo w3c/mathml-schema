@@ -145,7 +145,7 @@ MathExpression = TokenExpression|
 
 ImpliedMrow = MathExpression*
 
-TableRowExpression = mtr|mlabeledtr
+TableRowExpression = mtr
 
 MultiScriptExpression = (MathExpression|none),(MathExpression|none)
 
@@ -315,22 +315,17 @@ mtable.attributes =
   GlobalAttributes,
   attribute frame {linestyle}?
 
-mlabeledtr = element mlabeledtr {mlabeledtr.attributes, mtd+}
-mlabeledtr.attributes = 
-  mtr.attributes
 
 mtr = element mtr {mtr.attributes, mtd*}
 mtr.attributes = 
-  GlobalAttributes,
-  attribute rowalign {"top" | "bottom" | "center" | "baseline" | "axis"}?
+  GlobalAttributes
 
 mtd = element mtd {mtd.attributes, ImpliedMrow}
 mtd.attributes = 
   GlobalAttributes,
   attribute rowspan {xsd:positiveInteger}?,
-  attribute columnspan {xsd:positiveInteger}?,
-  attribute rowalign {"top" | "bottom" | "center" | "baseline" | "axis"}?,
-  attribute columnalign {columnalignstyle}?
+  attribute columnspan {xsd:positiveInteger}?
+
 
 maction = element maction {maction.attributes, MathExpression+}
 maction.attributes = 
