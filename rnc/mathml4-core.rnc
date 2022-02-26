@@ -221,9 +221,8 @@ mspace.attributes =
 
 ms = element ms {ms.attributes, text}
 ms.attributes = 
-  GlobalAttributes,
-  attribute lquote {text}?,
-  attribute rquote {text}?
+  GlobalAttributes
+
 
 none = element none {none.attributes,empty}
 none.attributes = 
