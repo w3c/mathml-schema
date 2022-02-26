@@ -11,17 +11,39 @@
 
 default namespace m = "http://www.w3.org/1998/Math/MathML"
 
+start = math.strict
+
+CommonAtt =
+    attribute id {xsd:ID}?
+
+math.strict = element math {ContExp*}
+
+		      
+
 ContExp = semantics-contexp | cn | ci | csymbol | apply | bind | share | cerror | cbytes | cs
 
 cn = element cn {cn.attributes,cn.content}
 cn.content = text
 cn.attributes = CommonAtt, attribute type {"integer" | "real" | "double" | "hexdouble"}
 
-semantics-ci = element semantics {semantics.attributes,(ci|semantics-ci), 
+semantics-ci = element semantics {CommonAtt,(ci|semantics-ci), 
   (annotation|annotation-xml)*}
 
-semantics-contexp = element semantics {semantics.attributes,ContExp, 
+semantics-contexp = element semantics {CommonAtt,ContExp, 
   (annotation|annotation-xml)*}
+
+annotation = element annotation {CommonAtt,text}
+
+anyElement =  element (* - m:*) {(attribute * {text}|text| anyElement)*}
+
+annotation-xml = element annotation-xml {CommonAtt,
+                                         encoding?,
+                                         (MathExpression*|anyElement*)}
+
+encoding=attribute encoding {xsd:string}
+
+
+
 
 ci = element ci {ci.attributes, ci.content}
 ci.attributes = CommonAtt, ci.type?
@@ -34,6 +56,8 @@ csymbol = element csymbol {csymbol.attributes,csymbol.content}
 SymbolName = xsd:NCName
 csymbol.attributes = CommonAtt, cd
 csymbol.content = SymbolName
+cd = attribute cd {xsd:NCName}
+src = attribute src {xsd:anyURI}?
 
 BvarQ = bvar*
 bvar = element bvar {CommonAtt, (ci | semantics-ci)}
