@@ -1,0 +1,10 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow nonce="2222">
+  <mi onclick="foobar()">x</mi>
+  <mo mathcolor="rgb(255, 0, 0)">+</mo>
+  <mi data-extra="zzz"
+      mathcolor=" HotPink">y</mi>
+  <mo>-</mo>
+  <mfrac bevelled=" true "><mn>1</mn><mn>2</mn></mfrac>
+ </mrow>
+</math>
