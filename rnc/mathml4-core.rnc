@@ -115,16 +115,16 @@ GlobalAttributes = attribute id {xsd:ID}?,
 math.attributes = GlobalAttributes,
                   attribute display {"block" | "inline"}?
 
-annotation = element annotation {GlobalAttributes,(src|text)}
+annotation = element annotation {GlobalAttributes,text}
 
 anyElement =  element (* - m:*) {(attribute * {text}|text| anyElement)*}
 
 annotation-xml = element annotation-xml {GlobalAttributes,
                                          encoding?,
-                                         (src|MathExpression*|anyElement*)}
+                                         (MathExpression*|anyElement*)}
 
 encoding=attribute encoding {xsd:string}
-src=attribute src {xsd:string}
+
 
 semantics = element semantics {GlobalAttributes,
                                MathExpression, 
