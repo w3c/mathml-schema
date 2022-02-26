@@ -312,8 +312,7 @@ mmultiscripts.attributes =
 
 mtable = element mtable {mtable.attributes, TableRowExpression*}
 mtable.attributes = 
-  GlobalAttributes,
-  attribute frame {linestyle}?
+  GlobalAttributes
 
 
 mtr = element mtr {mtr.attributes, mtd*}
