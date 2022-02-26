@@ -140,7 +140,7 @@ length = xsd:string {
 
 MathExpression = TokenExpression|
                      mrow|mfrac|msqrt|mroot|mstyle|merror|mpadded|mphantom|
-                     menclose|msub|msup|msubsup|munder|mover|munderover|
+                     msub|msup|msubsup|munder|mover|munderover|
                      mmultiscripts|mtable|maction
 
 ImpliedMrow = MathExpression*
@@ -239,7 +239,7 @@ mrow.attributes =
 mfrac = element mfrac {mfrac.attributes, MathExpression, MathExpression}
 mfrac.attributes = 
   GlobalAttributes,
-  attribute linethickness {length}?,
+  attribute linethickness {length}?
 
 msqrt = element msqrt {msqrt.attributes, ImpliedMrow}
 msqrt.attributes = 
@@ -270,11 +270,7 @@ mphantom = element mphantom {mphantom.attributes, ImpliedMrow}
 mphantom.attributes = 
   GlobalAttributes
 
-menclose = element menclose {menclose.attributes, ImpliedMrow}
-menclose.attributes = 
-  GlobalAttributes,
-  attribute notation {notationstyle}?
-
+      
 msub = element msub {msub.attributes, MathExpression, MathExpression}
 msub.attributes = 
   GlobalAttributes,

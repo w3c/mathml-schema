@@ -5,7 +5,7 @@
   <mi data-extra="zzz"
       mathcolor=" HotPink">y</mi>
   <mo>-</mo>
-  <mfrac bevelled=" true ">
+  <mfrac linethickness="2pt">
    <mn mathvariant=" BOLD ">1</mn>
    <mn mathvariant="double-struck">2</mn>
   </mfrac>
