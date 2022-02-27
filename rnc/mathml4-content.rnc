@@ -10,15 +10,15 @@
 #     http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
 
 include "mathml4-strict-content.rnc"{
-  cn.content = (text | mglyph | sep | PresentationExpression)* 
+  cn.content = (text | sep | PresentationExpression)* 
   cn.attributes = CommonAtt, DefEncAtt, attribute type {text}?, base?
 
   ci.attributes = CommonAtt, DefEncAtt, ci.type?
   ci.type = attribute type {text}
-  ci.content = (text | mglyph | PresentationExpression)* 
+  ci.content = (text | PresentationExpression)* 
 
   csymbol.attributes = CommonAtt, DefEncAtt, attribute type {text}?,cd?
-  csymbol.content = (text | mglyph | PresentationExpression)* 
+  csymbol.content = (text | PresentationExpression)* 
 
   bvar = element bvar {CommonAtt, ((ci | semantics-ci) & degree?)}
 
@@ -36,6 +36,8 @@ base = attribute base {text}
 
 sep = element sep {empty}
 PresentationExpression |= notAllowed
+DefEncAtt = attribute encoding {xsd:string}?,
+            attribute definitionURL {xsd:anyURI}?
 
 
 DomainQ = (domainofapplication|condition|interval|(lowlimit,uplimit?))*
