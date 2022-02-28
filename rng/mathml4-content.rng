@@ -5,7 +5,7 @@
         application for describing mathematical notation and capturing
         both its structure and content.
     
-        Copyright 1998-2019 W3C (MIT, ERCIM, Keio, Beihang)
+        Copyright 1998-2022 W3C (MIT, ERCIM, Keio, Beihang)
     
         Use and distribution of this code are permitted under the terms
         W3C Software Notice and License
@@ -16,7 +16,6 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <ref name="mglyph"/>
           <ref name="sep"/>
           <ref name="PresentationExpression"/>
         </choice>
@@ -46,7 +45,6 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <ref name="mglyph"/>
           <ref name="PresentationExpression"/>
         </choice>
       </zeroOrMore>
@@ -65,7 +63,6 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <ref name="mglyph"/>
           <ref name="PresentationExpression"/>
         </choice>
       </zeroOrMore>
@@ -123,6 +120,18 @@
   </define>
   <define name="PresentationExpression" combine="choice">
     <notAllowed/>
+  </define>
+  <define name="DefEncAtt">
+    <optional>
+      <attribute name="encoding">
+        <data type="string"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="definitionURL">
+        <data type="anyURI"/>
+      </attribute>
+    </optional>
   </define>
   <define name="DomainQ">
     <zeroOrMore>

@@ -1,32 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-      This is the Mathematical Markup Language (MathML) 4.0, an XML
-      application for describing mathematical notation and capturing
-      both its structure and content.
-  
-      Copyright 1998-2019 W3C (MIT, ERCIM, Keio, Beihang)
-  
-      Use and distribution of this code are permitted under the terms
-      W3C Software Notice and License
-      http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
--->
-<grammar ns="http://www.w3.org/1998/Math/MathML" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <!--
+        This is the Mathematical Markup Language (MathML) 4.0, an XML
+        application for describing mathematical notation and capturing
+        both its structure and content.
+    
+        Copyright 1998-2022 W3C (MIT, ERCIM, Keio, Beihang)
+    
+        Use and distribution of this code are permitted under the terms
+        W3C Software Notice and License
+        http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+  -->
+  <include href="mathml4-core.rng">
+    <a:documentation>MathML Core</a:documentation>
+  </include>
   <define name="MathExpression" combine="choice">
     <ref name="PresentationExpression"/>
   </define>
-  <define name="ImpliedMrow">
-    <zeroOrMore>
-      <ref name="MathExpression"/>
-    </zeroOrMore>
-  </define>
-  <define name="TableRowExpression">
-    <choice>
-      <ref name="mtr"/>
-      <ref name="mlabeledtr"/>
-    </choice>
-  </define>
-  <define name="TableCellExpression">
-    <ref name="mtd"/>
+  <define name="TableRowExpression" combine="choice">
+    <ref name="mlabeledtr"/>
   </define>
   <define name="MstackExpression">
     <choice>
@@ -42,21 +34,6 @@
       <ref name="MathExpression"/>
       <ref name="none"/>
     </choice>
-  </define>
-  <define name="MultiScriptExpression">
-    <choice>
-      <ref name="MathExpression"/>
-      <ref name="none"/>
-    </choice>
-    <choice>
-      <ref name="MathExpression"/>
-      <ref name="none"/>
-    </choice>
-  </define>
-  <define name="mpadded-length">
-    <data type="string">
-      <param name="pattern">\s*([\+\-]?[0-9]*([0-9]\.?|\.[0-9])[0-9]*\s*((%?\s*(height|depth|width)?)|e[mx]|in|cm|mm|p[xtc]|((negative)?((very){0,2}thi(n|ck)|medium)mathspace))?)\s*</param>
-    </data>
   </define>
   <define name="linestyle">
     <choice>
@@ -117,11 +94,6 @@
       <param name="pattern">\s*\S\s*</param>
     </data>
   </define>
-  <define name="color">
-    <data type="string">
-      <param name="pattern">\s*((#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?)|[aA][qQ][uU][aA]|[bB][lL][aA][cC][kK]|[bB][lL][uU][eE]|[fF][uU][cC][hH][sS][iI][aA]|[gG][rR][aA][yY]|[gG][rR][eE][eE][nN]|[lL][iI][mM][eE]|[mM][aA][rR][oO][oO][nN]|[nN][aA][vV][yY]|[oO][lL][iI][vV][eE]|[pP][uU][rR][pP][lL][eE]|[rR][eE][dD]|[sS][iI][lL][vV][eE][rR]|[tT][eE][aA][lL]|[wW][hH][iI][tT][eE]|[yY][eE][lL][lL][oO][wW])\s*</param>
-    </data>
-  </define>
   <define name="group-alignment">
     <choice>
       <value>left</value>
@@ -145,149 +117,14 @@
   <define name="positive-integer">
     <data type="positiveInteger"/>
   </define>
-  <define name="TokenExpression">
-    <choice>
-      <ref name="mi"/>
-      <ref name="mn"/>
-      <ref name="mo"/>
-      <ref name="mtext"/>
-      <ref name="mspace"/>
-      <ref name="ms"/>
-    </choice>
-  </define>
-  <define name="token.content">
+  <define name="token.content" combine="choice">
     <choice>
       <ref name="mglyph"/>
       <ref name="malignmark"/>
       <text/>
     </choice>
   </define>
-  <define name="mi">
-    <element name="mi">
-      <ref name="mi.attributes"/>
-      <zeroOrMore>
-        <ref name="token.content"/>
-      </zeroOrMore>
-    </element>
-  </define>
-  <define name="mi.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <ref name="TokenAtt"/>
-  </define>
-  <define name="mn">
-    <element name="mn">
-      <ref name="mn.attributes"/>
-      <zeroOrMore>
-        <ref name="token.content"/>
-      </zeroOrMore>
-    </element>
-  </define>
-  <define name="mn.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <ref name="TokenAtt"/>
-  </define>
-  <define name="mo">
-    <element name="mo">
-      <ref name="mo.attributes"/>
-      <zeroOrMore>
-        <ref name="token.content"/>
-      </zeroOrMore>
-    </element>
-  </define>
-  <define name="mo.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <ref name="TokenAtt"/>
-    <optional>
-      <attribute name="form">
-        <choice>
-          <value>prefix</value>
-          <value>infix</value>
-          <value>postfix</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="fence">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="separator">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="lspace">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="rspace">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="stretchy">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="symmetric">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="maxsize">
-        <choice>
-          <ref name="length"/>
-          <value>infinity</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="minsize">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="largeop">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="movablelimits">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="accent">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
+  <define name="mo.attributes" combine="choice">
     <optional>
       <attribute name="linebreak">
         <choice>
@@ -378,45 +215,13 @@
         </choice>
       </attribute>
     </optional>
-  </define>
-  <define name="mtext">
-    <element name="mtext">
-      <ref name="mtext.attributes"/>
-      <zeroOrMore>
-        <ref name="token.content"/>
-      </zeroOrMore>
-    </element>
-  </define>
-  <define name="mtext.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <ref name="TokenAtt"/>
-  </define>
-  <define name="mspace">
-    <element name="mspace">
-      <ref name="mspace.attributes"/>
-      <empty/>
-    </element>
-  </define>
-  <define name="mspace.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <ref name="TokenAtt"/>
     <optional>
-      <attribute name="width">
-        <ref name="length"/>
+      <attribute name="accent">
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
-    <optional>
-      <attribute name="height">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="depth">
-        <ref name="length"/>
-      </attribute>
-    </optional>
+  </define>
+  <define name="mspace.attributes" combine="choice">
     <optional>
       <attribute name="linebreak">
         <choice>
@@ -491,18 +296,7 @@
       </attribute>
     </optional>
   </define>
-  <define name="ms">
-    <element name="ms">
-      <ref name="ms.attributes"/>
-      <zeroOrMore>
-        <ref name="token.content"/>
-      </zeroOrMore>
-    </element>
-  </define>
-  <define name="ms.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <ref name="TokenAtt"/>
+  <define name="ms.attributes" combine="choice">
     <optional>
       <attribute name="lquote"/>
     </optional>
@@ -518,8 +312,7 @@
     </element>
   </define>
   <define name="mglyph.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="src">
         <data type="anyURI"/>
@@ -584,7 +377,6 @@
         </choice>
       </attribute>
     </optional>
-    <ref name="DeprecatedTokenAtt"/>
   </define>
   <define name="msline">
     <element name="msline">
@@ -593,8 +385,7 @@
     </element>
   </define>
   <define name="msline.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="position">
         <ref name="integer"/>
@@ -626,125 +417,6 @@
       </attribute>
     </optional>
   </define>
-  <define name="none">
-    <element name="none">
-      <ref name="none.attributes"/>
-      <empty/>
-    </element>
-  </define>
-  <define name="none.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-  </define>
-  <define name="mprescripts">
-    <element name="mprescripts">
-      <ref name="mprescripts.attributes"/>
-      <empty/>
-    </element>
-  </define>
-  <define name="mprescripts.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-  </define>
-  <define name="CommonPresAtt">
-    <optional>
-      <attribute name="mathcolor">
-        <ref name="color"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="mathbackground">
-        <choice>
-          <ref name="color"/>
-          <value>transparent</value>
-        </choice>
-      </attribute>
-    </optional>
-  </define>
-  <define name="TokenAtt">
-    <optional>
-      <attribute name="mathvariant">
-        <choice>
-          <value>normal</value>
-          <value>bold</value>
-          <value>italic</value>
-          <value>bold-italic</value>
-          <value>double-struck</value>
-          <value>bold-fraktur</value>
-          <value>script</value>
-          <value>bold-script</value>
-          <value>fraktur</value>
-          <value>sans-serif</value>
-          <value>bold-sans-serif</value>
-          <value>sans-serif-italic</value>
-          <value>sans-serif-bold-italic</value>
-          <value>monospace</value>
-          <value>initial</value>
-          <value>tailed</value>
-          <value>looped</value>
-          <value>stretched</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="mathsize">
-        <choice>
-          <value>small</value>
-          <value>normal</value>
-          <value>big</value>
-          <ref name="length"/>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="dir">
-        <choice>
-          <value>ltr</value>
-          <value>rtl</value>
-        </choice>
-      </attribute>
-    </optional>
-    <ref name="DeprecatedTokenAtt"/>
-  </define>
-  <define name="DeprecatedTokenAtt">
-    <optional>
-      <attribute name="fontfamily"/>
-    </optional>
-    <optional>
-      <attribute name="fontweight">
-        <choice>
-          <value>normal</value>
-          <value>bold</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="fontstyle">
-        <choice>
-          <value>normal</value>
-          <value>italic</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="fontsize">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="color">
-        <ref name="color"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="background">
-        <choice>
-          <ref name="color"/>
-          <value>transparent</value>
-        </choice>
-      </attribute>
-    </optional>
-  </define>
   <define name="MalignExpression">
     <choice>
       <ref name="maligngroup"/>
@@ -758,8 +430,7 @@
     </element>
   </define>
   <define name="malignmark.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="edge">
         <choice>
@@ -776,8 +447,7 @@
     </element>
   </define>
   <define name="maligngroup.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="groupalign">
         <choice>
@@ -816,46 +486,7 @@
       <ref name="maction"/>
     </choice>
   </define>
-  <define name="mrow">
-    <element name="mrow">
-      <ref name="mrow.attributes"/>
-      <zeroOrMore>
-        <ref name="MathExpression"/>
-      </zeroOrMore>
-    </element>
-  </define>
-  <define name="mrow.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <optional>
-      <attribute name="dir">
-        <choice>
-          <value>ltr</value>
-          <value>rtl</value>
-        </choice>
-      </attribute>
-    </optional>
-  </define>
-  <define name="mfrac">
-    <element name="mfrac">
-      <ref name="mfrac.attributes"/>
-      <ref name="MathExpression"/>
-      <ref name="MathExpression"/>
-    </element>
-  </define>
-  <define name="mfrac.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <optional>
-      <attribute name="linethickness">
-        <choice>
-          <ref name="length"/>
-          <value>thin</value>
-          <value>medium</value>
-          <value>thick</value>
-        </choice>
-      </attribute>
-    </optional>
+  <define name="mfrac.attributes" combine="choice">
     <optional>
       <attribute name="numalign">
         <choice>
@@ -883,36 +514,7 @@
       </attribute>
     </optional>
   </define>
-  <define name="msqrt">
-    <element name="msqrt">
-      <ref name="msqrt.attributes"/>
-      <ref name="ImpliedMrow"/>
-    </element>
-  </define>
-  <define name="msqrt.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-  </define>
-  <define name="mroot">
-    <element name="mroot">
-      <ref name="mroot.attributes"/>
-      <ref name="MathExpression"/>
-      <ref name="MathExpression"/>
-    </element>
-  </define>
-  <define name="mroot.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-  </define>
-  <define name="mstyle">
-    <element name="mstyle">
-      <ref name="mstyle.attributes"/>
-      <ref name="ImpliedMrow"/>
-    </element>
-  </define>
-  <define name="mstyle.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+  <define name="mstyle.attributes" combine="choice">
     <ref name="mstyle.specificattributes"/>
     <ref name="mstyle.generalattributes"/>
     <ref name="mstyle.deprecatedattributes"/>
@@ -1540,7 +1142,6 @@
     </optional>
   </define>
   <define name="mstyle.deprecatedattributes">
-    <ref name="DeprecatedTokenAtt"/>
     <optional>
       <attribute name="veryverythinmathspace">
         <ref name="length"/>
@@ -1578,68 +1179,10 @@
     </optional>
   </define>
   <define name="math.attributes" combine="interleave">
-    <ref name="CommonPresAtt"/>
-  </define>
-  <define name="math.attributes" combine="interleave">
     <ref name="mstyle.specificattributes"/>
   </define>
   <define name="math.attributes" combine="interleave">
     <ref name="mstyle.generalattributes"/>
-  </define>
-  <define name="merror">
-    <element name="merror">
-      <ref name="merror.attributes"/>
-      <ref name="ImpliedMrow"/>
-    </element>
-  </define>
-  <define name="merror.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-  </define>
-  <define name="mpadded">
-    <element name="mpadded">
-      <ref name="mpadded.attributes"/>
-      <ref name="ImpliedMrow"/>
-    </element>
-  </define>
-  <define name="mpadded.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <optional>
-      <attribute name="height">
-        <ref name="mpadded-length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="depth">
-        <ref name="mpadded-length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="width">
-        <ref name="mpadded-length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="lspace">
-        <ref name="mpadded-length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="voffset">
-        <ref name="mpadded-length"/>
-      </attribute>
-    </optional>
-  </define>
-  <define name="mphantom">
-    <element name="mphantom">
-      <ref name="mphantom.attributes"/>
-      <ref name="ImpliedMrow"/>
-    </element>
-  </define>
-  <define name="mphantom.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
   </define>
   <define name="mfenced">
     <element name="mfenced">
@@ -1650,8 +1193,7 @@
     </element>
   </define>
   <define name="mfenced.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="open"/>
     </optional>
@@ -1669,84 +1211,12 @@
     </element>
   </define>
   <define name="menclose.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="notation"/>
     </optional>
   </define>
-  <define name="msub">
-    <element name="msub">
-      <ref name="msub.attributes"/>
-      <ref name="MathExpression"/>
-      <ref name="MathExpression"/>
-    </element>
-  </define>
-  <define name="msub.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <optional>
-      <attribute name="subscriptshift">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-  </define>
-  <define name="msup">
-    <element name="msup">
-      <ref name="msup.attributes"/>
-      <ref name="MathExpression"/>
-      <ref name="MathExpression"/>
-    </element>
-  </define>
-  <define name="msup.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <optional>
-      <attribute name="superscriptshift">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-  </define>
-  <define name="msubsup">
-    <element name="msubsup">
-      <ref name="msubsup.attributes"/>
-      <ref name="MathExpression"/>
-      <ref name="MathExpression"/>
-      <ref name="MathExpression"/>
-    </element>
-  </define>
-  <define name="msubsup.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <optional>
-      <attribute name="subscriptshift">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="superscriptshift">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-  </define>
-  <define name="munder">
-    <element name="munder">
-      <ref name="munder.attributes"/>
-      <ref name="MathExpression"/>
-      <ref name="MathExpression"/>
-    </element>
-  </define>
-  <define name="munder.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <optional>
-      <attribute name="accentunder">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
+  <define name="munder.attributes" combine="choice">
     <optional>
       <attribute name="align">
         <choice>
@@ -1757,24 +1227,7 @@
       </attribute>
     </optional>
   </define>
-  <define name="mover">
-    <element name="mover">
-      <ref name="mover.attributes"/>
-      <ref name="MathExpression"/>
-      <ref name="MathExpression"/>
-    </element>
-  </define>
-  <define name="mover.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <optional>
-      <attribute name="accent">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
+  <define name="mover.attributes" combine="choice">
     <optional>
       <attribute name="align">
         <choice>
@@ -1785,33 +1238,7 @@
       </attribute>
     </optional>
   </define>
-  <define name="munderover">
-    <element name="munderover">
-      <ref name="munderover.attributes"/>
-      <ref name="MathExpression"/>
-      <ref name="MathExpression"/>
-      <ref name="MathExpression"/>
-    </element>
-  </define>
-  <define name="munderover.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <optional>
-      <attribute name="accent">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="accentunder">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
+  <define name="munderover.attributes" combine="choice">
     <optional>
       <attribute name="align">
         <choice>
@@ -1822,35 +1249,7 @@
       </attribute>
     </optional>
   </define>
-  <define name="mmultiscripts">
-    <element name="mmultiscripts">
-      <ref name="mmultiscripts.attributes"/>
-      <ref name="MathExpression"/>
-      <zeroOrMore>
-        <ref name="MultiScriptExpression"/>
-      </zeroOrMore>
-      <optional>
-        <ref name="mprescripts"/>
-        <zeroOrMore>
-          <ref name="MultiScriptExpression"/>
-        </zeroOrMore>
-      </optional>
-    </element>
-  </define>
-  <define name="mmultiscripts.attributes">
-    <ref name="msubsup.attributes"/>
-  </define>
-  <define name="mtable">
-    <element name="mtable">
-      <ref name="mtable.attributes"/>
-      <zeroOrMore>
-        <ref name="TableRowExpression"/>
-      </zeroOrMore>
-    </element>
-  </define>
-  <define name="mtable.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+  <define name="mtable.attributes" combine="choice">
     <optional>
       <attribute name="align">
         <data type="string">
@@ -2007,24 +1406,14 @@
     <element name="mlabeledtr">
       <ref name="mlabeledtr.attributes"/>
       <oneOrMore>
-        <ref name="TableCellExpression"/>
+        <ref name="mtd"/>
       </oneOrMore>
     </element>
   </define>
   <define name="mlabeledtr.attributes">
     <ref name="mtr.attributes"/>
   </define>
-  <define name="mtr">
-    <element name="mtr">
-      <ref name="mtr.attributes"/>
-      <zeroOrMore>
-        <ref name="TableCellExpression"/>
-      </zeroOrMore>
-    </element>
-  </define>
-  <define name="mtr.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+  <define name="mtr.attributes" combine="choice">
     <optional>
       <attribute name="rowalign">
         <choice>
@@ -2051,25 +1440,7 @@
       </attribute>
     </optional>
   </define>
-  <define name="mtd">
-    <element name="mtd">
-      <ref name="mtd.attributes"/>
-      <ref name="ImpliedMrow"/>
-    </element>
-  </define>
-  <define name="mtd.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <optional>
-      <attribute name="rowspan">
-        <ref name="positive-integer"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="columnspan">
-        <ref name="positive-integer"/>
-      </attribute>
-    </optional>
+  <define name="mtd.attributes" combine="choice">
     <optional>
       <attribute name="rowalign">
         <choice>
@@ -2101,8 +1472,7 @@
     </element>
   </define>
   <define name="mstack.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="align">
         <data type="string">
@@ -2178,8 +1548,7 @@
     </element>
   </define>
   <define name="msgroup.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="position">
         <ref name="integer"/>
@@ -2200,8 +1569,7 @@
     </element>
   </define>
   <define name="msrow.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="position">
         <ref name="integer"/>
@@ -2220,8 +1588,7 @@
     </element>
   </define>
   <define name="mscarries.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="position">
         <ref name="integer"/>
@@ -2271,8 +1638,7 @@
     </element>
   </define>
   <define name="mscarry.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="location">
         <choice>
@@ -2300,24 +1666,6 @@
             </choice>
           </zeroOrMore>
         </list>
-      </attribute>
-    </optional>
-  </define>
-  <define name="maction">
-    <element name="maction">
-      <ref name="maction.attributes"/>
-      <oneOrMore>
-        <ref name="MathExpression"/>
-      </oneOrMore>
-    </element>
-  </define>
-  <define name="maction.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <attribute name="actiontype"/>
-    <optional>
-      <attribute name="selection">
-        <ref name="positive-integer"/>
       </attribute>
     </optional>
   </define>

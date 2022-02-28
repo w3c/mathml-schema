@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- mathml4-core -->
-<grammar ns="http://www.w3.org/1998/Math/MathML" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+<!--
+      This is the Mathematical Markup Language (MathML) 4.0, an XML
+      application for describing mathematical notation and capturing
+      both its structure and content.
+  
+      Copyright 1998-2022 W3C (MIT, ERCIM, Keio, Beihang)
+  
+      Use and distribution of this code are permitted under the terms
+      W3C Software Notice and License
+      http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+-->
+<grammar ns="http://www.w3.org/1998/Math/MathML" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <start>
     <ref name="math"/>
   </start>
@@ -12,14 +22,274 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="CommonAtt">
+  <define name="htmloneventattributes">
+    <optional>
+      <attribute name="onabort"/>
+    </optional>
+    <optional>
+      <attribute name="onauxclick"/>
+    </optional>
+    <optional>
+      <attribute name="onblur"/>
+    </optional>
+    <optional>
+      <attribute name="oncancel"/>
+    </optional>
+    <optional>
+      <attribute name="oncanplay"/>
+    </optional>
+    <optional>
+      <attribute name="oncanplaythrough"/>
+    </optional>
+    <optional>
+      <attribute name="onchange"/>
+    </optional>
+    <optional>
+      <attribute name="onclick"/>
+    </optional>
+    <optional>
+      <attribute name="onclose"/>
+    </optional>
+    <optional>
+      <attribute name="oncontextlost"/>
+    </optional>
+    <optional>
+      <attribute name="oncontextmenu"/>
+    </optional>
+    <optional>
+      <attribute name="oncontextrestored"/>
+    </optional>
+    <optional>
+      <attribute name="oncuechange"/>
+    </optional>
+    <optional>
+      <attribute name="ondblclick"/>
+    </optional>
+    <optional>
+      <attribute name="ondrag"/>
+    </optional>
+    <optional>
+      <attribute name="ondragend"/>
+    </optional>
+    <optional>
+      <attribute name="ondragenter"/>
+    </optional>
+    <optional>
+      <attribute name="ondragleave"/>
+    </optional>
+    <optional>
+      <attribute name="ondragover"/>
+    </optional>
+    <optional>
+      <attribute name="ondragstart"/>
+    </optional>
+    <optional>
+      <attribute name="ondrop"/>
+    </optional>
+    <optional>
+      <attribute name="ondurationchange"/>
+    </optional>
+    <optional>
+      <attribute name="onemptied"/>
+    </optional>
+    <optional>
+      <attribute name="onended"/>
+    </optional>
+    <optional>
+      <attribute name="onerror"/>
+    </optional>
+    <optional>
+      <attribute name="onfocus"/>
+    </optional>
+    <optional>
+      <attribute name="onformdata"/>
+    </optional>
+    <optional>
+      <attribute name="oninput"/>
+    </optional>
+    <optional>
+      <attribute name="oninvalid"/>
+    </optional>
+    <optional>
+      <attribute name="onkeydown"/>
+    </optional>
+    <optional>
+      <attribute name="onkeypress"/>
+    </optional>
+    <optional>
+      <attribute name="onkeyup"/>
+    </optional>
+    <optional>
+      <attribute name="onload"/>
+    </optional>
+    <optional>
+      <attribute name="onloadeddata"/>
+    </optional>
+    <optional>
+      <attribute name="onloadedmetadata"/>
+    </optional>
+    <optional>
+      <attribute name="onloadstart"/>
+    </optional>
+    <optional>
+      <attribute name="onmousedown"/>
+    </optional>
+    <optional>
+      <attribute name="onmouseenter"/>
+    </optional>
+    <optional>
+      <attribute name="onmouseleave"/>
+    </optional>
+    <optional>
+      <attribute name="onmousemove"/>
+    </optional>
+    <optional>
+      <attribute name="onmouseout"/>
+    </optional>
+    <optional>
+      <attribute name="onmouseover"/>
+    </optional>
+    <optional>
+      <attribute name="onmouseup"/>
+    </optional>
+    <optional>
+      <attribute name="onpause"/>
+    </optional>
+    <optional>
+      <attribute name="onplay"/>
+    </optional>
+    <optional>
+      <attribute name="onplaying"/>
+    </optional>
+    <optional>
+      <attribute name="onprogress"/>
+    </optional>
+    <optional>
+      <attribute name="onratechange"/>
+    </optional>
+    <optional>
+      <attribute name="onreset"/>
+    </optional>
+    <optional>
+      <attribute name="onresize"/>
+    </optional>
+    <optional>
+      <attribute name="onscroll"/>
+    </optional>
+    <optional>
+      <attribute name="onsecuritypolicyviolation"/>
+    </optional>
+    <optional>
+      <attribute name="onseeked"/>
+    </optional>
+    <optional>
+      <attribute name="onseeking"/>
+    </optional>
+    <optional>
+      <attribute name="onselect"/>
+    </optional>
+    <optional>
+      <attribute name="onslotchange"/>
+    </optional>
+    <optional>
+      <attribute name="onstalled"/>
+    </optional>
+    <optional>
+      <attribute name="onsubmit"/>
+    </optional>
+    <optional>
+      <attribute name="onsuspend"/>
+    </optional>
+    <optional>
+      <attribute name="ontimeupdate"/>
+    </optional>
+    <optional>
+      <attribute name="ontoggle"/>
+    </optional>
+    <optional>
+      <attribute name="onvolumechange"/>
+    </optional>
+    <optional>
+      <attribute name="onwaiting"/>
+    </optional>
+    <optional>
+      <attribute name="onwebkitanimationend"/>
+    </optional>
+    <optional>
+      <attribute name="onwebkitanimationiteration"/>
+    </optional>
+    <optional>
+      <attribute name="onwebkitanimationstart"/>
+    </optional>
+    <optional>
+      <attribute name="onwebkittransitionend"/>
+    </optional>
+    <optional>
+      <attribute name="onwheel"/>
+    </optional>
+    <optional>
+      <attribute name="onafterprint"/>
+    </optional>
+    <optional>
+      <attribute name="onbeforeprint"/>
+    </optional>
+    <optional>
+      <attribute name="onbeforeunload"/>
+    </optional>
+    <optional>
+      <attribute name="onhashchange"/>
+    </optional>
+    <optional>
+      <attribute name="onlanguagechange"/>
+    </optional>
+    <optional>
+      <attribute name="onmessage"/>
+    </optional>
+    <optional>
+      <attribute name="onmessageerror"/>
+    </optional>
+    <optional>
+      <attribute name="onoffline"/>
+    </optional>
+    <optional>
+      <attribute name="ononline"/>
+    </optional>
+    <optional>
+      <attribute name="onpagehide"/>
+    </optional>
+    <optional>
+      <attribute name="onpageshow"/>
+    </optional>
+    <optional>
+      <attribute name="onpopstate"/>
+    </optional>
+    <optional>
+      <attribute name="onrejectionhandled"/>
+    </optional>
+    <optional>
+      <attribute name="onstorage"/>
+    </optional>
+    <optional>
+      <attribute name="onunhandledrejection"/>
+    </optional>
+    <optional>
+      <attribute name="onunload"/>
+    </optional>
+    <optional>
+      <attribute name="oncopy"/>
+    </optional>
+    <optional>
+      <attribute name="oncut"/>
+    </optional>
+    <optional>
+      <attribute name="onpaste"/>
+    </optional>
+  </define>
+  <define name="GlobalAttributes">
     <optional>
       <attribute name="id">
         <data type="ID"/>
       </attribute>
-    </optional>
-    <optional>
-      <attribute name="xref"/>
     </optional>
     <optional>
       <attribute name="class">
@@ -36,9 +306,72 @@
         <data type="anyURI"/>
       </attribute>
     </optional>
+    <optional>
+      <attribute name="intent"/>
+    </optional>
+    <optional>
+      <attribute name="arg">
+        <data type="NMTOKEN"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="dir">
+        <choice>
+          <value>ltr</value>
+          <value>rtl</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="mathbackground">
+        <choice>
+          <ref name="color"/>
+          <value>transparent</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="mathcolor">
+        <ref name="color"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="mathsize">
+        <ref name="length"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="mathvariant">
+        <data type="string">
+          <param name="pattern">\s*([Nn][Oo][Rr][Mm][Aa][Ll]|[Bb][Oo][Ll][Dd]|[Ii][Tt][Aa][Ll][Ii][Cc]|[Bb][Oo][Ll][Dd]-[Ii][Tt][Aa][Ll][Ii][Cc]|[Dd][Oo][Uu][Bb][Ll][Ee]-[Ss][Tt][Rr][Uu][Cc][Kk]|[Bb][Oo][Ll][Dd]-[Ff][Rr][Aa][Kk][Tt][Uu][Rr]|[Ss][Cc][Rr][Ii][Pp][Tt]|[Bb][Oo][Ll][Dd]-[Ss][Cc][Rr][Ii][Pp][Tt]|[Ff][Rr][Aa][Kk][Tt][Uu][Rr]|[Ss][Aa][Nn][Ss]-[Ss][Ee][Rr][Ii][Ff]|[Bb][Oo][Ll][Dd]-[Ss][Aa][Nn][Ss]-[Ss][Ee][Rr][Ii][Ff]|[Ss][Aa][Nn][Ss]-[Ss][Ee][Rr][Ii][Ff]-[Ii][Tt][Aa][Ll][Ii][Cc]|[Ss][Aa][Nn][Ss]-[Ss][Ee][Rr][Ii][Ff]-[Bb][Oo][Ll][Dd]-[Ii][Tt][Aa][Ll][Ii][Cc]|[Mm][Oo][Nn][Oo][Ss][Pp][Aa][Cc][Ee]|[Ii][Nn][Ii][Tt][Ii][Aa][Ll]|[Tt][Aa][Ii][Ll][Ee][Dd]|[Ll][Oo][Oo][Pp][Ee][Dd]|[Ss][Tt][Rr][Ee][Tt][Cc][Hh][Ee][Dd])\s*</param>
+        </data>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="displaystyle">
+        <ref name="mathml-boolean"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="scriptlevel">
+        <data type="integer"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="data-extra"/>
+    </optional>
+    <optional>
+      <attribute name="tabindex">
+        <data type="integer"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="nonce"/>
+    </optional>
+    <ref name="htmloneventattributes"/>
   </define>
   <define name="math.attributes">
-    <ref name="CommonAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="display">
         <choice>
@@ -47,46 +380,11 @@
         </choice>
       </attribute>
     </optional>
-    <optional>
-      <!--
-        attribute maxwidth {length}?,
-        attribute overflow {"linebreak" | "scroll" | "elide" | "truncate" | "scale"}?,
-      -->
-      <attribute name="altimg">
-        <data type="anyURI"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="altimg-width">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="altimg-height">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="altimg-valign">
-        <choice>
-          <ref name="length"/>
-          <value>top</value>
-          <value>middle</value>
-          <value>bottom</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="alttext"/>
-    </optional>
   </define>
   <define name="annotation">
     <element name="annotation">
-      <ref name="CommonAtt"/>
-      <choice>
-        <ref name="src"/>
-        <text/>
-      </choice>
+      <ref name="GlobalAttributes"/>
+      <text/>
     </element>
   </define>
   <define name="anyElement">
@@ -109,12 +407,11 @@
   </define>
   <define name="annotation-xml">
     <element name="annotation-xml">
-      <ref name="CommonAtt"/>
+      <ref name="GlobalAttributes"/>
       <optional>
         <ref name="encoding"/>
       </optional>
       <choice>
-        <ref name="src"/>
         <zeroOrMore>
           <ref name="MathExpression"/>
         </zeroOrMore>
@@ -129,14 +426,9 @@
       <data type="string"/>
     </attribute>
   </define>
-  <define name="src">
-    <attribute name="src">
-      <data type="string"/>
-    </attribute>
-  </define>
   <define name="semantics">
     <element name="semantics">
-      <ref name="CommonAtt"/>
+      <ref name="GlobalAttributes"/>
       <ref name="MathExpression"/>
       <zeroOrMore>
         <choice>
@@ -146,13 +438,17 @@
       </zeroOrMore>
     </element>
   </define>
+  <define name="mathml-boolean">
+    <data type="string">
+      <param name="pattern">\s*([Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee])\s*</param>
+    </data>
+  </define>
   <define name="length">
     <data type="string">
-      <param name="pattern">\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%)?)|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*</param>
+      <param name="pattern">\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%))|0|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*</param>
     </data>
   </define>
   <define name="MathExpression">
-    <a:documentation>mathml3-presentation, simplified</a:documentation>
     <choice>
       <ref name="TokenExpression"/>
       <ref name="mrow"/>
@@ -163,7 +459,6 @@
       <ref name="merror"/>
       <ref name="mpadded"/>
       <ref name="mphantom"/>
-      <ref name="menclose"/>
       <ref name="msub"/>
       <ref name="msup"/>
       <ref name="msubsup"/>
@@ -181,10 +476,7 @@
     </zeroOrMore>
   </define>
   <define name="TableRowExpression">
-    <choice>
-      <ref name="mtr"/>
-      <ref name="mlabeledtr"/>
-    </choice>
+    <ref name="mtr"/>
   </define>
   <define name="MultiScriptExpression">
     <choice>
@@ -201,54 +493,9 @@
       <param name="pattern">\s*([\+\-]?[0-9]*([0-9]\.?|\.[0-9])[0-9]*\s*((%?\s*(height|depth|width)?)|e[mx]|in|cm|mm|p[xtc]|((negative)?((very){0,2}thi(n|ck)|medium)mathspace))?)\s*</param>
     </data>
   </define>
-  <define name="linestyle">
-    <choice>
-      <value>none</value>
-      <value>solid</value>
-      <value>dashed</value>
-    </choice>
-  </define>
-  <define name="verticalalign">
-    <choice>
-      <value>top</value>
-      <value>bottom</value>
-      <value>center</value>
-      <value>baseline</value>
-      <value>axis</value>
-    </choice>
-  </define>
-  <define name="columnalignstyle">
-    <choice>
-      <value>left</value>
-      <value>center</value>
-      <value>right</value>
-    </choice>
-  </define>
-  <define name="notationstyle">
-    <choice>
-      <value>longdiv</value>
-      <value>actuarial</value>
-      <value>radical</value>
-      <value>box</value>
-      <value>roundedbox</value>
-      <value>circle</value>
-      <value>left</value>
-      <value>right</value>
-      <value>top</value>
-      <value>bottom</value>
-      <value>updiagonalstrike</value>
-      <value>downdiagonalstrike</value>
-      <value>verticalstrike</value>
-      <value>horizontalstrike</value>
-      <value>madruwb</value>
-    </choice>
-  </define>
-  <define name="idref">
-    <text/>
-  </define>
   <define name="color">
     <data type="string">
-      <param name="pattern">\s*((#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?)|[aA][qQ][uU][aA]|[bB][lL][aA][cC][kK]|[bB][lL][uU][eE]|[fF][uU][cC][hH][sS][iI][aA]|[gG][rR][aA][yY]|[gG][rR][eE][eE][nN]|[lL][iI][mM][eE]|[mM][aA][rR][oO][oO][nN]|[nN][aA][vV][yY]|[oO][lL][iI][vV][eE]|[pP][uU][rR][pP][lL][eE]|[rR][eE][dD]|[sS][iI][lL][vV][eE][rR]|[tT][eE][aA][lL]|[wW][hH][iI][tT][eE]|[yY][eE][lL][lL][oO][wW])\s*</param>
+      <param name="pattern">\s*((#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?)|[a-zA-Z]+|[a-zA-Z]+\s*\([0-9, %.]+\))\s*</param>
     </data>
   </define>
   <define name="TokenExpression">
@@ -261,38 +508,35 @@
       <ref name="ms"/>
     </choice>
   </define>
+  <define name="token.content">
+    <text/>
+  </define>
   <define name="mi">
     <element name="mi">
       <ref name="mi.attributes"/>
-      <text/>
+      <ref name="token.content"/>
     </element>
   </define>
   <define name="mi.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <ref name="TokenAtt"/>
+    <ref name="GlobalAttributes"/>
   </define>
   <define name="mn">
     <element name="mn">
       <ref name="mn.attributes"/>
-      <text/>
+      <ref name="token.content"/>
     </element>
   </define>
   <define name="mn.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <ref name="TokenAtt"/>
+    <ref name="GlobalAttributes"/>
   </define>
   <define name="mo">
     <element name="mo">
       <ref name="mo.attributes"/>
-      <text/>
+      <ref name="token.content"/>
     </element>
   </define>
   <define name="mo.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <ref name="TokenAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="form">
         <choice>
@@ -304,18 +548,12 @@
     </optional>
     <optional>
       <attribute name="fence">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="separator">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
     <optional>
@@ -330,60 +568,46 @@
     </optional>
     <optional>
       <attribute name="stretchy">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="symmetric">
+        <ref name="mathml-boolean"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="maxsize">
         <choice>
-          <value>true</value>
-          <value>false</value>
+          <ref name="length"/>
+          <value>infinity</value>
         </choice>
       </attribute>
     </optional>
     <optional>
-      <!--
-        attribute maxsize {length | "infinity"}?,
-        attribute minsize {length}?,
-      -->
+      <attribute name="minsize">
+        <ref name="length"/>
+      </attribute>
+    </optional>
+    <optional>
       <attribute name="largeop">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="movablelimits">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="accent">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
   </define>
-  <!-- attribute linebreak {"auto" | "newline" | "nobreak" | "goodbreak" | "badbreak"}? -->
   <define name="mtext">
     <element name="mtext">
       <ref name="mtext.attributes"/>
-      <text/>
+      <ref name="token.content"/>
     </element>
   </define>
   <define name="mtext.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <ref name="TokenAtt"/>
+    <ref name="GlobalAttributes"/>
   </define>
   <define name="mspace">
     <element name="mspace">
@@ -392,9 +616,7 @@
     </element>
   </define>
   <define name="mspace.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <ref name="TokenAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="width">
         <ref name="length"/>
@@ -414,59 +636,11 @@
   <define name="ms">
     <element name="ms">
       <ref name="ms.attributes"/>
-      <text/>
+      <ref name="token.content"/>
     </element>
   </define>
   <define name="ms.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <ref name="TokenAtt"/>
-    <optional>
-      <attribute name="lquote"/>
-    </optional>
-    <optional>
-      <attribute name="rquote"/>
-    </optional>
-  </define>
-  <define name="msline">
-    <element name="msline">
-      <ref name="msline.attributes"/>
-      <empty/>
-    </element>
-  </define>
-  <define name="msline.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <optional>
-      <attribute name="position">
-        <data type="integer"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="length">
-        <data type="positiveInteger"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="leftoverhang">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="rightoverhang">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="mslinethickness">
-        <choice>
-          <ref name="length"/>
-          <value>thin</value>
-          <value>medium</value>
-          <value>thick</value>
-        </choice>
-      </attribute>
-    </optional>
+    <ref name="GlobalAttributes"/>
   </define>
   <define name="none">
     <element name="none">
@@ -475,8 +649,7 @@
     </element>
   </define>
   <define name="none.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
   </define>
   <define name="mprescripts">
     <element name="mprescripts">
@@ -485,67 +658,7 @@
     </element>
   </define>
   <define name="mprescripts.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-  </define>
-  <define name="CommonPresAtt">
-    <optional>
-      <attribute name="mathcolor">
-        <ref name="color"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="mathbackground">
-        <choice>
-          <ref name="color"/>
-          <value>transparent</value>
-        </choice>
-      </attribute>
-    </optional>
-  </define>
-  <define name="TokenAtt">
-    <optional>
-      <attribute name="mathvariant">
-        <choice>
-          <value>normal</value>
-          <value>bold</value>
-          <value>italic</value>
-          <value>bold-italic</value>
-          <value>double-struck</value>
-          <value>bold-fraktur</value>
-          <value>script</value>
-          <value>bold-script</value>
-          <value>fraktur</value>
-          <value>sans-serif</value>
-          <value>bold-sans-serif</value>
-          <value>sans-serif-italic</value>
-          <value>sans-serif-bold-italic</value>
-          <value>monospace</value>
-          <value>initial</value>
-          <value>tailed</value>
-          <value>looped</value>
-          <value>stretched</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="mathsize">
-        <choice>
-          <value>small</value>
-          <value>normal</value>
-          <value>big</value>
-          <ref name="length"/>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="dir">
-        <choice>
-          <value>ltr</value>
-          <value>rtl</value>
-        </choice>
-      </attribute>
-    </optional>
+    <ref name="GlobalAttributes"/>
   </define>
   <define name="mrow">
     <element name="mrow">
@@ -556,16 +669,7 @@
     </element>
   </define>
   <define name="mrow.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <optional>
-      <attribute name="dir">
-        <choice>
-          <value>ltr</value>
-          <value>rtl</value>
-        </choice>
-      </attribute>
-    </optional>
+    <ref name="GlobalAttributes"/>
   </define>
   <define name="mfrac">
     <element name="mfrac">
@@ -575,42 +679,10 @@
     </element>
   </define>
   <define name="mfrac.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="linethickness">
-        <choice>
-          <ref name="length"/>
-          <value>thin</value>
-          <value>medium</value>
-          <value>thick</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="numalign">
-        <choice>
-          <value>left</value>
-          <value>center</value>
-          <value>right</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="denomalign">
-        <choice>
-          <value>left</value>
-          <value>center</value>
-          <value>right</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="bevelled">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="length"/>
       </attribute>
     </optional>
   </define>
@@ -621,8 +693,7 @@
     </element>
   </define>
   <define name="msqrt.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
   </define>
   <define name="mroot">
     <element name="mroot">
@@ -632,8 +703,7 @@
     </element>
   </define>
   <define name="mroot.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
   </define>
   <define name="mstyle">
     <element name="mstyle">
@@ -642,32 +712,7 @@
     </element>
   </define>
   <define name="mstyle.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <optional>
-      <attribute name="scriptlevel">
-        <data type="integer"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="displaystyle">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="scriptsizemultiplier">
-        <data type="decimal"/>
-      </attribute>
-    </optional>
-  </define>
-  <define name="math.attributes" combine="interleave">
-    <ref name="CommonPresAtt"/>
-  </define>
-  <define name="math.attributes" combine="interleave">
-    <ref name="mstyle.attributes"/>
+    <ref name="GlobalAttributes"/>
   </define>
   <define name="merror">
     <element name="merror">
@@ -676,8 +721,7 @@
     </element>
   </define>
   <define name="merror.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
   </define>
   <define name="mpadded">
     <element name="mpadded">
@@ -686,8 +730,7 @@
     </element>
   </define>
   <define name="mpadded.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="height">
         <ref name="mpadded-length"/>
@@ -721,23 +764,7 @@
     </element>
   </define>
   <define name="mphantom.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-  </define>
-  <define name="menclose">
-    <element name="menclose">
-      <ref name="menclose.attributes"/>
-      <ref name="ImpliedMrow"/>
-    </element>
-  </define>
-  <define name="menclose.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <optional>
-      <attribute name="notation">
-        <ref name="notationstyle"/>
-      </attribute>
-    </optional>
+    <ref name="GlobalAttributes"/>
   </define>
   <define name="msub">
     <element name="msub">
@@ -747,8 +774,7 @@
     </element>
   </define>
   <define name="msub.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="subscriptshift">
         <ref name="length"/>
@@ -763,8 +789,7 @@
     </element>
   </define>
   <define name="msup.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="superscriptshift">
         <ref name="length"/>
@@ -780,8 +805,7 @@
     </element>
   </define>
   <define name="msubsup.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="subscriptshift">
         <ref name="length"/>
@@ -801,23 +825,10 @@
     </element>
   </define>
   <define name="munder.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="accentunder">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="align">
-        <choice>
-          <value>left</value>
-          <value>right</value>
-          <value>center</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
   </define>
@@ -829,23 +840,10 @@
     </element>
   </define>
   <define name="mover.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="accent">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="align">
-        <choice>
-          <value>left</value>
-          <value>right</value>
-          <value>center</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
   </define>
@@ -858,31 +856,15 @@
     </element>
   </define>
   <define name="munderover.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="accent">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="accentunder">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="align">
-        <choice>
-          <value>left</value>
-          <value>right</value>
-          <value>center</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
   </define>
@@ -913,32 +895,7 @@
     </element>
   </define>
   <define name="mtable.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <optional>
-      <attribute name="frame">
-        <ref name="linestyle"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="displaystyle">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
-  </define>
-  <define name="mlabeledtr">
-    <element name="mlabeledtr">
-      <ref name="mlabeledtr.attributes"/>
-      <oneOrMore>
-        <ref name="mtd"/>
-      </oneOrMore>
-    </element>
-  </define>
-  <define name="mlabeledtr.attributes">
-    <ref name="mtr.attributes"/>
+    <ref name="GlobalAttributes"/>
   </define>
   <define name="mtr">
     <element name="mtr">
@@ -949,19 +906,7 @@
     </element>
   </define>
   <define name="mtr.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
-    <optional>
-      <attribute name="rowalign">
-        <choice>
-          <value>top</value>
-          <value>bottom</value>
-          <value>center</value>
-          <value>baseline</value>
-          <value>axis</value>
-        </choice>
-      </attribute>
-    </optional>
+    <ref name="GlobalAttributes"/>
   </define>
   <define name="mtd">
     <element name="mtd">
@@ -970,8 +915,7 @@
     </element>
   </define>
   <define name="mtd.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="rowspan">
         <data type="positiveInteger"/>
@@ -980,22 +924,6 @@
     <optional>
       <attribute name="columnspan">
         <data type="positiveInteger"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="rowalign">
-        <choice>
-          <value>top</value>
-          <value>bottom</value>
-          <value>center</value>
-          <value>baseline</value>
-          <value>axis</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="columnalign">
-        <ref name="columnalignstyle"/>
       </attribute>
     </optional>
   </define>
@@ -1008,8 +936,7 @@
     </element>
   </define>
   <define name="maction.attributes">
-    <ref name="CommonAtt"/>
-    <ref name="CommonPresAtt"/>
+    <ref name="GlobalAttributes"/>
     <attribute name="actiontype"/>
     <optional>
       <attribute name="selection">

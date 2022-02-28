@@ -4,13 +4,30 @@
       application for describing mathematical notation and capturing
       both its structure and content.
   
-      Copyright 1998-2014 W3C (MIT, ERCIM, Keio, Beihang)
+      Copyright 1998-2022 W3C (MIT, ERCIM, Keio, Beihang)
   
       Use and distribution of this code are permitted under the terms
       W3C Software Notice and License
       http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
 -->
 <grammar ns="http://www.w3.org/1998/Math/MathML" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start combine="choice">
+    <ref name="math.strict"/>
+  </start>
+  <define name="CommonAtt">
+    <optional>
+      <attribute name="id">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="math.strict">
+    <element name="math">
+      <zeroOrMore>
+        <ref name="ContExp"/>
+      </zeroOrMore>
+    </element>
+  </define>
   <define name="ContExp">
     <choice>
       <ref name="semantics-contexp"/>
@@ -47,7 +64,7 @@
   </define>
   <define name="semantics-ci">
     <element name="semantics">
-      <ref name="semantics.attributes"/>
+      <ref name="CommonAtt"/>
       <choice>
         <ref name="ci"/>
         <ref name="semantics-ci"/>
@@ -62,7 +79,7 @@
   </define>
   <define name="semantics-contexp">
     <element name="semantics">
-      <ref name="semantics.attributes"/>
+      <ref name="CommonAtt"/>
       <ref name="ContExp"/>
       <zeroOrMore>
         <choice>
@@ -71,6 +88,51 @@
         </choice>
       </zeroOrMore>
     </element>
+  </define>
+  <define name="annotation" combine="choice">
+    <element name="annotation">
+      <ref name="CommonAtt"/>
+      <text/>
+    </element>
+  </define>
+  <define name="anyElement" combine="choice">
+    <element>
+      <anyName>
+        <except>
+          <nsName/>
+        </except>
+      </anyName>
+      <zeroOrMore>
+        <choice>
+          <attribute>
+            <anyName/>
+          </attribute>
+          <text/>
+          <ref name="anyElement"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="annotation-xml" combine="choice">
+    <element name="annotation-xml">
+      <ref name="CommonAtt"/>
+      <optional>
+        <ref name="encoding"/>
+      </optional>
+      <choice>
+        <zeroOrMore>
+          <ref name="MathExpression"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="anyElement"/>
+        </zeroOrMore>
+      </choice>
+    </element>
+  </define>
+  <define name="encoding" combine="choice">
+    <attribute name="encoding">
+      <data type="string"/>
+    </attribute>
   </define>
   <define name="ci">
     <element name="ci">
@@ -120,6 +182,18 @@
   </define>
   <define name="csymbol.content">
     <ref name="SymbolName"/>
+  </define>
+  <define name="cd">
+    <attribute name="cd">
+      <data type="NCName"/>
+    </attribute>
+  </define>
+  <define name="src">
+    <optional>
+      <attribute name="src">
+        <data type="anyURI"/>
+      </attribute>
+    </optional>
   </define>
   <define name="BvarQ">
     <zeroOrMore>
