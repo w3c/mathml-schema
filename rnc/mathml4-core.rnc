@@ -191,8 +191,8 @@ mo.attributes =
   attribute maxsize {length | "infinity"}?,
   attribute minsize {length}?,
   attribute largeop {mathml-boolean}?,
-  attribute movablelimits {mathml-boolean}?,
-  attribute accent {mathml-boolean}?
+  attribute movablelimits {mathml-boolean}?
+
 
 mtext = element mtext {mtext.attributes, token.content}
 mtext.attributes = 

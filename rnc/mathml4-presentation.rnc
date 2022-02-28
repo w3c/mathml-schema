@@ -83,7 +83,8 @@ mo.attributes |=
   attribute indentalignfirst {"left" | "center" | "right" | "auto" | "id" | "indentalign"}?,
   attribute indentshiftfirst {length | "indentshift"}?,
   attribute indentalignlast {"left" | "center" | "right" | "auto" | "id" | "indentalign"}?,
-  attribute indentshiftlast {length | "indentshift"}?
+  attribute indentshiftlast {length | "indentshift"}?,
+  attribute accent {mathml-boolean}?
 
 
 mspace.attributes |= 
