@@ -1,0 +1,6 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mfrac intent="divde($a,$b)">
+  <mn arg="a">1</mn>
+  <mn arg="b">2</mn>
+  </mfrac>
+</math>
