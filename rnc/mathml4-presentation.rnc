@@ -10,12 +10,18 @@
 #     http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
 
 default namespace m = "http://www.w3.org/1998/Math/MathML"
+namespace local = ""
 
+		      
 ## MathML Core
 include "mathml4-core.rnc" 
 
-GlobalAttributes &=    
-                   attribute href {xsd:anyURI}?
+NonMathMLAtt |= attribute (* - (local:*|m:*)) {xsd:string}
+					     
+GlobalAttributes |=
+		   NonMathMLAtt*,
+                   attribute href {xsd:anyURI}?,
+                   attribute other {text}?
 
 MathExpression |= PresentationExpression
 
@@ -260,8 +266,8 @@ mstyle.deprecatedattributes =
   attribute veryverythickmathspace {length}?
 
 
-math.attributes &= mstyle.specificattributes
-math.attributes &= mstyle.generalattributes
+math.attributes |= mstyle.specificattributes
+math.attributes |= mstyle.generalattributes
 
 mfenced = element mfenced {mfenced.attributes, MathExpression*}
 mfenced.attributes = 
