@@ -28,7 +28,7 @@
 <mtd><mn/></mtd>
 </mtr>
 </mtable>
-    <mstyle color="Red  " background="Green"> 
+    <mstyle mathcolor="Red  " style="background-color:Green"> 
               <mfrac linethickness="0"> 
                 <mi>n</mi> 
                 <mi>k</mi>  
@@ -37,7 +37,7 @@
     </mstyle>
 <menclose notation="top madruwb"><mn/></menclose>
 
-<mstack align="top 6" stackalign=".">
+<mstack align="top 6" stackalign="decimalpoint">
 <mn>1234</mn>
 </mstack>
 

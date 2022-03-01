@@ -1,4 +1,3 @@
-<!DOCTYPE math SYSTEM "../dtd/mathml4.dtd">
 <math xmlns="http://www.w3.org/1998/Math/MathML">
-<mrow> <mglyph/> <malignmark/></mrow>
+<mrow> <mi><mglyph/></mi> <malignmark/></mrow>
 </math>
