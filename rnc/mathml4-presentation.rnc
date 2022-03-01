@@ -18,6 +18,7 @@ NonMathMLAtt |= attribute (* - (local:*|m:*)) {xsd:string}
 					     
 GlobalAttributes |=
 		   NonMathMLAtt*,
+		   attribute xref {text}?,
                    attribute href {xsd:anyURI}?,
                    attribute other {text}?
 
