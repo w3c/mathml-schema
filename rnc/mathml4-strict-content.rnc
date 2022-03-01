@@ -16,9 +16,9 @@ start |= math.strict
 CommonAtt =
     attribute id {xsd:ID}?
 
-math.strict = element math {ContExp*}
+math.strict = element math {math.attributes,ContExp*}
 
-		      
+math.attributes |= CommonAtt
 
 ContExp = semantics-contexp | cn | ci | csymbol | apply | bind | share | cerror | cbytes | cs
 
