@@ -107,7 +107,6 @@ htmloneventattributes =
 GlobalAttributes = attribute id {xsd:ID}?,
                    attribute class {xsd:NMTOKENS}?,
                    attribute style {xsd:string}?,
-                   attribute href {xsd:anyURI}?,
                    attribute intent {text}?,
                    attribute arg {xsd:NMTOKEN}?,
                    attribute dir {"ltr" | "rtl"}?,
@@ -127,9 +126,9 @@ GlobalAttributes = attribute id {xsd:ID}?,
 math.attributes = GlobalAttributes,
                   attribute display {"block" | "inline"}?
 
-annotation = element annotation {GlobalAttributes,text}
+annotation = element annotation {GlobalAttributes,encoding?,text}
 
-anyElement =  element (* - m:*) {(attribute * {text}|text| anyElement)*}
+anyElement =  element (*) {(attribute * {text}|text| anyElement)*}
 
 annotation-xml = element annotation-xml {GlobalAttributes,
                                          encoding?,
@@ -153,7 +152,8 @@ length = xsd:string {
 MathExpression = TokenExpression|
                      mrow|mfrac|msqrt|mroot|mstyle|merror|mpadded|mphantom|
                      msub|msup|msubsup|munder|mover|munderover|
-                     mmultiscripts|mtable|maction
+                     mmultiscripts|mtable|maction|
+		     semantics
 
 ImpliedMrow = MathExpression*
 
@@ -317,5 +317,5 @@ mtd.attributes =
 maction = element maction {maction.attributes, MathExpression+}
 maction.attributes = 
   GlobalAttributes,
-  attribute actiontype {text},
+  attribute actiontype {text}?,
   attribute selection {xsd:positiveInteger}?
