@@ -1,5 +1,5 @@
 # MathML 4 (legacy)
-################
+##################
 
 #     Copyright 1998-2022 W3C (MIT, ERCIM, Keio)
 # 
@@ -9,7 +9,7 @@
 
 default namespace m = "http://www.w3.org/1998/Math/MathML"
 
-## MathML 4
+# MathML 4
 include "mathml4.rnc" 
 
 # Removed MathML 1/2/3 elements
