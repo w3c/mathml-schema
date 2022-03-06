@@ -76,19 +76,6 @@ piece = element piece {CommonAtt, DefEncAtt, ContExp, ContExp}
 otherwise = element otherwise {CommonAtt, DefEncAtt, ContExp}
 
 
-DeprecatedContExp = reln | fn | declare
-ContExp |= DeprecatedContExp
-
-reln = element reln {ContExp*}
-fn = element fn {ContExp}
-declare = element declare {attribute type {xsd:string}?,
-                           attribute scope {xsd:string}?,
-                           attribute nargs {xsd:nonNegativeInteger}?,
-                           attribute occurrence {"prefix"|"infix"|"function-model"}?,
-                           DefEncAtt, 
-                           ContExp+}
-
-
 interval.class = interval
 ContExp |= interval.class
 

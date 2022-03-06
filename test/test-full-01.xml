@@ -27,26 +27,7 @@
       <cn>2</cn> 
     </apply> 
   </apply>  
-
-  <apply>
-    <sum></sum>  
-    <bvar>
-      <ci>x</ci> 
-    </bvar>  
-    <condition>
-      <reln> 
-        <in></in> 
-        <ci>x</ci> 
-        <ci type="set">B</ci> 
-      </reln> 
-    </condition>  
-    <apply>
-      <fn>
-        <ci>f</ci> 
-      </fn> 
-      <ci>x</ci>  
-    </apply> 
-  </apply> 
+ 
 
 
   <apply>
@@ -68,10 +49,8 @@
         <apply>
           <in></in> 
           <apply>
-            <fn> 
-              <ci>f</ci> 
-            </fn>  
-            <ci>x</ci> 
+           <ci>f</ci> 
+           <ci>x</ci> 
           </apply>  
           <ci>T</ci> 
         </apply> 
