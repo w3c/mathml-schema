@@ -36,9 +36,10 @@ annotation |= element annotation {CommonAtt,text}
 
 anyElement |=  element (* - m:*) {(attribute * {text}|text| anyElement)*}
 
-annotation-xml |= element annotation-xml {CommonAtt,
-                                         encoding?,
+annotation-xml |= element annotation-xml {annotation-xml.attributes,
                                          (MathExpression*|anyElement*)}
+
+annotation-xml.attributes |= CommonAtt, cd?, encoding?
 
 encoding |= attribute encoding {xsd:string}
 
@@ -57,6 +58,7 @@ SymbolName = xsd:NCName
 csymbol.attributes = CommonAtt, cd
 csymbol.content = SymbolName
 cd = attribute cd {xsd:NCName}
+name = attribute name {xsd:NCName}
 src = attribute src {xsd:anyURI}?
 
 BvarQ = bvar*

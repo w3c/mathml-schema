@@ -130,9 +130,10 @@ annotation = element annotation {GlobalAttributes,encoding?,text}
 
 anyElement =  element (*) {(attribute * {text}|text| anyElement)*}
 
-annotation-xml = element annotation-xml {GlobalAttributes,
-                                         encoding?,
+annotation-xml = element aunnotation-xml {annotation-xml.attributes,
                                          (MathExpression*|anyElement*)}
+
+annotation-xml.attributes = GlobalAttributes, encoding?
 
 encoding=attribute encoding {xsd:string}
 

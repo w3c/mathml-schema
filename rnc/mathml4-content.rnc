@@ -21,6 +21,8 @@ include "mathml4-strict-content.rnc"{
   csymbol.attributes = CommonAtt, DefEncAtt, attribute type {text}?,cd?
   csymbol.content = (text | PresentationExpression)* 
 
+  annotation-xml.attributes |= CommonAtt, cd?, name?, encoding?
+
   bvar = element bvar {CommonAtt, ((ci | semantics-ci) & degree?)}
 
   cbytes.attributes = CommonAtt, DefEncAtt
