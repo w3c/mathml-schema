@@ -267,6 +267,7 @@ mstyle.deprecatedattributes =
 
 math.attributes |= mstyle.specificattributes
 math.attributes |= mstyle.generalattributes
+math.attributes |= attribute overflow {"linebreak" | "scroll" | "elide" | "truncate" | "scale"}?
 
 mfenced = element mfenced {mfenced.attributes, MathExpression*}
 mfenced.attributes = 
