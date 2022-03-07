@@ -33,4 +33,13 @@ declare = element declare {attribute type {xsd:string}?,
 
 
 
+# legacy attributes
 
+
+mglyph.deprecatedattributes =
+  attribute fontfamily {text}?,
+  attribute index {integer}?,
+  attribute mathvariant {"normal" | "bold" | "italic" | "bold-italic" | "double-struck" | "bold-fraktur" | "script" | "bold-script" | "fraktur" | "sans-serif" | "bold-sans-serif" | "sans-serif-italic" | "sans-serif-bold-italic" | "monospace" | "initial" | "tailed" | "looped" | "stretched"}?,
+  attribute mathsize {"small" | "normal" | "big" | length}?
+
+mglyph.attributes &= mglyph.deprecatedattributes

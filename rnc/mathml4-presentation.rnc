@@ -117,7 +117,7 @@ ms.attributes &=
   attribute rquote {text}?
 
 
-mglyph = element mglyph {mglyph.attributes,mglyph.deprecatedattributes,empty}
+mglyph = element mglyph {mglyph.attributes,empty}
 mglyph.attributes = 
   GlobalAttributes,
   attribute src {xsd:anyURI}?,
@@ -125,10 +125,6 @@ mglyph.attributes =
   attribute height {length}?,
   attribute valign {length}?,
   attribute alt {text}?
-mglyph.deprecatedattributes =
-  attribute index {integer}?,
-  attribute mathvariant {"normal" | "bold" | "italic" | "bold-italic" | "double-struck" | "bold-fraktur" | "script" | "bold-script" | "fraktur" | "sans-serif" | "bold-sans-serif" | "sans-serif-italic" | "sans-serif-bold-italic" | "monospace" | "initial" | "tailed" | "looped" | "stretched"}?,
-  attribute mathsize {"small" | "normal" | "big" | length}?
 
 msline = element msline {msline.attributes,empty}
 msline.attributes = 
