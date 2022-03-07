@@ -1,5 +1,5 @@
 # MathML 4 (Strict Content)
-###########################
+# #########################
 
 #     Copyright 1998-2022 W3C (MIT, ERCIM, Keio, Beihang)
 # 
@@ -18,7 +18,7 @@ CommonAtt =
 
 math.strict = element math {math.attributes,ContExp*}
 
-math.attributes |= CommonAtt
+math.attributes &= CommonAtt
 
 ContExp = semantics-contexp | cn | ci | csymbol | apply | bind | share | cerror | cbytes | cs
 
@@ -39,9 +39,9 @@ anyElement |=  element (* - m:*) {(attribute * {text}|text| anyElement)*}
 annotation-xml |= element annotation-xml {annotation-xml.attributes,
                                          (MathExpression*|anyElement*)}
 
-annotation-xml.attributes |= CommonAtt, cd?, encoding?
+annotation-xml.attributes &= CommonAtt, cd?, encoding?
 
-encoding |= attribute encoding {xsd:string}
+encoding &= attribute encoding {xsd:string}
 
 
 

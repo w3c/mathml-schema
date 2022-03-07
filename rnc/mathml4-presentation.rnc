@@ -1,5 +1,5 @@
 # MathML 4 (Presentation)
-#########################
+# #######################
 
 #     Copyright 1998-2022 W3C (MIT, ERCIM, Keio, Beihang)
 # 
@@ -14,9 +14,9 @@ namespace local = ""
 ## MathML Core
 include "mathml4-core.rnc" 
 
-NonMathMLAtt |= attribute (* - (local:*|m:*)) {xsd:string}
+NonMathMLAtt &= attribute (* - (local:*|m:*)) {xsd:string}
 					     
-GlobalAttributes |=
+GlobalAttributes &=
 		   NonMathMLAtt*,
 		   attribute xref {text}?,
                    attribute href {xsd:anyURI}?,
@@ -80,7 +80,7 @@ token.content |= mglyph|malignmark|text
 
 
 
-mo.attributes |= 
+mo.attributes &= 
   attribute linebreak {"auto" | "newline" | "nobreak" | "goodbreak" | "badbreak"}?,
   attribute lineleading {length}?,
   attribute linebreakstyle {"before" | "after" | "duplicate" | "infixlinebreakstyle"}?,
@@ -95,7 +95,7 @@ mo.attributes |=
   attribute accent {mathml-boolean}?
 
 
-mspace.attributes |= 
+mspace.attributes &= 
   attribute linebreak {"auto" | "newline" | "nobreak" | "goodbreak" | "badbreak" | "indentingnewline"}?,
   attribute indentalign {"left" | "center" | "right" | "auto" | "id"}?,
   attribute indentshift {length}?,
@@ -106,7 +106,7 @@ mspace.attributes |=
   attribute indentshiftlast {length | "indentshift"}?
 
 
-ms.attributes |= 
+ms.attributes &= 
   attribute lquote {text}?,
   attribute rquote {text}?
 
@@ -158,14 +158,14 @@ PresentationExpression = TokenExpression|MalignExpression|
 
 
 
-mfrac.attributes |= 
+mfrac.attributes &= 
   attribute numalign {"left" | "center" | "right"}?,
   attribute denomalign {"left" | "center" | "right"}?,
   attribute bevelled {"true" | "false"}?
 
 
 
-mstyle.attributes |= 
+mstyle.attributes &= 
   mstyle.specificattributes,
   mstyle.generalattributes,
   mstyle.deprecatedattributes
@@ -265,9 +265,9 @@ mstyle.deprecatedattributes =
   attribute veryverythickmathspace {length}?
 
 
-math.attributes |= mstyle.specificattributes
-math.attributes |= mstyle.generalattributes
-math.attributes |= attribute overflow {"linebreak" | "scroll" | "elide" | "truncate" | "scale"}?
+math.attributes &= mstyle.specificattributes
+math.attributes &= mstyle.generalattributes
+math.attributes &= attribute overflow {"linebreak" | "scroll" | "elide" | "truncate" | "scale"}?
 
 mfenced = element mfenced {mfenced.attributes, MathExpression*}
 mfenced.attributes = 
@@ -283,16 +283,16 @@ menclose.attributes =
   attribute notation {text}?
 
 
-munder.attributes |= 
+munder.attributes &= 
   attribute align {"left" | "right" | "center"}?
 
-mover.attributes |= 
+mover.attributes &= 
   attribute align {"left" | "right" | "center"}?
 
-munderover.attributes |= 
+munderover.attributes &= 
   attribute align {"left" | "right" | "center"}?
 
-mtable.attributes |= 
+mtable.attributes &= 
   attribute align {xsd:string {
     pattern ='\s*(top|bottom|center|baseline|axis)(\s+-?[0-9]+)?\s*'}}?,
   attribute rowalign {list {verticalalign+} }?,
@@ -321,14 +321,14 @@ mlabeledtr.attributes =
 
 
       
-mtr.attributes |= 
+mtr.attributes &= 
   attribute rowalign {"top" | "bottom" | "center" | "baseline" | "axis"}?,
   attribute columnalign {list {columnalignstyle+} }?,
   attribute groupalign {group-alignment-list-list}?
 
 
 
-mtd.attributes |= 
+mtd.attributes &= 
   attribute rowalign {"top" | "bottom" | "center" | "baseline" | "axis"}?,
   attribute columnalign {columnalignstyle}?,
   attribute groupalign {group-alignment-list}?
