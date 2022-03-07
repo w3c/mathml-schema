@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<locatingRules xmlns="http://thaiopensource.com/ns/locating-rules/1.0">
+ <uri pattern="test-legacy*.xml"       uri="../rnc/mathml4-legacy.rnc"/>
+ <uri pattern="test-full*.xml"         uri="../rnc/mathml4.rnc"/>
+ <uri pattern="test-presentation*.xml" uri="../rnc/mathml4-presentation.rnc"/>
+ <uri pattern="test-core*.xml"         uri="../rnc/mathml4-core.rnc"/>
+ <uri pattern="test-strict*.xml"       uri="../rnc/mathml4-strict-content.rnc"/>
+ <uri pattern="test-content*.xml"      uri="../rnc/mathml4-content.rnc"/>
+</locatingRules>

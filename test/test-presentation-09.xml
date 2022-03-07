@@ -1,0 +1,15 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mstyle mathbackground="yellow" height="5pt" depth="5pt" width="10pt" lspace="5pt">
+  <mrow nonce="2222" displaystyle="TRUE">
+  <mi onclick="foobar()">x</mi>
+  <mo mathcolor="rgb(255, 0, 0)" linebreak="auto">+</mo>
+  <mi data-extra="zzz"
+      mathcolor=" HotPink">y</mi>
+  <mo>-</mo>
+  <mfrac linethickness="2pt" bevelled="true">
+   <mn mathvariant=" BOLD ">1</mn>
+   <mn mathvariant="double-struck">2</mn>
+  </mfrac>
+ </mrow>
+ </mstyle>
+</math>

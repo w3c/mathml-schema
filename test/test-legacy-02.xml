@@ -1,0 +1,12 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mi>x</mi>
+  <mo mathcolor="#BBB" mathsize="3">+</mo>
+  <mi mathcolor="red">y</mi>
+  <mo>-</mo>
+  <mfrac linethickness="2pt">
+   <mn mathvariant="bold">1</mn>
+   <mn mathvariant="double-struck">2</mn>
+  </mfrac>
+ </mrow>
+</math>
