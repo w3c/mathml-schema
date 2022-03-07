@@ -11,8 +11,14 @@ default namespace m = "http://www.w3.org/1998/Math/MathML"
 namespace local = ""
 
 		      
-## MathML Core
-include "mathml4-core.rnc" 
+# MathML Core
+include "mathml4-core.rnc" {
+
+# named lengths
+length = xsd:string {
+  pattern = '\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%))|0|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*'
+}
+}
 
 NonMathMLAtt = attribute (* - (local:* | m:*)) {xsd:string}
 					     
