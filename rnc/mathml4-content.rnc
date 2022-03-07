@@ -34,7 +34,7 @@ include "mathml4-strict-content.rnc"{
   bind.content = apply.content
 }
 
-NonMathMLAtt = attribute (* - (local:*|m:*)) {xsd:string}
+NonMathMLAtt |= attribute (* - (local:*|m:*)) {xsd:string}
 
 CommonAtt |=
 		   NonMathMLAtt*,

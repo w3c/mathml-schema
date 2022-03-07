@@ -14,7 +14,7 @@ namespace local = ""
 ## MathML Core
 include "mathml4-core.rnc" 
 
-NonMathMLAtt &= attribute (* - (local:*|m:*)) {xsd:string}
+NonMathMLAtt = attribute (* - (local:* | m:*)) {xsd:string}
 					     
 GlobalAttributes &=
 		   NonMathMLAtt*,
