@@ -160,4 +160,82 @@
   <define name="mstyle.attributes" combine="interleave">
     <ref name="mstyle.deprecatedattributes"/>
   </define>
+  <define name="math.deprecatedattributes">
+    <optional>
+      <attribute name="mode">
+        <data type="string"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="macros">
+        <data type="string"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="math.attributes" combine="interleave">
+    <ref name="math.deprecatedattributes"/>
+  </define>
+  <define name="DeprecatedTokenAtt">
+    <optional>
+      <attribute name="fontfamily"/>
+    </optional>
+    <optional>
+      <attribute name="fontweight">
+        <choice>
+          <value>normal</value>
+          <value>bold</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="fontstyle">
+        <choice>
+          <value>normal</value>
+          <value>italic</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="fontsize">
+        <ref name="length"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="color">
+        <ref name="color"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="background">
+        <choice>
+          <ref name="color"/>
+          <value>transparent</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="mstyle.attributes" combine="interleave">
+    <ref name="DeprecatedTokenAtt"/>
+  </define>
+  <define name="mglyph.attributes" combine="interleave">
+    <ref name="DeprecatedTokenAtt"/>
+  </define>
+  <define name="mn.attributes" combine="interleave">
+    <ref name="DeprecatedTokenAtt"/>
+  </define>
+  <define name="mi.attributes" combine="interleave">
+    <ref name="DeprecatedTokenAtt"/>
+  </define>
+  <define name="mo.attributes" combine="interleave">
+    <ref name="DeprecatedTokenAtt"/>
+  </define>
+  <define name="mtext.attributes" combine="interleave">
+    <ref name="DeprecatedTokenAtt"/>
+  </define>
+  <define name="mspace.attributes" combine="interleave">
+    <ref name="DeprecatedTokenAtt"/>
+  </define>
+  <define name="ms.attributes" combine="interleave">
+    <ref name="DeprecatedTokenAtt"/>
+  </define>
 </grammar>
