@@ -54,3 +54,9 @@ mstyle.deprecatedattributes =
   attribute veryverythickmathspace {length}?
 
 mstyle.attributes &= mstyle.deprecatedattributes
+
+
+math.deprecatedattributes = attribute mode {xsd:string}?,
+                            attribute macros {xsd:string}?
+
+math.attributes &= math.deprecatedattributes
