@@ -3,12 +3,12 @@
 cd rnc
 
 echo trang
-java -jar ../build/trang.jar mathml4.rnc mathml4.xsd
+java -jar ../build/trang.jar mathml4-legacy.rnc mathml4-legacy.xsd
 
 
 echo saxon
 
- for f in mathml4 mathml4-common  mathml4-presentation  mathml4-content mathml4-strict-content
+ for f in mathml4 mathml4-core  mathml4-presentation  mathml4-content mathml4-strict-content mathml4-legacy
  do
  echo $f
  saxon9 -o:../xsd/${f}.xsd ${f}.xsd ../build/xsdxsd.xsl
