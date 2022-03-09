@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  MathML 4 (legacy)
+  ################
+-->
+<!--
+      Copyright 1998-2022 W3C (MIT, ERCIM, Keio)
+  
+      Use and distribution of this code are permitted under the terms
+      W3C Software Notice and License
+      http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+-->
+<grammar ns="http://www.w3.org/1998/Math/MathML" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <!-- MathML 4 -->
+  <include href="mathml4.rng">
+    <!-- unitless lengths -->
+    <define name="length">
+      <data type="string">
+        <param name="pattern">\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%)?)|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*</param>
+      </data>
+    </define>
+  </include>
+  <!-- Removed MathML 1/2/3 elements -->
+  <define name="ContExp" combine="choice">
+    <choice>
+      <ref name="reln"/>
+      <ref name="fn"/>
+      <ref name="declare"/>
+    </choice>
+  </define>
+  <define name="reln">
+    <element name="reln">
+      <zeroOrMore>
+        <ref name="ContExp"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="fn">
+    <element name="fn">
+      <ref name="ContExp"/>
+    </element>
+  </define>
+  <define name="declare">
+    <element name="declare">
+      <optional>
+        <attribute name="type">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="scope">
+          <data type="string"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="nargs">
+          <data type="nonNegativeInteger"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="occurrence">
+          <choice>
+            <value>prefix</value>
+            <value>infix</value>
+            <value>function-model</value>
+          </choice>
+        </attribute>
+      </optional>
+      <ref name="DefEncAtt"/>
+      <oneOrMore>
+        <ref name="ContExp"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <!-- legacy attributes -->
+  <define name="mglyph.deprecatedattributes">
+    <optional>
+      <attribute name="fontfamily"/>
+    </optional>
+    <optional>
+      <attribute name="index">
+        <ref name="integer"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="mathvariant">
+        <choice>
+          <value>normal</value>
+          <value>bold</value>
+          <value>italic</value>
+          <value>bold-italic</value>
+          <value>double-struck</value>
+          <value>bold-fraktur</value>
+          <value>script</value>
+          <value>bold-script</value>
+          <value>fraktur</value>
+          <value>sans-serif</value>
+          <value>bold-sans-serif</value>
+          <value>sans-serif-italic</value>
+          <value>sans-serif-bold-italic</value>
+          <value>monospace</value>
+          <value>initial</value>
+          <value>tailed</value>
+          <value>looped</value>
+          <value>stretched</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="mathsize">
+        <choice>
+          <value>small</value>
+          <value>normal</value>
+          <value>big</value>
+          <ref name="length"/>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="mglyph.attributes" combine="interleave">
+    <ref name="mglyph.deprecatedattributes"/>
+  </define>
+  <define name="mstyle.deprecatedattributes">
+    <optional>
+      <attribute name="veryverythinmathspace">
+        <ref name="length"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="verythinmathspace">
+        <ref name="length"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="thinmathspace">
+        <ref name="length"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="mediummathspace">
+        <ref name="length"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="thickmathspace">
+        <ref name="length"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="verythickmathspace">
+        <ref name="length"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="veryverythickmathspace">
+        <ref name="length"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="mstyle.attributes" combine="interleave">
+    <ref name="mstyle.deprecatedattributes"/>
+  </define>
+</grammar>

@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
   <!--
-        This is the Mathematical Markup Language (MathML) 3.0, an XML
-        application for describing mathematical notation and capturing
-        both its structure and content.
-    
-        Copyright 1998-2019 W3C (MIT, ERCIM, Keio)
+    MathML 4 (full)
+    ##############
+  -->
+  <!--
+        Copyright 1998-2022 W3C (MIT, ERCIM, Keio)
     
         Use and distribution of this code are permitted under the terms
         W3C Software Notice and License
         http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
   -->
-  <include href="mathml4-presentation.rng">
-    <a:documentation>Presentation MathML</a:documentation>
-  </include>
-  <include href="mathml4-content.rng">
-    <a:documentation>Content  MathML</a:documentation>
-  </include>
+  <!-- Presentation MathML -->
+  <include href="mathml4-presentation.rng"/>
+  <!-- Content  MathML -->
+  <include href="mathml4-content.rng"/>
 </grammar>

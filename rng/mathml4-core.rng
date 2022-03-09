@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-      This is the Mathematical Markup Language (MathML) 4.0, an XML
-      application for describing mathematical notation and capturing
-      both its structure and content.
-  
+  MathML 4 (Core Level 1)
+  #######################
+-->
+<!--
       Copyright 1998-2022 W3C (MIT, ERCIM, Keio, Beihang)
   
       Use and distribution of this code are permitted under the terms
@@ -11,7 +11,7 @@
       http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
 -->
 <grammar ns="http://www.w3.org/1998/Math/MathML" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
-  <start>
+  <start combine="choice">
     <ref name="math"/>
   </start>
   <define name="math">
@@ -302,11 +302,6 @@
       </attribute>
     </optional>
     <optional>
-      <attribute name="href">
-        <data type="anyURI"/>
-      </attribute>
-    </optional>
-    <optional>
       <attribute name="intent"/>
     </optional>
     <optional>
@@ -384,16 +379,15 @@
   <define name="annotation">
     <element name="annotation">
       <ref name="GlobalAttributes"/>
+      <optional>
+        <ref name="encoding"/>
+      </optional>
       <text/>
     </element>
   </define>
   <define name="anyElement">
     <element>
-      <anyName>
-        <except>
-          <nsName/>
-        </except>
-      </anyName>
+      <anyName/>
       <zeroOrMore>
         <choice>
           <attribute>
@@ -406,11 +400,8 @@
     </element>
   </define>
   <define name="annotation-xml">
-    <element name="annotation-xml">
-      <ref name="GlobalAttributes"/>
-      <optional>
-        <ref name="encoding"/>
-      </optional>
+    <element name="aunnotation-xml">
+      <ref name="annotation-xml.attributes"/>
       <choice>
         <zeroOrMore>
           <ref name="MathExpression"/>
@@ -420,6 +411,12 @@
         </zeroOrMore>
       </choice>
     </element>
+  </define>
+  <define name="annotation-xml.attributes">
+    <ref name="GlobalAttributes"/>
+    <optional>
+      <ref name="encoding"/>
+    </optional>
   </define>
   <define name="encoding">
     <attribute name="encoding">
@@ -445,7 +442,7 @@
   </define>
   <define name="length">
     <data type="string">
-      <param name="pattern">\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%))|0|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*</param>
+      <param name="pattern">\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%))|0)\s*</param>
     </data>
   </define>
   <define name="MathExpression">
@@ -468,6 +465,7 @@
       <ref name="mmultiscripts"/>
       <ref name="mtable"/>
       <ref name="maction"/>
+      <ref name="semantics"/>
     </choice>
   </define>
   <define name="ImpliedMrow">
@@ -508,8 +506,24 @@
       <ref name="ms"/>
     </choice>
   </define>
+  <define name="textorHTML">
+    <choice>
+      <text/>
+      <element>
+        <nsName ns="http://www.w3.org/1999/xhtml"/>
+        <zeroOrMore>
+          <attribute>
+            <anyName/>
+          </attribute>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="textorHTML"/>
+        </zeroOrMore>
+      </element>
+    </choice>
+  </define>
   <define name="token.content">
-    <text/>
+    <ref name="textorHTML"/>
   </define>
   <define name="mi">
     <element name="mi">
@@ -937,7 +951,9 @@
   </define>
   <define name="maction.attributes">
     <ref name="GlobalAttributes"/>
-    <attribute name="actiontype"/>
+    <optional>
+      <attribute name="actiontype"/>
+    </optional>
     <optional>
       <attribute name="selection">
         <data type="positiveInteger"/>

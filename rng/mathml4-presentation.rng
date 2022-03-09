@@ -1,19 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
-  <!--
-        This is the Mathematical Markup Language (MathML) 4.0, an XML
-        application for describing mathematical notation and capturing
-        both its structure and content.
-    
-        Copyright 1998-2022 W3C (MIT, ERCIM, Keio, Beihang)
-    
-        Use and distribution of this code are permitted under the terms
-        W3C Software Notice and License
-        http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
-  -->
+<!--
+  MathML 4 (Presentation)
+  #######################
+-->
+<!--
+      Copyright 1998-2022 W3C (MIT, ERCIM, Keio, Beihang)
+  
+      Use and distribution of this code are permitted under the terms
+      W3C Software Notice and License
+      http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+-->
+<grammar ns="http://www.w3.org/1998/Math/MathML" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <!-- MathML Core -->
   <include href="mathml4-core.rng">
-    <a:documentation>MathML Core</a:documentation>
+    <!-- named lengths -->
+    <define name="length">
+      <data type="string">
+        <param name="pattern">\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%))|0|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*</param>
+      </data>
+    </define>
   </include>
+  <define name="NonMathMLAtt">
+    <attribute>
+      <anyName>
+        <except>
+          <nsName ns=""/>
+          <nsName/>
+        </except>
+      </anyName>
+      <data type="string"/>
+    </attribute>
+  </define>
+  <define name="GlobalAttributes" combine="interleave">
+    <zeroOrMore>
+      <ref name="NonMathMLAtt"/>
+    </zeroOrMore>
+    <optional>
+      <attribute name="xref"/>
+    </optional>
+    <optional>
+      <attribute name="href">
+        <data type="anyURI"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="other"/>
+    </optional>
+  </define>
   <define name="MathExpression" combine="choice">
     <ref name="PresentationExpression"/>
   </define>
@@ -124,7 +157,7 @@
       <text/>
     </choice>
   </define>
-  <define name="mo.attributes" combine="choice">
+  <define name="mo.attributes" combine="interleave">
     <optional>
       <attribute name="linebreak">
         <choice>
@@ -221,7 +254,7 @@
       </attribute>
     </optional>
   </define>
-  <define name="mspace.attributes" combine="choice">
+  <define name="mspace.attributes" combine="interleave">
     <optional>
       <attribute name="linebreak">
         <choice>
@@ -296,7 +329,7 @@
       </attribute>
     </optional>
   </define>
-  <define name="ms.attributes" combine="choice">
+  <define name="ms.attributes" combine="interleave">
     <optional>
       <attribute name="lquote"/>
     </optional>
@@ -307,7 +340,6 @@
   <define name="mglyph">
     <element name="mglyph">
       <ref name="mglyph.attributes"/>
-      <ref name="mglyph.deprecatedattributes"/>
       <empty/>
     </element>
   </define>
@@ -335,47 +367,6 @@
     </optional>
     <optional>
       <attribute name="alt"/>
-    </optional>
-  </define>
-  <define name="mglyph.deprecatedattributes">
-    <optional>
-      <attribute name="index">
-        <ref name="integer"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="mathvariant">
-        <choice>
-          <value>normal</value>
-          <value>bold</value>
-          <value>italic</value>
-          <value>bold-italic</value>
-          <value>double-struck</value>
-          <value>bold-fraktur</value>
-          <value>script</value>
-          <value>bold-script</value>
-          <value>fraktur</value>
-          <value>sans-serif</value>
-          <value>bold-sans-serif</value>
-          <value>sans-serif-italic</value>
-          <value>sans-serif-bold-italic</value>
-          <value>monospace</value>
-          <value>initial</value>
-          <value>tailed</value>
-          <value>looped</value>
-          <value>stretched</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="mathsize">
-        <choice>
-          <value>small</value>
-          <value>normal</value>
-          <value>big</value>
-          <ref name="length"/>
-        </choice>
-      </attribute>
     </optional>
   </define>
   <define name="msline">
@@ -486,7 +477,7 @@
       <ref name="maction"/>
     </choice>
   </define>
-  <define name="mfrac.attributes" combine="choice">
+  <define name="mfrac.attributes" combine="interleave">
     <optional>
       <attribute name="numalign">
         <choice>
@@ -514,10 +505,9 @@
       </attribute>
     </optional>
   </define>
-  <define name="mstyle.attributes" combine="choice">
+  <define name="mstyle.attributes" combine="interleave">
     <ref name="mstyle.specificattributes"/>
     <ref name="mstyle.generalattributes"/>
-    <ref name="mstyle.deprecatedattributes"/>
   </define>
   <define name="mstyle.specificattributes">
     <optional>
@@ -1141,48 +1131,24 @@
       </attribute>
     </optional>
   </define>
-  <define name="mstyle.deprecatedattributes">
-    <optional>
-      <attribute name="veryverythinmathspace">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="verythinmathspace">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="thinmathspace">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="mediummathspace">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="thickmathspace">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="verythickmathspace">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="veryverythickmathspace">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-  </define>
   <define name="math.attributes" combine="interleave">
     <ref name="mstyle.specificattributes"/>
   </define>
   <define name="math.attributes" combine="interleave">
     <ref name="mstyle.generalattributes"/>
+  </define>
+  <define name="math.attributes" combine="interleave">
+    <optional>
+      <attribute name="overflow">
+        <choice>
+          <value>linebreak</value>
+          <value>scroll</value>
+          <value>elide</value>
+          <value>truncate</value>
+          <value>scale</value>
+        </choice>
+      </attribute>
+    </optional>
   </define>
   <define name="mfenced">
     <element name="mfenced">
@@ -1216,7 +1182,7 @@
       <attribute name="notation"/>
     </optional>
   </define>
-  <define name="munder.attributes" combine="choice">
+  <define name="munder.attributes" combine="interleave">
     <optional>
       <attribute name="align">
         <choice>
@@ -1227,7 +1193,7 @@
       </attribute>
     </optional>
   </define>
-  <define name="mover.attributes" combine="choice">
+  <define name="mover.attributes" combine="interleave">
     <optional>
       <attribute name="align">
         <choice>
@@ -1238,7 +1204,7 @@
       </attribute>
     </optional>
   </define>
-  <define name="munderover.attributes" combine="choice">
+  <define name="munderover.attributes" combine="interleave">
     <optional>
       <attribute name="align">
         <choice>
@@ -1249,7 +1215,7 @@
       </attribute>
     </optional>
   </define>
-  <define name="mtable.attributes" combine="choice">
+  <define name="mtable.attributes" combine="interleave">
     <optional>
       <attribute name="align">
         <data type="string">
@@ -1413,7 +1379,7 @@
   <define name="mlabeledtr.attributes">
     <ref name="mtr.attributes"/>
   </define>
-  <define name="mtr.attributes" combine="choice">
+  <define name="mtr.attributes" combine="interleave">
     <optional>
       <attribute name="rowalign">
         <choice>
@@ -1440,7 +1406,7 @@
       </attribute>
     </optional>
   </define>
-  <define name="mtd.attributes" combine="choice">
+  <define name="mtd.attributes" combine="interleave">
     <optional>
       <attribute name="rowalign">
         <choice>

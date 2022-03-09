@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
-  <!--
-        This is the Mathematical Markup Language (MathML) 4.0, an XML
-        application for describing mathematical notation and capturing
-        both its structure and content.
-    
-        Copyright 1998-2022 W3C (MIT, ERCIM, Keio, Beihang)
-    
-        Use and distribution of this code are permitted under the terms
-        W3C Software Notice and License
-        http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
-  -->
+<!--
+  MathML 4 (Content)
+  ##################
+-->
+<!--
+      Copyright 1998-2022 W3C (MIT, ERCIM, Keio, Beihang)
+  
+      Use and distribution of this code are permitted under the terms
+      W3C Software Notice and License
+      http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+-->
+<grammar ns="http://www.w3.org/1998/Math/MathML" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <include href="mathml4-strict-content.rng">
     <define name="cn.content">
       <zeroOrMore>
@@ -67,6 +67,18 @@
         </choice>
       </zeroOrMore>
     </define>
+    <define name="annotation-xml.attributes" combine="choice">
+      <ref name="CommonAtt"/>
+      <optional>
+        <ref name="cd"/>
+      </optional>
+      <optional>
+        <ref name="name"/>
+      </optional>
+      <optional>
+        <ref name="encoding"/>
+      </optional>
+    </define>
     <define name="bvar">
       <element name="bvar">
         <ref name="CommonAtt"/>
@@ -110,6 +122,30 @@
       <ref name="apply.content"/>
     </define>
   </include>
+  <define name="NonMathMLAtt" combine="choice">
+    <attribute>
+      <anyName>
+        <except>
+          <nsName ns=""/>
+          <nsName/>
+        </except>
+      </anyName>
+      <data type="string"/>
+    </attribute>
+  </define>
+  <define name="CommonAtt" combine="choice">
+    <zeroOrMore>
+      <ref name="NonMathMLAtt"/>
+    </zeroOrMore>
+    <optional>
+      <attribute name="href">
+        <data type="anyURI"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="other"/>
+    </optional>
+  </define>
   <define name="base">
     <attribute name="base"/>
   </define>
@@ -235,60 +271,6 @@
       <ref name="CommonAtt"/>
       <ref name="DefEncAtt"/>
       <ref name="ContExp"/>
-    </element>
-  </define>
-  <define name="DeprecatedContExp">
-    <choice>
-      <ref name="reln"/>
-      <ref name="fn"/>
-      <ref name="declare"/>
-    </choice>
-  </define>
-  <define name="ContExp" combine="choice">
-    <ref name="DeprecatedContExp"/>
-  </define>
-  <define name="reln">
-    <element name="reln">
-      <zeroOrMore>
-        <ref name="ContExp"/>
-      </zeroOrMore>
-    </element>
-  </define>
-  <define name="fn">
-    <element name="fn">
-      <ref name="ContExp"/>
-    </element>
-  </define>
-  <define name="declare">
-    <element name="declare">
-      <optional>
-        <attribute name="type">
-          <data type="string"/>
-        </attribute>
-      </optional>
-      <optional>
-        <attribute name="scope">
-          <data type="string"/>
-        </attribute>
-      </optional>
-      <optional>
-        <attribute name="nargs">
-          <data type="nonNegativeInteger"/>
-        </attribute>
-      </optional>
-      <optional>
-        <attribute name="occurrence">
-          <choice>
-            <value>prefix</value>
-            <value>infix</value>
-            <value>function-model</value>
-          </choice>
-        </attribute>
-      </optional>
-      <ref name="DefEncAtt"/>
-      <oneOrMore>
-        <ref name="ContExp"/>
-      </oneOrMore>
     </element>
   </define>
   <define name="interval.class">

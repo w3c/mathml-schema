@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-      This is the Mathematical Markup Language (MathML) 3.0, an XML
-      application for describing mathematical notation and capturing
-      both its structure and content.
-  
+  MathML 4 (Strict Content)
+  #########################
+-->
+<!--
       Copyright 1998-2022 W3C (MIT, ERCIM, Keio, Beihang)
   
       Use and distribution of this code are permitted under the terms
@@ -20,13 +20,20 @@
         <data type="ID"/>
       </attribute>
     </optional>
+    <optional>
+      <attribute name="xref"/>
+    </optional>
   </define>
   <define name="math.strict">
     <element name="math">
+      <ref name="math.attributes"/>
       <zeroOrMore>
         <ref name="ContExp"/>
       </zeroOrMore>
     </element>
+  </define>
+  <define name="math.attributes" combine="interleave">
+    <ref name="CommonAtt"/>
   </define>
   <define name="ContExp">
     <choice>
@@ -115,10 +122,7 @@
   </define>
   <define name="annotation-xml" combine="choice">
     <element name="annotation-xml">
-      <ref name="CommonAtt"/>
-      <optional>
-        <ref name="encoding"/>
-      </optional>
+      <ref name="annotation-xml.attributes"/>
       <choice>
         <zeroOrMore>
           <ref name="MathExpression"/>
@@ -129,7 +133,16 @@
       </choice>
     </element>
   </define>
-  <define name="encoding" combine="choice">
+  <define name="annotation-xml.attributes" combine="interleave">
+    <ref name="CommonAtt"/>
+    <optional>
+      <ref name="cd"/>
+    </optional>
+    <optional>
+      <ref name="encoding"/>
+    </optional>
+  </define>
+  <define name="encoding" combine="interleave">
     <attribute name="encoding">
       <data type="string"/>
     </attribute>
@@ -185,6 +198,11 @@
   </define>
   <define name="cd">
     <attribute name="cd">
+      <data type="NCName"/>
+    </attribute>
+  </define>
+  <define name="name">
+    <attribute name="name">
       <data type="NCName"/>
     </attribute>
   </define>
