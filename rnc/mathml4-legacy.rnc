@@ -60,3 +60,21 @@ math.deprecatedattributes = attribute mode {xsd:string}?,
                             attribute macros {xsd:string}?
 
 math.attributes &= math.deprecatedattributes
+
+
+DeprecatedTokenAtt = 
+  attribute fontfamily {text}?,
+  attribute fontweight {"normal" | "bold"}?,
+  attribute fontstyle {"normal" | "italic"}?,
+  attribute fontsize {length}?,
+  attribute color {color}?,
+  attribute background {color | "transparent"}?
+
+mstyle.attributes &= DeprecatedTokenAtt
+mglyph.attributes &= DeprecatedTokenAtt
+mn.attributes &= DeprecatedTokenAtt
+mi.attributes &= DeprecatedTokenAtt
+mo.attributes &= DeprecatedTokenAtt
+mtext.attributes &= DeprecatedTokenAtt
+mspace.attributes &= DeprecatedTokenAtt
+ms.attributes &= DeprecatedTokenAtt
