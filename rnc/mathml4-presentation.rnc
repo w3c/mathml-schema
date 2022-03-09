@@ -169,8 +169,7 @@ mfrac.attributes &=
 
 mstyle.attributes &= 
   mstyle.specificattributes,
-  mstyle.generalattributes,
-  mstyle.deprecatedattributes
+  mstyle.generalattributes
 
 mstyle.specificattributes =
   attribute scriptlevel {integer}?,
@@ -256,15 +255,6 @@ mstyle.generalattributes =
   attribute symmetric {"true" | "false"}?,
   attribute valign {length}?,
   attribute width {length}?
-
-mstyle.deprecatedattributes =
-  attribute veryverythinmathspace {length}?,
-  attribute verythinmathspace {length}?,
-  attribute thinmathspace {length}?,
-  attribute mediummathspace {length}?,
-  attribute thickmathspace {length}?,
-  attribute verythickmathspace {length}?,
-  attribute veryverythickmathspace {length}?
 
 
 math.attributes &= mstyle.specificattributes

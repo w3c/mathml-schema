@@ -43,3 +43,14 @@ mglyph.deprecatedattributes =
   attribute mathsize {"small" | "normal" | "big" | length}?
 
 mglyph.attributes &= mglyph.deprecatedattributes
+
+mstyle.deprecatedattributes =
+  attribute veryverythinmathspace {length}?,
+  attribute verythinmathspace {length}?,
+  attribute thinmathspace {length}?,
+  attribute mediummathspace {length}?,
+  attribute thickmathspace {length}?,
+  attribute verythickmathspace {length}?,
+  attribute veryverythickmathspace {length}?
+
+mstyle.attributes &= mstyle.deprecatedattributes
