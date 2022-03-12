@@ -191,11 +191,12 @@ mo.attributes =
   attribute rspace {length-percentage}?,
   attribute stretchy {mathml-boolean}?,
   attribute symmetric {mathml-boolean}?,
-  attribute maxsize {length-percentage | "infinity"}?,
+  attribute maxsize {maxsize-length}?,
   attribute minsize {length-percentage}?,
   attribute largeop {mathml-boolean}?,
   attribute movablelimits {mathml-boolean}?
 
+maxsize-length = length-percentage
 
 mtext = element mtext {mtext.attributes, token.content}
 mtext.attributes = 

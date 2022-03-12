@@ -22,6 +22,10 @@ length-percentage = xsd:string {
 mpadded-length-percentage = xsd:string {
   pattern = '\s*([\+\-]?[0-9]*([0-9]\.?|\.[0-9])[0-9]*\s*((%?\s*(height|depth|width)?)|e[mx]|in|cm|mm|p[xtc]|((negative)?((very){0,2}thi(n|ck)|medium)mathspace))?)\s*' }
 
+maxsize-length = xsd:string {
+  pattern = '\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%))|0|(negative)?((very){0,2}thi(n|ck)|medium)mathspace|infinity)\s*'
+}
+
 }
 
 NonMathMLAtt = attribute (* - (local:* | m:*)) {xsd:string}
@@ -102,8 +106,8 @@ mo.attributes &=
   attribute indentshiftfirst {length-percentage | "indentshift"}?,
   attribute indentalignlast {"left" | "center" | "right" | "auto" | "id" | "indentalign"}?,
   attribute indentshiftlast {length-percentage | "indentshift"}?,
-  attribute accent {mathml-boolean}?
-
+  attribute accent {mathml-boolean}?,
+  attribute maxsize {"infinity"}?
 
 mspace.attributes &= 
   attribute linebreak {"auto" | "newline" | "nobreak" | "goodbreak" | "badbreak" | "indentingnewline"}?,
