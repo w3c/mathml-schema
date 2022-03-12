@@ -1,20 +1,22 @@
 <math xmlns="http://www.w3.org/1998/Math/MathML" >
 
-  <semantics>
-    <annotation-xml encoding="MathML-Content">
-      <apply> 
-        <divide></divide> 
-        <cn>1</cn> 
-        <ci>x</ci>  
-      </apply> 
-    </annotation-xml> 
-    <annotation encoding="TeX">{1 \over x}</annotation> 
-    <annotation encoding="image/png" href="clipboard2.png"></annotation> 
-  </semantics>
+ <semantics>
+  <mi>x</mi>
+  <annotation-xml encoding="MathML-Content">
+   <apply>
+    <divide></divide>
+    <cn>1</cn>
+    <ci>x</ci>
+   </apply>
+  </annotation-xml>
+  <annotation encoding="TeX">{1 \over x}</annotation>
+  <annotation encoding="image/png" href="clipboard2.png"></annotation>
+ </semantics>
 
 
-<menclose notation="circle top gjhg"><mi>a</mi></menclose>
+ <menclose notation="circle top gjhg"><mi>a</mi></menclose>
 
-<mo linebreakmultchar=".">l</mo>
+ <mo linebreakmultchar=".">l</mo>
 
 </math>
+
