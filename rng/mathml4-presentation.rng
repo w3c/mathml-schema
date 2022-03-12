@@ -14,9 +14,19 @@
   <!-- MathML Core -->
   <include href="mathml4-core.rng">
     <!-- named lengths -->
-    <define name="length">
+    <define name="length-percentage">
       <data type="string">
         <param name="pattern">\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%))|0|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*</param>
+      </data>
+    </define>
+    <define name="mpadded-length-percentage">
+      <data type="string">
+        <param name="pattern">\s*([\+\-]?[0-9]*([0-9]\.?|\.[0-9])[0-9]*\s*((%?\s*(height|depth|width)?)|e[mx]|in|cm|mm|p[xtc]|((negative)?((very){0,2}thi(n|ck)|medium)mathspace))?)\s*</param>
+      </data>
+    </define>
+    <define name="maxsize-length">
+      <data type="string">
+        <param name="pattern">\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%))|0|(negative)?((very){0,2}thi(n|ck)|medium)mathspace|infinity)\s*</param>
       </data>
     </define>
   </include>
@@ -171,7 +181,7 @@
     </optional>
     <optional>
       <attribute name="lineleading">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
@@ -200,7 +210,7 @@
     </optional>
     <optional>
       <attribute name="indentshift">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
@@ -223,7 +233,7 @@
     <optional>
       <attribute name="indentshiftfirst">
         <choice>
-          <ref name="length"/>
+          <ref name="length-percentage"/>
           <value>indentshift</value>
         </choice>
       </attribute>
@@ -243,7 +253,7 @@
     <optional>
       <attribute name="indentshiftlast">
         <choice>
-          <ref name="length"/>
+          <ref name="length-percentage"/>
           <value>indentshift</value>
         </choice>
       </attribute>
@@ -251,6 +261,11 @@
     <optional>
       <attribute name="accent">
         <ref name="mathml-boolean"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="maxsize">
+        <value>infinity</value>
       </attribute>
     </optional>
   </define>
@@ -280,7 +295,7 @@
     </optional>
     <optional>
       <attribute name="indentshift">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
@@ -303,7 +318,7 @@
     <optional>
       <attribute name="indentshiftfirst">
         <choice>
-          <ref name="length"/>
+          <ref name="length-percentage"/>
           <value>indentshift</value>
         </choice>
       </attribute>
@@ -323,7 +338,7 @@
     <optional>
       <attribute name="indentshiftlast">
         <choice>
-          <ref name="length"/>
+          <ref name="length-percentage"/>
           <value>indentshift</value>
         </choice>
       </attribute>
@@ -352,17 +367,17 @@
     </optional>
     <optional>
       <attribute name="width">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="height">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="valign">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
@@ -389,18 +404,18 @@
     </optional>
     <optional>
       <attribute name="leftoverhang">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="rightoverhang">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="mslinethickness">
         <choice>
-          <ref name="length"/>
+          <ref name="length-percentage"/>
           <value>thin</value>
           <value>medium</value>
           <value>thick</value>
@@ -530,7 +545,7 @@
     </optional>
     <optional>
       <attribute name="scriptminsize">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
@@ -606,7 +621,7 @@
     <optional>
       <attribute name="charspacing">
         <choice>
-          <ref name="length"/>
+          <ref name="length-percentage"/>
           <value>loose</value>
           <value>medium</value>
           <value>tight</value>
@@ -638,7 +653,7 @@
       <attribute name="columnspacing">
         <list>
           <oneOrMore>
-            <ref name="length"/>
+            <ref name="length-percentage"/>
           </oneOrMore>
         </list>
       </attribute>
@@ -654,7 +669,7 @@
           <oneOrMore>
             <choice>
               <value>auto</value>
-              <ref name="length"/>
+              <ref name="length-percentage"/>
               <value>fit</value>
             </choice>
           </oneOrMore>
@@ -687,7 +702,7 @@
     </optional>
     <optional>
       <attribute name="depth">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
@@ -747,8 +762,8 @@
     <optional>
       <attribute name="framespacing">
         <list>
-          <ref name="length"/>
-          <ref name="length"/>
+          <ref name="length-percentage"/>
+          <ref name="length-percentage"/>
         </list>
       </attribute>
     </optional>
@@ -759,7 +774,7 @@
     </optional>
     <optional>
       <attribute name="height">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
@@ -799,13 +814,13 @@
     </optional>
     <optional>
       <attribute name="indentshift">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="indentshiftfirst">
         <choice>
-          <ref name="length"/>
+          <ref name="length-percentage"/>
           <value>indentshift</value>
         </choice>
       </attribute>
@@ -813,7 +828,7 @@
     <optional>
       <attribute name="indentshiftlast">
         <choice>
-          <ref name="length"/>
+          <ref name="length-percentage"/>
           <value>indentshift</value>
         </choice>
       </attribute>
@@ -833,7 +848,7 @@
     </optional>
     <optional>
       <attribute name="leftoverhang">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
@@ -867,13 +882,13 @@
     </optional>
     <optional>
       <attribute name="lineleading">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="linethickness">
         <choice>
-          <ref name="length"/>
+          <ref name="length-percentage"/>
           <value>thin</value>
           <value>medium</value>
           <value>thick</value>
@@ -915,7 +930,7 @@
     </optional>
     <optional>
       <attribute name="lspace">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
@@ -924,7 +939,7 @@
           <value>small</value>
           <value>normal</value>
           <value>big</value>
-          <ref name="length"/>
+          <ref name="length-percentage"/>
         </choice>
       </attribute>
     </optional>
@@ -955,19 +970,19 @@
     <optional>
       <attribute name="maxsize">
         <choice>
-          <ref name="length"/>
+          <ref name="length-percentage"/>
           <value>infinity</value>
         </choice>
       </attribute>
     </optional>
     <optional>
       <attribute name="minlabelspacing">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="minsize">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
@@ -981,7 +996,7 @@
     <optional>
       <attribute name="mslinethickness">
         <choice>
-          <ref name="length"/>
+          <ref name="length-percentage"/>
           <value>thin</value>
           <value>medium</value>
           <value>thick</value>
@@ -1010,7 +1025,7 @@
     </optional>
     <optional>
       <attribute name="rightoverhang">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
@@ -1035,7 +1050,7 @@
       <attribute name="rowspacing">
         <list>
           <oneOrMore>
-            <ref name="length"/>
+            <ref name="length-percentage"/>
           </oneOrMore>
         </list>
       </attribute>
@@ -1050,7 +1065,7 @@
     </optional>
     <optional>
       <attribute name="rspace">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
@@ -1104,12 +1119,12 @@
     </optional>
     <optional>
       <attribute name="subscriptshift">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="superscriptshift">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
@@ -1122,12 +1137,12 @@
     </optional>
     <optional>
       <attribute name="valign">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="width">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
   </define>
@@ -1215,6 +1230,32 @@
       </attribute>
     </optional>
   </define>
+  <define name="msub.attributes" combine="interleave">
+    <optional>
+      <attribute name="subscriptshift">
+        <ref name="length-percentage"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="msup.attributes" combine="interleave">
+    <optional>
+      <attribute name="superscriptshift">
+        <ref name="length-percentage"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="msubsup.attributes" combine="interleave">
+    <optional>
+      <attribute name="subscriptshift">
+        <ref name="length-percentage"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="superscriptshift">
+        <ref name="length-percentage"/>
+      </attribute>
+    </optional>
+  </define>
   <define name="mtable.attributes" combine="interleave">
     <optional>
       <attribute name="align">
@@ -1264,7 +1305,7 @@
           <oneOrMore>
             <choice>
               <value>auto</value>
-              <ref name="length"/>
+              <ref name="length-percentage"/>
               <value>fit</value>
             </choice>
           </oneOrMore>
@@ -1275,7 +1316,7 @@
       <attribute name="width">
         <choice>
           <value>auto</value>
-          <ref name="length"/>
+          <ref name="length-percentage"/>
         </choice>
       </attribute>
     </optional>
@@ -1283,7 +1324,7 @@
       <attribute name="rowspacing">
         <list>
           <oneOrMore>
-            <ref name="length"/>
+            <ref name="length-percentage"/>
           </oneOrMore>
         </list>
       </attribute>
@@ -1292,7 +1333,7 @@
       <attribute name="columnspacing">
         <list>
           <oneOrMore>
-            <ref name="length"/>
+            <ref name="length-percentage"/>
           </oneOrMore>
         </list>
       </attribute>
@@ -1323,8 +1364,8 @@
     <optional>
       <attribute name="framespacing">
         <list>
-          <ref name="length"/>
-          <ref name="length"/>
+          <ref name="length-percentage"/>
+          <ref name="length-percentage"/>
         </list>
       </attribute>
     </optional>
@@ -1364,7 +1405,7 @@
     </optional>
     <optional>
       <attribute name="minlabelspacing">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
   </define>
@@ -1468,7 +1509,7 @@
     <optional>
       <attribute name="charspacing">
         <choice>
-          <ref name="length"/>
+          <ref name="length-percentage"/>
           <value>loose</value>
           <value>medium</value>
           <value>tight</value>

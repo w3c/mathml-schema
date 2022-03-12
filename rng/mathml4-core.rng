@@ -332,7 +332,7 @@
     </optional>
     <optional>
       <attribute name="mathsize">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
@@ -400,7 +400,7 @@
     </element>
   </define>
   <define name="annotation-xml">
-    <element name="aunnotation-xml">
+    <element name="annotation-xml">
       <ref name="annotation-xml.attributes"/>
       <choice>
         <zeroOrMore>
@@ -419,9 +419,11 @@
     </optional>
   </define>
   <define name="encoding">
-    <attribute name="encoding">
-      <data type="string"/>
-    </attribute>
+    <optional>
+      <attribute name="encoding">
+        <data type="string"/>
+      </attribute>
+    </optional>
   </define>
   <define name="semantics">
     <element name="semantics">
@@ -440,7 +442,7 @@
       <param name="pattern">\s*([Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee])\s*</param>
     </data>
   </define>
-  <define name="length">
+  <define name="length-percentage">
     <data type="string">
       <param name="pattern">\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%))|0)\s*</param>
     </data>
@@ -485,11 +487,6 @@
       <ref name="MathExpression"/>
       <ref name="none"/>
     </choice>
-  </define>
-  <define name="mpadded-length">
-    <data type="string">
-      <param name="pattern">\s*([\+\-]?[0-9]*([0-9]\.?|\.[0-9])[0-9]*\s*((%?\s*(height|depth|width)?)|e[mx]|in|cm|mm|p[xtc]|((negative)?((very){0,2}thi(n|ck)|medium)mathspace))?)\s*</param>
-    </data>
   </define>
   <define name="color">
     <data type="string">
@@ -572,12 +569,12 @@
     </optional>
     <optional>
       <attribute name="lspace">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="rspace">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
@@ -592,15 +589,12 @@
     </optional>
     <optional>
       <attribute name="maxsize">
-        <choice>
-          <ref name="length"/>
-          <value>infinity</value>
-        </choice>
+        <ref name="maxsize-length"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="minsize">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
@@ -613,6 +607,9 @@
         <ref name="mathml-boolean"/>
       </attribute>
     </optional>
+  </define>
+  <define name="maxsize-length">
+    <ref name="length-percentage"/>
   </define>
   <define name="mtext">
     <element name="mtext">
@@ -633,17 +630,17 @@
     <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="width">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="height">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="depth">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
   </define>
@@ -696,7 +693,7 @@
     <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="linethickness">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
   </define>
@@ -747,29 +744,32 @@
     <ref name="GlobalAttributes"/>
     <optional>
       <attribute name="height">
-        <ref name="mpadded-length"/>
+        <ref name="mpadded-length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="depth">
-        <ref name="mpadded-length"/>
+        <ref name="mpadded-length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="width">
-        <ref name="mpadded-length"/>
+        <ref name="mpadded-length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="lspace">
-        <ref name="mpadded-length"/>
+        <ref name="mpadded-length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="voffset">
-        <ref name="mpadded-length"/>
+        <ref name="mpadded-length-percentage"/>
       </attribute>
     </optional>
+  </define>
+  <define name="mpadded-length-percentage">
+    <ref name="length-percentage"/>
   </define>
   <define name="mphantom">
     <element name="mphantom">
@@ -789,11 +789,6 @@
   </define>
   <define name="msub.attributes">
     <ref name="GlobalAttributes"/>
-    <optional>
-      <attribute name="subscriptshift">
-        <ref name="length"/>
-      </attribute>
-    </optional>
   </define>
   <define name="msup">
     <element name="msup">
@@ -804,11 +799,6 @@
   </define>
   <define name="msup.attributes">
     <ref name="GlobalAttributes"/>
-    <optional>
-      <attribute name="superscriptshift">
-        <ref name="length"/>
-      </attribute>
-    </optional>
   </define>
   <define name="msubsup">
     <element name="msubsup">
@@ -820,16 +810,6 @@
   </define>
   <define name="msubsup.attributes">
     <ref name="GlobalAttributes"/>
-    <optional>
-      <attribute name="subscriptshift">
-        <ref name="length"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="superscriptshift">
-        <ref name="length"/>
-      </attribute>
-    </optional>
   </define>
   <define name="munder">
     <element name="munder">

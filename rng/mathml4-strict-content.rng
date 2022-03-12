@@ -87,7 +87,7 @@
   <define name="semantics-contexp">
     <element name="semantics">
       <ref name="CommonAtt"/>
-      <ref name="ContExp"/>
+      <ref name="MathExpression"/>
       <zeroOrMore>
         <choice>
           <ref name="annotation"/>

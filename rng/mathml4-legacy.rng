@@ -14,7 +14,7 @@
   <!-- MathML 4 -->
   <include href="mathml4.rng">
     <!-- unitless lengths -->
-    <define name="length">
+    <define name="length-percentage">
       <data type="string">
         <param name="pattern">\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%)?)|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*</param>
       </data>
@@ -112,7 +112,7 @@
           <value>small</value>
           <value>normal</value>
           <value>big</value>
-          <ref name="length"/>
+          <ref name="length-percentage"/>
         </choice>
       </attribute>
     </optional>
@@ -123,37 +123,37 @@
   <define name="mstyle.deprecatedattributes">
     <optional>
       <attribute name="veryverythinmathspace">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="verythinmathspace">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="thinmathspace">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="mediummathspace">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="thickmathspace">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="verythickmathspace">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="veryverythickmathspace">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
   </define>
@@ -197,7 +197,7 @@
     </optional>
     <optional>
       <attribute name="fontsize">
-        <ref name="length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
