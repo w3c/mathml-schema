@@ -135,7 +135,7 @@ annotation-xml = element annotation-xml {annotation-xml.attributes,
 
 annotation-xml.attributes = GlobalAttributes, encoding?
 
-encoding=attribute encoding {xsd:string}
+encoding=attribute encoding {xsd:string}?
 
 
 semantics = element semantics {GlobalAttributes,
