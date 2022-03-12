@@ -29,7 +29,7 @@ cn.attributes = CommonAtt, attribute type {"integer" | "real" | "double" | "hexd
 semantics-ci = element semantics {CommonAtt,(ci|semantics-ci), 
   (annotation|annotation-xml)*}
 
-semantics-contexp = element semantics {CommonAtt,ContExp, 
+semantics-contexp = element semantics {CommonAtt,MathExpression, 
   (annotation|annotation-xml)*}
 
 annotation |= element annotation {CommonAtt,text}
