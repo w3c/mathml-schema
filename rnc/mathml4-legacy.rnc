@@ -13,7 +13,7 @@ default namespace m = "http://www.w3.org/1998/Math/MathML"
 include "mathml4.rnc" {
 
 # unitless lengths
-length = xsd:string {
+length-percentage = xsd:string {
   pattern = '\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%)?)|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*' 
 }
 }
@@ -40,18 +40,18 @@ mglyph.deprecatedattributes =
   attribute fontfamily {text}?,
   attribute index {integer}?,
   attribute mathvariant {"normal" | "bold" | "italic" | "bold-italic" | "double-struck" | "bold-fraktur" | "script" | "bold-script" | "fraktur" | "sans-serif" | "bold-sans-serif" | "sans-serif-italic" | "sans-serif-bold-italic" | "monospace" | "initial" | "tailed" | "looped" | "stretched"}?,
-  attribute mathsize {"small" | "normal" | "big" | length}?
+  attribute mathsize {"small" | "normal" | "big" | length-percentage}?
 
 mglyph.attributes &= mglyph.deprecatedattributes
 
 mstyle.deprecatedattributes =
-  attribute veryverythinmathspace {length}?,
-  attribute verythinmathspace {length}?,
-  attribute thinmathspace {length}?,
-  attribute mediummathspace {length}?,
-  attribute thickmathspace {length}?,
-  attribute verythickmathspace {length}?,
-  attribute veryverythickmathspace {length}?
+  attribute veryverythinmathspace {length-percentage}?,
+  attribute verythinmathspace {length-percentage}?,
+  attribute thinmathspace {length-percentage}?,
+  attribute mediummathspace {length-percentage}?,
+  attribute thickmathspace {length-percentage}?,
+  attribute verythickmathspace {length-percentage}?,
+  attribute veryverythickmathspace {length-percentage}?
 
 mstyle.attributes &= mstyle.deprecatedattributes
 
@@ -66,7 +66,7 @@ DeprecatedTokenAtt =
   attribute fontfamily {text}?,
   attribute fontweight {"normal" | "bold"}?,
   attribute fontstyle {"normal" | "italic"}?,
-  attribute fontsize {length}?,
+  attribute fontsize {length-percentage}?,
   attribute color {color}?,
   attribute background {color | "transparent"}?
 
