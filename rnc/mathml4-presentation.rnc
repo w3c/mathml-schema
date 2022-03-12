@@ -15,9 +15,13 @@ namespace local = ""
 include "mathml4-core.rnc" {
 
 # named lengths
-length = xsd:string {
+length-percentage = xsd:string {
   pattern = '\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%))|0|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*'
 }
+
+mpadded-length-percentage = xsd:string {
+  pattern = '\s*([\+\-]?[0-9]*([0-9]\.?|\.[0-9])[0-9]*\s*((%?\s*(height|depth|width)?)|e[mx]|in|cm|mm|p[xtc]|((negative)?((very){0,2}thi(n|ck)|medium)mathspace))?)\s*' }
+
 }
 
 NonMathMLAtt = attribute (* - (local:* | m:*)) {xsd:string}
@@ -88,28 +92,28 @@ token.content |= mglyph|malignmark|text
 
 mo.attributes &= 
   attribute linebreak {"auto" | "newline" | "nobreak" | "goodbreak" | "badbreak"}?,
-  attribute lineleading {length}?,
+  attribute lineleading {length-percentage}?,
   attribute linebreakstyle {"before" | "after" | "duplicate" | "infixlinebreakstyle"}?,
   attribute linebreakmultchar {text}?,
   attribute indentalign {"left" | "center" | "right" | "auto" | "id"}?,
-  attribute indentshift {length}?,
+  attribute indentshift {length-percentage}?,
   attribute indenttarget {idref}?,
   attribute indentalignfirst {"left" | "center" | "right" | "auto" | "id" | "indentalign"}?,
-  attribute indentshiftfirst {length | "indentshift"}?,
+  attribute indentshiftfirst {length-percentage | "indentshift"}?,
   attribute indentalignlast {"left" | "center" | "right" | "auto" | "id" | "indentalign"}?,
-  attribute indentshiftlast {length | "indentshift"}?,
+  attribute indentshiftlast {length-percentage | "indentshift"}?,
   attribute accent {mathml-boolean}?
 
 
 mspace.attributes &= 
   attribute linebreak {"auto" | "newline" | "nobreak" | "goodbreak" | "badbreak" | "indentingnewline"}?,
   attribute indentalign {"left" | "center" | "right" | "auto" | "id"}?,
-  attribute indentshift {length}?,
+  attribute indentshift {length-percentage}?,
   attribute indenttarget {idref}?,
   attribute indentalignfirst {"left" | "center" | "right" | "auto" | "id" | "indentalign"}?,
-  attribute indentshiftfirst {length | "indentshift"}?,
+  attribute indentshiftfirst {length-percentage | "indentshift"}?,
   attribute indentalignlast {"left" | "center" | "right" | "auto" | "id" | "indentalign"}?,
-  attribute indentshiftlast {length | "indentshift"}?
+  attribute indentshiftlast {length-percentage | "indentshift"}?
 
 
 ms.attributes &= 
@@ -121,19 +125,19 @@ mglyph = element mglyph {mglyph.attributes,empty}
 mglyph.attributes = 
   GlobalAttributes,
   attribute src {xsd:anyURI}?,
-  attribute width {length}?,
-  attribute height {length}?,
-  attribute valign {length}?,
+  attribute width {length-percentage}?,
+  attribute height {length-percentage}?,
+  attribute valign {length-percentage}?,
   attribute alt {text}?
 
 msline = element msline {msline.attributes,empty}
 msline.attributes = 
   GlobalAttributes,
   attribute position {integer}?,
-  attribute length {unsigned-integer}?,
-  attribute leftoverhang {length}?,
-  attribute rightoverhang {length}?,
-  attribute mslinethickness {length | "thin" | "medium" | "thick"}?
+  attribute length-percentage {unsigned-integer}?,
+  attribute leftoverhang {length-percentage}?,
+  attribute rightoverhang {length-percentage}?,
+  attribute mslinethickness {length-percentage | "thin" | "medium" | "thick"}?
 
 
 
@@ -175,7 +179,7 @@ mstyle.specificattributes =
   attribute scriptlevel {integer}?,
   attribute displaystyle {"true" | "false"}?,
   attribute scriptsizemultiplier {number}?,
-  attribute scriptminsize {length}?,
+  attribute scriptminsize {length-percentage}?,
   attribute infixlinebreakstyle {"before" | "after" | "duplicate"}?,
   attribute decimalpoint {character}?
 
@@ -186,16 +190,16 @@ mstyle.generalattributes =
   attribute alignmentscope {list {("true" | "false") +}}?,
   attribute bevelled {"true" | "false"}?,
   attribute charalign {"left" | "center" | "right"}?,
-  attribute charspacing {length | "loose" | "medium" | "tight"}?,
+  attribute charspacing {length-percentage | "loose" | "medium" | "tight"}?,
   attribute close {text}?,
   attribute columnalign {list {columnalignstyle+} }?,
   attribute columnlines {list {linestyle +}}?,
-  attribute columnspacing {list {(length) +}}?,
+  attribute columnspacing {list {(length-percentage) +}}?,
   attribute columnspan {positive-integer}?,
-  attribute columnwidth {list {("auto" | length | "fit") +}}?,
+  attribute columnwidth {list {("auto" | length-percentage | "fit") +}}?,
   attribute crossout {list {("none" | "updiagonalstrike" | "downdiagonalstrike" | "verticalstrike" | "horizontalstrike")*}}?,
   attribute denomalign {"left" | "center" | "right"}?,
-  attribute depth {length}?,
+  attribute depth {length-percentage}?,
   attribute dir {"ltr" | "rtl"}?,
   attribute edge {"left" | "right"}?,
   attribute equalcolumns {"true" | "false"}?,
@@ -203,46 +207,46 @@ mstyle.generalattributes =
   attribute fence {"true" | "false"}?,
   attribute form {"prefix" | "infix" | "postfix"}?,
   attribute frame {linestyle}?,
-  attribute framespacing {list {length, length}}?,
+  attribute framespacing {list {length-percentage, length-percentage}}?,
   attribute groupalign {group-alignment-list-list}?,
-  attribute height {length}?,
+  attribute height {length-percentage}?,
   attribute indentalign {"left" | "center" | "right" | "auto" | "id"}?,
   attribute indentalignfirst {"left" | "center" | "right" | "auto" | "id" | "indentalign"}?,
   attribute indentalignlast {"left" | "center" | "right" | "auto" | "id" | "indentalign"}?,
-  attribute indentshift {length}?,
-  attribute indentshiftfirst {length | "indentshift"}?,
-  attribute indentshiftlast {length | "indentshift"}?,
+  attribute indentshift {length-percentage}?,
+  attribute indentshiftfirst {length-percentage | "indentshift"}?,
+  attribute indentshiftlast {length-percentage | "indentshift"}?,
   attribute indenttarget {idref}?,
   attribute largeop {"true" | "false"}?,
-  attribute leftoverhang {length}?,
-  attribute length {unsigned-integer}?,
+  attribute leftoverhang {length-percentage}?,
+  attribute length-percentage {unsigned-integer}?,
   attribute linebreak {"auto" | "newline" | "nobreak" | "goodbreak" | "badbreak"}?,
   attribute linebreakmultchar {text}?,
   attribute linebreakstyle {"before" | "after" | "duplicate" | "infixlinebreakstyle"}?,
-  attribute lineleading {length}?,
-  attribute linethickness {length | "thin" | "medium" | "thick"}?,
+  attribute lineleading {length-percentage}?,
+  attribute linethickness {length-percentage | "thin" | "medium" | "thick"}?,
   attribute location {"w" | "nw" | "n" | "ne" | "e" | "se" | "s" | "sw"}?,
   attribute longdivstyle {"lefttop" | "stackedrightright" | "mediumstackedrightright" | "shortstackedrightright" | "righttop" | "left/\right" | "left)(right" | ":right=right" | "stackedleftleft" | "stackedleftlinetop"}?,
   attribute lquote {text}?,
-  attribute lspace {length}?,
-  attribute mathsize {"small" | "normal" | "big" | length}?,
+  attribute lspace {length-percentage}?,
+  attribute mathsize {"small" | "normal" | "big" | length-percentage}?,
   attribute mathvariant {"normal" | "bold" | "italic" | "bold-italic" | "double-struck" | "bold-fraktur" | "script" | "bold-script" | "fraktur" | "sans-serif" | "bold-sans-serif" | "sans-serif-italic" | "sans-serif-bold-italic" | "monospace" | "initial" | "tailed" | "looped" | "stretched"}?,
-  attribute maxsize {length | "infinity"}?,
-  attribute minlabelspacing {length}?,
-  attribute minsize {length}?,
+  attribute maxsize {length-percentage | "infinity"}?,
+  attribute minlabelspacing {length-percentage}?,
+  attribute minsize {length-percentage}?,
   attribute movablelimits {"true" | "false"}?,
-  attribute mslinethickness {length | "thin" | "medium" | "thick"}?,
+  attribute mslinethickness {length-percentage | "thin" | "medium" | "thick"}?,
   attribute notation {text}?,
   attribute numalign {"left" | "center" | "right"}?,
   attribute open {text}?,
   attribute position {integer}?,
-  attribute rightoverhang {length}?,
+  attribute rightoverhang {length-percentage}?,
   attribute rowalign {list {verticalalign+} }?,
   attribute rowlines {list {linestyle +}}?,
-  attribute rowspacing {list {(length) +}}?,
+  attribute rowspacing {list {(length-percentage) +}}?,
   attribute rowspan {positive-integer}?,
   attribute rquote {text}?,
-  attribute rspace {length}?,
+  attribute rspace {length-percentage}?,
   attribute selection {positive-integer}?,
   attribute separator {"true" | "false"}?,
   attribute separators {text}?,
@@ -250,11 +254,11 @@ mstyle.generalattributes =
   attribute side {"left" | "right" | "leftoverlap" | "rightoverlap"}?,
   attribute stackalign {"left" | "center" | "right" | "decimalpoint"}?,
   attribute stretchy {"true" | "false"}?,
-  attribute subscriptshift {length}?,
-  attribute superscriptshift {length}?,
+  attribute subscriptshift {length-percentage}?,
+  attribute superscriptshift {length-percentage}?,
   attribute symmetric {"true" | "false"}?,
-  attribute valign {length}?,
-  attribute width {length}?
+  attribute valign {length-percentage}?,
+  attribute width {length-percentage}?
 
 
 math.attributes &= mstyle.specificattributes
@@ -284,6 +288,17 @@ mover.attributes &=
 munderover.attributes &= 
   attribute align {"left" | "right" | "center"}?
 
+msub.attributes &=
+  attribute subscriptshift {length-percentage}?
+
+msup.attributes &=
+  attribute superscriptshift {length-percentage}?
+
+msubsup.attributes &=
+  attribute subscriptshift {length-percentage}?,
+  attribute superscriptshift {length-percentage}?
+
+
 mtable.attributes &= 
   attribute align {xsd:string {
     pattern ='\s*(top|bottom|center|baseline|axis)(\s+-?[0-9]+)?\s*'}}?,
@@ -291,19 +306,19 @@ mtable.attributes &=
   attribute columnalign {list {columnalignstyle+} }?,
   attribute groupalign {group-alignment-list-list}?,
   attribute alignmentscope {list {("true" | "false") +}}?,
-  attribute columnwidth {list {("auto" | length | "fit") +}}?,
-  attribute width {"auto" | length}?,
-  attribute rowspacing {list {(length) +}}?,
-  attribute columnspacing {list {(length) +}}?,
+  attribute columnwidth {list {("auto" | length-percentage | "fit") +}}?,
+  attribute width {"auto" | length-percentage}?,
+  attribute rowspacing {list {(length-percentage) +}}?,
+  attribute columnspacing {list {(length-percentage) +}}?,
   attribute rowlines {list {linestyle +}}?,
   attribute columnlines {list {linestyle +}}?,
   attribute frame {linestyle}?,
-  attribute framespacing {list {length, length}}?,
+  attribute framespacing {list {length-percentage, length-percentage}}?,
   attribute equalrows {"true" | "false"}?,
   attribute equalcolumns {"true" | "false"}?,
   attribute displaystyle {"true" | "false"}?,
   attribute side {"left" | "right" | "leftoverlap" | "rightoverlap"}?,
-  attribute minlabelspacing {length}?
+  attribute minlabelspacing {length-percentage}?
 
 
 mlabeledtr = element mlabeledtr {mlabeledtr.attributes, mtd+}
@@ -333,7 +348,7 @@ mstack.attributes =
     pattern ='\s*(top|bottom|center|baseline|axis)(\s+-?[0-9]+)?\s*'}}?,
   attribute stackalign {"left" | "center" | "right" | "decimalpoint"}?,
   attribute charalign {"left" | "center" | "right"}?,
-  attribute charspacing {length | "loose" | "medium" | "tight"}?
+  attribute charspacing {length-percentage | "loose" | "medium" | "tight"}?
 
 
 mlongdiv = element mlongdiv {mlongdiv.attributes, MstackExpression,MstackExpression,MstackExpression+}

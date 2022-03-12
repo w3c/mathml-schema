@@ -112,7 +112,7 @@ GlobalAttributes = attribute id {xsd:ID}?,
                    attribute dir {"ltr" | "rtl"}?,
                    attribute mathbackground {color | "transparent"}?,
                    attribute mathcolor {color}?,
-                   attribute mathsize {length}?,
+                   attribute mathsize {length-percentage}?,
                    attribute mathvariant {xsd:string{pattern="\s*([Nn][Oo][Rr][Mm][Aa][Ll]|[Bb][Oo][Ll][Dd]|[Ii][Tt][Aa][Ll][Ii][Cc]|[Bb][Oo][Ll][Dd]-[Ii][Tt][Aa][Ll][Ii][Cc]|[Dd][Oo][Uu][Bb][Ll][Ee]-[Ss][Tt][Rr][Uu][Cc][Kk]|[Bb][Oo][Ll][Dd]-[Ff][Rr][Aa][Kk][Tt][Uu][Rr]|[Ss][Cc][Rr][Ii][Pp][Tt]|[Bb][Oo][Ll][Dd]-[Ss][Cc][Rr][Ii][Pp][Tt]|[Ff][Rr][Aa][Kk][Tt][Uu][Rr]|[Ss][Aa][Nn][Ss]-[Ss][Ee][Rr][Ii][Ff]|[Bb][Oo][Ll][Dd]-[Ss][Aa][Nn][Ss]-[Ss][Ee][Rr][Ii][Ff]|[Ss][Aa][Nn][Ss]-[Ss][Ee][Rr][Ii][Ff]-[Ii][Tt][Aa][Ll][Ii][Cc]|[Ss][Aa][Nn][Ss]-[Ss][Ee][Rr][Ii][Ff]-[Bb][Oo][Ll][Dd]-[Ii][Tt][Aa][Ll][Ii][Cc]|[Mm][Oo][Nn][Oo][Ss][Pp][Aa][Cc][Ee]|[Ii][Nn][Ii][Tt][Ii][Aa][Ll]|[Tt][Aa][Ii][Ll][Ee][Dd]|[Ll][Oo][Oo][Pp][Ee][Dd]|[Ss][Tt][Rr][Ee][Tt][Cc][Hh][Ee][Dd])\s*"}}?,
                    attribute displaystyle {mathml-boolean}?,
                    attribute scriptlevel {xsd:integer}?,
@@ -146,7 +146,7 @@ mathml-boolean = xsd:string {
     pattern = '\s*([Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee])\s*'
 }
 			    
-length = xsd:string {
+length-percentage = xsd:string {
   pattern = '\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%))|0)\s*'
 }
 
@@ -161,9 +161,6 @@ ImpliedMrow = MathExpression*
 TableRowExpression = mtr
 
 MultiScriptExpression = (MathExpression|none),(MathExpression|none)
-
-mpadded-length = xsd:string {
-  pattern = '\s*([\+\-]?[0-9]*([0-9]\.?|\.[0-9])[0-9]*\s*((%?\s*(height|depth|width)?)|e[mx]|in|cm|mm|p[xtc]|((negative)?((very){0,2}thi(n|ck)|medium)mathspace))?)\s*' }
 
 
 color =  xsd:string {
@@ -190,12 +187,12 @@ mo.attributes =
   attribute form {"prefix" | "infix" | "postfix"}?,
   attribute fence {mathml-boolean}?,
   attribute separator {mathml-boolean}?,
-  attribute lspace {length}?,
-  attribute rspace {length}?,
+  attribute lspace {length-percentage}?,
+  attribute rspace {length-percentage}?,
   attribute stretchy {mathml-boolean}?,
   attribute symmetric {mathml-boolean}?,
-  attribute maxsize {length | "infinity"}?,
-  attribute minsize {length}?,
+  attribute maxsize {length-percentage | "infinity"}?,
+  attribute minsize {length-percentage}?,
   attribute largeop {mathml-boolean}?,
   attribute movablelimits {mathml-boolean}?
 
@@ -207,9 +204,9 @@ mtext.attributes =
 mspace = element mspace {mspace.attributes, empty}
 mspace.attributes = 
   GlobalAttributes,
-  attribute width {length}?,
-  attribute height {length}?,
-  attribute depth {length}?
+  attribute width {length-percentage}?,
+  attribute height {length-percentage}?,
+  attribute depth {length-percentage}?
 
 ms = element ms {ms.attributes, token.content}
 ms.attributes = 
@@ -231,7 +228,7 @@ mrow.attributes =
 mfrac = element mfrac {mfrac.attributes, MathExpression, MathExpression}
 mfrac.attributes = 
   GlobalAttributes,
-  attribute linethickness {length}?
+  attribute linethickness {length-percentage}?
 
 msqrt = element msqrt {msqrt.attributes, ImpliedMrow}
 msqrt.attributes = 
@@ -252,11 +249,13 @@ merror.attributes =
 mpadded = element mpadded {mpadded.attributes, ImpliedMrow}
 mpadded.attributes = 
   GlobalAttributes,
-  attribute height {mpadded-length}?,
-  attribute depth {mpadded-length}?,
-  attribute width {mpadded-length}?,
-  attribute lspace {mpadded-length}?,
-  attribute voffset {mpadded-length}?
+  attribute height {mpadded-length-percentage}?,
+  attribute depth {mpadded-length-percentage}?,
+  attribute width {mpadded-length-percentage}?,
+  attribute lspace {mpadded-length-percentage}?,
+  attribute voffset {mpadded-length-percentage}?
+
+mpadded-length-percentage=length-percentage
 
 mphantom = element mphantom {mphantom.attributes, ImpliedMrow}
 mphantom.attributes = 
@@ -265,19 +264,15 @@ mphantom.attributes =
       
 msub = element msub {msub.attributes, MathExpression, MathExpression}
 msub.attributes = 
-  GlobalAttributes,
-  attribute subscriptshift {length}?
+  GlobalAttributes
 
 msup = element msup {msup.attributes, MathExpression, MathExpression}
 msup.attributes = 
-  GlobalAttributes,
-  attribute superscriptshift {length}?
+  GlobalAttributes
 
 msubsup = element msubsup {msubsup.attributes, MathExpression, MathExpression, MathExpression}
 msubsup.attributes = 
-  GlobalAttributes,
-  attribute subscriptshift {length}?,
-  attribute superscriptshift {length}?
+  GlobalAttributes
 
 munder = element munder {munder.attributes, MathExpression, MathExpression}
 munder.attributes = 
