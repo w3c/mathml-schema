@@ -138,7 +138,7 @@ msline = element msline {msline.attributes,empty}
 msline.attributes = 
   GlobalAttributes,
   attribute position {integer}?,
-  attribute length-percentage {unsigned-integer}?,
+  attribute length {unsigned-integer}?,
   attribute leftoverhang {length-percentage}?,
   attribute rightoverhang {length-percentage}?,
   attribute mslinethickness {length-percentage | "thin" | "medium" | "thick"}?
@@ -223,7 +223,7 @@ mstyle.generalattributes =
   attribute indenttarget {idref}?,
   attribute largeop {"true" | "false"}?,
   attribute leftoverhang {length-percentage}?,
-  attribute length-percentage {unsigned-integer}?,
+  attribute length {unsigned-integer}?,
   attribute linebreak {"auto" | "newline" | "nobreak" | "goodbreak" | "badbreak"}?,
   attribute linebreakmultchar {text}?,
   attribute linebreakstyle {"before" | "after" | "duplicate" | "infixlinebreakstyle"}?,
