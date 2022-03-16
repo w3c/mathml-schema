@@ -147,7 +147,7 @@ mathml-boolean = xsd:string {
 }
 			    
 length-percentage = xsd:string {
-  pattern = '\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%))|0)\s*'
+  pattern = '\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(r?em|ex|in|cm|mm|p[xtc]|Q|v[hw]|vmin|vmax|%))|0)\s*'
 }
 
 MathExpression = TokenExpression|
