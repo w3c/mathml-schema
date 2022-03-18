@@ -20,11 +20,9 @@ length-percentage = xsd:string {
 }
 
 mpadded-length-percentage = xsd:string {
-  pattern = '\s*([\+\-]?[0-9]*([0-9]\.?|\.[0-9])[0-9]*\s*((%?\s*(height|depth|width)?)|r?em|ex|in|cm|mm|p[xtc]|Q|v[hw]|vmin|vmax|%|((negative)?((very){0,2}thi(n|ck)|medium)mathspace))?)\s*' }
-
-maxsize-length = xsd:string {
-  pattern = '\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(r?em|ex|in|cm|mm|p[xtc]|Q|v[hw]|vmin|vmax|%))|0|(negative)?((very){0,2}thi(n|ck)|medium)mathspace|infinity)\s*'
+  pattern = '\s*([\+\-]?[0-9]*([0-9]\.?|\.[0-9])[0-9]*\s*((%?\s*(height|depth|width)?)|r?em|ex|in|cm|mm|p[xtc]|Q|v[hw]|vmin|vmax|%|((negative)?((very){0,2}thi(n|ck)|medium)mathspace))?)\s*' 
 }
+
 
 }
 
