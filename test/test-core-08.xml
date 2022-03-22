@@ -1,0 +1,11 @@
+<math mathcolor="blue" xmlns="http://www.w3.org/1998/Math/MathML" >
+
+<!-- valid in mathml4-presentation.rnc but not in mathml4.rnc -->
+ <semantics>
+  <mn>1</mn>
+  <annotation-xml>
+   <csymbol><apply><mfrac/></apply></csymbol>
+  </annotation-xml>
+ </semantics>
+
+</math>
