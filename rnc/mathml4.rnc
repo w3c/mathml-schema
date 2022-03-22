@@ -8,8 +8,11 @@
 #     http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
 
 
-# Presentation MathML
-include "mathml4-presentation.rnc" 
+# Presentation MathML 
+include "mathml4-presentation.rnc"  {
+anyElement =  element (* - m:*) {(attribute * {text}|text| anyElement)*}
+}
+		
 
 # Content  MathML
 include "mathml4-content.rnc" 
