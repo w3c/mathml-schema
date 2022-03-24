@@ -104,8 +104,7 @@ mo.attributes &=
   attribute indentshiftfirst {length-percentage | "indentshift"}?,
   attribute indentalignlast {"left" | "center" | "right" | "auto" | "id" | "indentalign"}?,
   attribute indentshiftlast {length-percentage | "indentshift"}?,
-  attribute accent {mathml-boolean}?,
-  attribute maxsize {"infinity"}?
+  attribute accent {mathml-boolean}?
 
 mspace.attributes &= 
   attribute linebreak {"auto" | "newline" | "nobreak" | "goodbreak" | "badbreak" | "indentingnewline"}?,
@@ -233,7 +232,6 @@ mstyle.generalattributes =
   attribute lspace {length-percentage}?,
   attribute mathsize {"small" | "normal" | "big" | length-percentage}?,
   attribute mathvariant {"normal" | "bold" | "italic" | "bold-italic" | "double-struck" | "bold-fraktur" | "script" | "bold-script" | "fraktur" | "sans-serif" | "bold-sans-serif" | "sans-serif-italic" | "sans-serif-bold-italic" | "monospace" | "initial" | "tailed" | "looped" | "stretched"}?,
-  attribute maxsize {length-percentage | "infinity"}?,
   attribute minlabelspacing {length-percentage}?,
   attribute minsize {length-percentage}?,
   attribute movablelimits {"true" | "false"}?,
