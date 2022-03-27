@@ -2,7 +2,7 @@
  <mrow nonce="2222" displaystyle="TRUE">
   <mi onclick="foobar()">x</mi>
   <mo mathcolor="rgb(255, 0, 0)">+</mo>
-  <mi data-extra="zzz"
+  <mi data-other="xyz"
       mathcolor=" HotPink">y</mi>
   <mo>-</mo>
   <mfrac linethickness="2pt">
