@@ -253,6 +253,7 @@ mpadded.attributes =
   attribute depth {mpadded-length-percentage}?,
   attribute width {mpadded-length-percentage}?,
   attribute lspace {mpadded-length-percentage}?,
+  attribute rspace {mpadded-length-percentage}?,
   attribute voffset {mpadded-length-percentage}?
 
 mpadded-length-percentage=length-percentage
