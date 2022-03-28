@@ -103,12 +103,19 @@ htmloneventattributes =
   attribute oncut {text}?,
   attribute onpaste {text}?
 
+# sample set, like data- may need preprocessing to allow more
+MathMLARIAattributes =
+  attribute aria-label {text}?,
+  attribute aria-describedby {text}?,
+  attribute aria-details {text}?
+
+MathMLintentattributes =
+  attribute intent {text}?,
+  attribute arg {xsd:NMTOKEN}?
 
 GlobalAttributes = attribute id {xsd:ID}?,
                    attribute class {xsd:NMTOKENS}?,
                    attribute style {xsd:string}?,
-                   attribute intent {text}?,
-                   attribute arg {xsd:NMTOKEN}?,
                    attribute dir {"ltr" | "rtl"}?,
                    attribute mathbackground {color}?,
                    attribute mathcolor {color}?,
@@ -119,7 +126,11 @@ GlobalAttributes = attribute id {xsd:ID}?,
                    attribute data-other {text}?,
                    attribute tabindex {xsd:integer}?,
                    attribute nonce {text}?,
-                   htmloneventattributes
+		   htmloneventattributes,
+                   # No specified behavior in Core, see MathML4
+		   MathMLintentattributes,
+                   # No specified behavior in Core, see WAI-ARIA
+		   MathMLARIAattributes
                        
 
 
