@@ -78,3 +78,5 @@ mo.attributes &= DeprecatedTokenAtt
 mtext.attributes &= DeprecatedTokenAtt
 mspace.attributes &= DeprecatedTokenAtt
 ms.attributes &= DeprecatedTokenAtt
+
+semantics.attributes &= DefEncAtt

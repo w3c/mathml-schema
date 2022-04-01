@@ -149,9 +149,11 @@ annotation-xml.attributes = GlobalAttributes, encoding?
 encoding=attribute encoding {xsd:string}?
 
 
-semantics = element semantics {GlobalAttributes,
+semantics = element semantics {semantics.attributes,
                                MathExpression, 
                               (annotation|annotation-xml)*}
+
+semantics.attributes = GlobalAttributes
 
 mathml-boolean = xsd:string {
     pattern = '\s*([Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee])\s*'
