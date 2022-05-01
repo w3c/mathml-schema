@@ -135,7 +135,10 @@ GlobalAttributes = attribute id {xsd:ID}?,
 
 
 math.attributes = GlobalAttributes,
-                  attribute display {"block" | "inline"}?
+                  attribute display {"block" | "inline"}?,
+                  # No specified behavior in Core, see MathML4
+                  attribute alttext {text}?
+
 
 annotation = element annotation {GlobalAttributes,encoding?,text}
 

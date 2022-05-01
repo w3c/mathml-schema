@@ -36,6 +36,9 @@ include "mathml4-strict-content.rnc"{
 
 NonMathMLAtt |= attribute (* - (local:*|m:*)) {xsd:string}
 
+math.attributes &=
+    attribute alttext {text}?
+
 CommonAtt |=
 		   NonMathMLAtt*,
                    attribute href {xsd:anyURI}?,
