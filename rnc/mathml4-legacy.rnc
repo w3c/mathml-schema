@@ -68,8 +68,9 @@ DeprecatedTokenAtt =
   attribute fontstyle {"normal" | "italic"}?,
   attribute fontsize {length-percentage}?,
   attribute color {color}?,
-  attribute background {color}?
-
+  attribute background {color}?,
+  attribute mathsize {"small" | "normal" | "big" }?
+					  
 mstyle.attributes &= DeprecatedTokenAtt
 mglyph.attributes &= DeprecatedTokenAtt
 mn.attributes &= DeprecatedTokenAtt
