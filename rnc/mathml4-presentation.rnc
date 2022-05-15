@@ -28,7 +28,7 @@ mpadded-length-percentage = xsd:string {
 
 NonMathMLAtt = attribute (* - (local:* | m:*)) {xsd:string}
 					     
-GlobalAttributes &=
+MathMLPGlobalAttributes &=
 		   NonMathMLAtt*,
 		   attribute xref {text}?,
                    attribute href {xsd:anyURI}?,
@@ -104,7 +104,9 @@ mo.attributes &=
   attribute indentshiftfirst {length-percentage | "indentshift"}?,
   attribute indentalignlast {"left" | "center" | "right" | "auto" | "id" | "indentalign"}?,
   attribute indentshiftlast {length-percentage | "indentshift"}?,
-  attribute accent {mathml-boolean}?
+  attribute accent {mathml-boolean}?,
+  attribute maxsize {"infinity"}?
+ 
 
 mspace.attributes &= 
   attribute linebreak {"auto" | "newline" | "nobreak" | "goodbreak" | "badbreak" | "indentingnewline"}?,
@@ -124,7 +126,7 @@ ms.attributes &=
 
 mglyph = element mglyph {mglyph.attributes,empty}
 mglyph.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute src {xsd:anyURI}?,
   attribute width {length-percentage}?,
   attribute height {length-percentage}?,
@@ -133,7 +135,7 @@ mglyph.attributes =
 
 msline = element msline {msline.attributes,empty}
 msline.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute position {integer}?,
   attribute length {unsigned-integer}?,
   attribute leftoverhang {length-percentage}?,
@@ -146,13 +148,13 @@ MalignExpression = maligngroup|malignmark
 
 malignmark = element malignmark {malignmark.attributes, empty}
 malignmark.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute edge {"left" | "right"}?
 
 
 maligngroup = element maligngroup {maligngroup.attributes, empty}
 maligngroup.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute groupalign {"left" | "center" | "right" | "decimalpoint"}?
 
 
@@ -267,7 +269,7 @@ math.attributes &= attribute overflow {"linebreak" | "scroll" | "elide" | "trunc
 
 mfenced = element mfenced {mfenced.attributes, MathExpression*}
 mfenced.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute open {text}?,
   attribute close {text}?,
   attribute separators {text}?
@@ -275,7 +277,7 @@ mfenced.attributes =
 
 menclose = element menclose {menclose.attributes, ImpliedMrow}
 menclose.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute notation {text}?
 
 
@@ -343,7 +345,7 @@ mtd.attributes &=
 
 mstack = element mstack {mstack.attributes, MstackExpression*}
 mstack.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute align {xsd:string {
     pattern ='\s*(top|bottom|center|baseline|axis)(\s+-?[0-9]+)?\s*'}}?,
   attribute stackalign {"left" | "center" | "right" | "decimalpoint"}?,
@@ -359,20 +361,20 @@ mlongdiv.attributes =
 
 msgroup = element msgroup {msgroup.attributes, MstackExpression*}
 msgroup.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute position {integer}?,
   attribute shift {integer}?
 
 
 msrow = element msrow {msrow.attributes, MsrowExpression*}
 msrow.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute position {integer}?
 
 
 mscarries = element mscarries {mscarries.attributes, (MsrowExpression|mscarry)*}
 mscarries.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute position {integer}?,
   attribute location {"w" | "nw" | "n" | "ne" | "e" | "se" | "s" | "sw"}?,
   attribute crossout {list {("none" | "updiagonalstrike" | "downdiagonalstrike" | "verticalstrike" | "horizontalstrike")*}}?,
@@ -381,7 +383,7 @@ mscarries.attributes =
 
 mscarry = element mscarry {mscarry.attributes, MsrowExpression*}
 mscarry.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute location {"w" | "nw" | "n" | "ne" | "e" | "se" | "s" | "sw"}?,
   attribute crossout {list {("none" | "updiagonalstrike" | "downdiagonalstrike" | "verticalstrike" | "horizontalstrike")*}}?
 

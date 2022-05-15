@@ -14,7 +14,7 @@ start |= math
 
 math = element math {math.attributes,MathExpression*}
 
-htmloneventattributes =
+MathMLoneventAttributes =
   attribute onabort {text}?,
   attribute onauxclick {text}?,
   attribute onblur {text}?,
@@ -109,11 +109,11 @@ MathMLARIAattributes =
   attribute aria-describedby {text}?,
   attribute aria-details {text}?
 
-MathMLintentattributes =
+MathMLintentAttributes =
   attribute intent {text}?,
   attribute arg {xsd:NMTOKEN}?
 
-GlobalAttributes = attribute id {xsd:ID}?,
+MathMLPGlobalAttributes = attribute id {xsd:ID}?,
                    attribute class {xsd:NMTOKENS}?,
                    attribute style {xsd:string}?,
                    attribute dir {"ltr" | "rtl"}?,
@@ -126,28 +126,28 @@ GlobalAttributes = attribute id {xsd:ID}?,
                    attribute data-other {text}?,
                    attribute tabindex {xsd:integer}?,
                    attribute nonce {text}?,
-		   htmloneventattributes,
+		   MathMLoneventAttributes,
                    # No specified behavior in Core, see MathML4
-		   MathMLintentattributes,
+		   MathMLintentAttributes,
                    # No specified behavior in Core, see WAI-ARIA
 		   MathMLARIAattributes
                        
 
 
-math.attributes = GlobalAttributes,
+math.attributes = MathMLPGlobalAttributes,
                   attribute display {"block" | "inline"}?,
                   # No specified behavior in Core, see MathML4
                   attribute alttext {text}?
 
 
-annotation = element annotation {GlobalAttributes,encoding?,text}
+annotation = element annotation {MathMLPGlobalAttributes,encoding?,text}
 
 anyElement =  element (*) {(attribute * {text}|text| anyElement)*}
 
 annotation-xml = element annotation-xml {annotation-xml.attributes,
                                          (MathExpression*|anyElement*)}
 
-annotation-xml.attributes = GlobalAttributes, encoding?
+annotation-xml.attributes = MathMLPGlobalAttributes, encoding?
 
 encoding=attribute encoding {xsd:string}?
 
@@ -156,7 +156,7 @@ semantics = element semantics {semantics.attributes,
                                MathExpression, 
                               (annotation|annotation-xml)*}
 
-semantics.attributes = GlobalAttributes
+semantics.attributes = MathMLPGlobalAttributes
 
 mathml-boolean = xsd:string {
     pattern = '\s*([Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee])\s*'
@@ -191,15 +191,15 @@ token.content = textorHTML
 		    
 mi = element mi {mi.attributes, token.content}
 mi.attributes = 
-  GlobalAttributes
+  MathMLPGlobalAttributes
 
 mn = element mn {mn.attributes, token.content}
 mn.attributes = 
-  GlobalAttributes
+  MathMLPGlobalAttributes
 
 mo = element mo {mo.attributes, token.content}
 mo.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute form {"prefix" | "infix" | "postfix"}?,
   attribute fence {mathml-boolean}?,
   attribute separator {mathml-boolean}?,
@@ -215,56 +215,56 @@ mo.attributes =
 
 mtext = element mtext {mtext.attributes, token.content}
 mtext.attributes = 
-  GlobalAttributes
+  MathMLPGlobalAttributes
 
 mspace = element mspace {mspace.attributes, empty}
 mspace.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute width {length-percentage}?,
   attribute height {length-percentage}?,
   attribute depth {length-percentage}?
 
 ms = element ms {ms.attributes, token.content}
 ms.attributes = 
-  GlobalAttributes
+  MathMLPGlobalAttributes
 
 
 none = element none {none.attributes,empty}
 none.attributes = 
-  GlobalAttributes
+  MathMLPGlobalAttributes
 
 mprescripts = element mprescripts {mprescripts.attributes,empty}
 mprescripts.attributes = 
-  GlobalAttributes
+  MathMLPGlobalAttributes
 
 mrow = element mrow {mrow.attributes, MathExpression*}
 mrow.attributes = 
-  GlobalAttributes
+  MathMLPGlobalAttributes
 
 mfrac = element mfrac {mfrac.attributes, MathExpression, MathExpression}
 mfrac.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute linethickness {length-percentage}?
 
 msqrt = element msqrt {msqrt.attributes, ImpliedMrow}
 msqrt.attributes = 
-  GlobalAttributes
+  MathMLPGlobalAttributes
 
 mroot = element mroot {mroot.attributes, MathExpression, MathExpression}
 mroot.attributes = 
-  GlobalAttributes
+  MathMLPGlobalAttributes
 
 mstyle = element mstyle {mstyle.attributes, ImpliedMrow}
 mstyle.attributes = 
-  GlobalAttributes
+  MathMLPGlobalAttributes
 
 merror = element merror {merror.attributes, ImpliedMrow}
 merror.attributes = 
-  GlobalAttributes
+  MathMLPGlobalAttributes
 
 mpadded = element mpadded {mpadded.attributes, ImpliedMrow}
 mpadded.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute height {mpadded-length-percentage}?,
   attribute depth {mpadded-length-percentage}?,
   attribute width {mpadded-length-percentage}?,
@@ -276,34 +276,34 @@ mpadded-length-percentage=length-percentage
 
 mphantom = element mphantom {mphantom.attributes, ImpliedMrow}
 mphantom.attributes = 
-  GlobalAttributes
+  MathMLPGlobalAttributes
 
       
 msub = element msub {msub.attributes, MathExpression, MathExpression}
 msub.attributes = 
-  GlobalAttributes
+  MathMLPGlobalAttributes
 
 msup = element msup {msup.attributes, MathExpression, MathExpression}
 msup.attributes = 
-  GlobalAttributes
+  MathMLPGlobalAttributes
 
 msubsup = element msubsup {msubsup.attributes, MathExpression, MathExpression, MathExpression}
 msubsup.attributes = 
-  GlobalAttributes
+  MathMLPGlobalAttributes
 
 munder = element munder {munder.attributes, MathExpression, MathExpression}
 munder.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute accentunder {mathml-boolean}?
 
 mover = element mover {mover.attributes, MathExpression, MathExpression}
 mover.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute accent {mathml-boolean}?
 
 munderover = element munderover {munderover.attributes, MathExpression, MathExpression, MathExpression}
 munderover.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute accent {mathml-boolean}?,
   attribute accentunder {mathml-boolean}?
 
@@ -316,22 +316,22 @@ mmultiscripts.attributes =
 
 mtable = element mtable {mtable.attributes, TableRowExpression*}
 mtable.attributes = 
-  GlobalAttributes
+  MathMLPGlobalAttributes
 
 
 mtr = element mtr {mtr.attributes, mtd*}
 mtr.attributes = 
-  GlobalAttributes
+  MathMLPGlobalAttributes
 
 mtd = element mtd {mtd.attributes, ImpliedMrow}
 mtd.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute rowspan {xsd:positiveInteger}?,
   attribute columnspan {xsd:positiveInteger}?
 
 
 maction = element maction {maction.attributes, MathExpression+}
 maction.attributes = 
-  GlobalAttributes,
+  MathMLPGlobalAttributes,
   attribute actiontype {text}?,
   attribute selection {xsd:positiveInteger}?
