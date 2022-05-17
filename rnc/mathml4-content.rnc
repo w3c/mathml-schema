@@ -39,8 +39,12 @@ NonMathMLAtt |= attribute (* - (local:*|m:*)) {xsd:string}
 math.attributes &=
     attribute alttext {text}?
 
-CommonAtt |=
+MathMLDataAttributes &=
+  attribute data-other {text}?
+
+CommonAtt &=
 		   NonMathMLAtt*,
+                   MathMLDataAttributes,
                    attribute href {xsd:anyURI}?,
                    attribute other {text}?
 
