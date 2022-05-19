@@ -45,6 +45,8 @@ MathMLDataAttributes &=
 CommonAtt &=
 		   NonMathMLAtt*,
                    MathMLDataAttributes,
+                   attribute class {xsd:NCName}?,
+                   attribute style {xsd:string}?,
                    attribute href {xsd:anyURI}?,
                    attribute other {text}?
 
