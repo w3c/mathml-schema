@@ -117,10 +117,10 @@ MathMLARIAattributes =
 
 MathMLintentAttributes =
   attribute intent {text}?,
-  attribute arg {xsd:NMTOKEN}?
+  attribute arg {xsd:NCName}?
 
 MathMLPGlobalAttributes = attribute id {xsd:ID}?,
-                   attribute class {xsd:NMTOKENS}?,
+                   attribute class {xsd:NCName}?,
                    attribute style {xsd:string}?,
                    attribute dir {"ltr" | "rtl"}?,
                    attribute mathbackground {color}?,
