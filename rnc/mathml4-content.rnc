@@ -316,15 +316,15 @@ arcsech = element arcsech { CommonAtt, DefEncAtt, empty}
 arcsinh = element arcsinh { CommonAtt, DefEncAtt, empty}
 arctanh = element arctanh { CommonAtt, DefEncAtt, empty}
 
-nary-stats.class = mean | sdev | variance | median | mode
+nary-stats.class = mean | median | mode | sdev | variance
 ContExp |= nary-stats.class
 
 
 mean = element mean { CommonAtt, DefEncAtt, empty}
-sdev = element sdev { CommonAtt, DefEncAtt, empty}
-variance = element variance { CommonAtt, DefEncAtt, empty}
 median = element median { CommonAtt, DefEncAtt, empty}
 mode = element mode { CommonAtt, DefEncAtt, empty}
+sdev = element sdev { CommonAtt, DefEncAtt, empty}
+variance = element variance { CommonAtt, DefEncAtt, empty}
 
 nary-constructor.class = vector | matrix | matrixrow
 ContExp |= nary-constructor.class
