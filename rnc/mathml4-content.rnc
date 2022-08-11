@@ -48,7 +48,9 @@ CommonAtt &=
                    attribute class {xsd:NCName}?,
                    attribute style {xsd:string}?,
                    attribute href {xsd:anyURI}?,
-                   attribute other {text}?
+                   attribute other {text}?,
+                   attribute intent {text}?,
+                   attribute arg {xsd:NCName}?
 
 base = attribute base {text}
 
