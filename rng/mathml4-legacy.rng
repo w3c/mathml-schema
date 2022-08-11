@@ -207,9 +207,15 @@
     </optional>
     <optional>
       <attribute name="background">
+        <ref name="color"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="mathsize">
         <choice>
-          <ref name="color"/>
-          <value>transparent</value>
+          <value>small</value>
+          <value>normal</value>
+          <value>big</value>
         </choice>
       </attribute>
     </optional>
@@ -237,5 +243,87 @@
   </define>
   <define name="ms.attributes" combine="interleave">
     <ref name="DeprecatedTokenAtt"/>
+  </define>
+  <define name="semantics.attributes" combine="interleave">
+    <ref name="DefEncAtt"/>
+  </define>
+  <!-- malignmark in tokens -->
+  <define name="token.content" combine="choice">
+    <ref name="malignmark"/>
+  </define>
+  <!-- malignmark in mfrac etc -->
+  <define name="MathExpression" combine="choice">
+    <ref name="MalignExpression"/>
+  </define>
+  <define name="maligngroup.attributes" combine="choice">
+    <optional>
+      <attribute name="groupalign">
+        <choice>
+          <value>left</value>
+          <value>center</value>
+          <value>right</value>
+          <value>decimalpoint</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="malignmark.attributes" combine="choice">
+    <optional>
+      <attribute name="edge">
+        <choice>
+          <value>left</value>
+          <value>right</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <!-- groupalign -->
+  <define name="group-alignment">
+    <choice>
+      <value>left</value>
+      <value>center</value>
+      <value>right</value>
+      <value>decimalpoint</value>
+    </choice>
+  </define>
+  <define name="group-alignment-list">
+    <list>
+      <oneOrMore>
+        <ref name="group-alignment"/>
+      </oneOrMore>
+    </list>
+  </define>
+  <define name="group-alignment-list-list">
+    <data type="string">
+      <param name="pattern">(\s*\{\s*(left|center|right|decimalpoint)(\s+(left|center|right|decimalpoint))*\})*\s*</param>
+    </data>
+  </define>
+  <define name="mstyle.generalattributes" combine="interleave">
+    <optional>
+      <attribute name="groupalign">
+        <ref name="group-alignment-list-list"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="mtable.attributes" combine="interleave">
+    <optional>
+      <attribute name="groupalign">
+        <ref name="group-alignment-list-list"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="mtr.attributes" combine="interleave">
+    <optional>
+      <attribute name="groupalign">
+        <ref name="group-alignment-list-list"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="mtd.attributes" combine="interleave">
+    <optional>
+      <attribute name="groupalign">
+        <ref name="group-alignment-list"/>
+      </attribute>
+    </optional>
   </define>
 </grammar>

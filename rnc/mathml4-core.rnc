@@ -12,7 +12,7 @@ namespace h = "http://www.w3.org/1999/xhtml"
 
 start |= math
 
-math = element math {math.attributes,MathExpression*}
+math = element math {math.attributes,ImpliedMrow}
 
 MathMLoneventAttributes =
   attribute onabort {text}?,
@@ -179,7 +179,9 @@ MathExpression = TokenExpression|
                      mmultiscripts|mtable|maction|
 		     semantics
 
-ImpliedMrow = MathExpression*
+MathMalignExpression = MathExpression
+			   
+ImpliedMrow = MathMalignExpression*
 
 TableRowExpression = mtr
 
@@ -244,7 +246,7 @@ mprescripts = element mprescripts {mprescripts.attributes,empty}
 mprescripts.attributes = 
   MathMLPGlobalAttributes
 
-mrow = element mrow {mrow.attributes, MathExpression*}
+mrow = element mrow {mrow.attributes, ImpliedMrow}
 mrow.attributes = 
   MathMLPGlobalAttributes
 
@@ -337,7 +339,7 @@ mtd.attributes =
   attribute columnspan {xsd:positiveInteger}?
 
 
-maction = element maction {maction.attributes, MathExpression+}
+maction = element maction {maction.attributes, ImpliedMrow}
 maction.attributes = 
   MathMLPGlobalAttributes,
   attribute actiontype {text}?,

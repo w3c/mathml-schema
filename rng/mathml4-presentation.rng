@@ -16,17 +16,12 @@
     <!-- named lengths -->
     <define name="length-percentage">
       <data type="string">
-        <param name="pattern">\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%))|0|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*</param>
+        <param name="pattern">\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(r?em|ex|in|cm|mm|p[xtc]|Q|v[hw]|vmin|vmax|%))|0|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*</param>
       </data>
     </define>
     <define name="mpadded-length-percentage">
       <data type="string">
-        <param name="pattern">\s*([\+\-]?[0-9]*([0-9]\.?|\.[0-9])[0-9]*\s*((%?\s*(height|depth|width)?)|e[mx]|in|cm|mm|p[xtc]|((negative)?((very){0,2}thi(n|ck)|medium)mathspace))?)\s*</param>
-      </data>
-    </define>
-    <define name="maxsize-length">
-      <data type="string">
-        <param name="pattern">\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%))|0|(negative)?((very){0,2}thi(n|ck)|medium)mathspace|infinity)\s*</param>
+        <param name="pattern">\s*([\+\-]?[0-9]*([0-9]\.?|\.[0-9])[0-9]*\s*((%?\s*(height|depth|width)?)|r?em|ex|in|cm|mm|p[xtc]|Q|v[hw]|vmin|vmax|%|((negative)?((very){0,2}thi(n|ck)|medium)mathspace))?)\s*</param>
       </data>
     </define>
   </include>
@@ -41,7 +36,7 @@
       <data type="string"/>
     </attribute>
   </define>
-  <define name="GlobalAttributes" combine="interleave">
+  <define name="MathMLPGlobalAttributes" combine="interleave">
     <zeroOrMore>
       <ref name="NonMathMLAtt"/>
     </zeroOrMore>
@@ -57,6 +52,9 @@
       <attribute name="other"/>
     </optional>
   </define>
+  <define name="MathMalignExpression" combine="choice">
+    <ref name="MalignExpression"/>
+  </define>
   <define name="MathExpression" combine="choice">
     <ref name="PresentationExpression"/>
   </define>
@@ -65,7 +63,7 @@
   </define>
   <define name="MstackExpression">
     <choice>
-      <ref name="MathExpression"/>
+      <ref name="MathMalignExpression"/>
       <ref name="mscarries"/>
       <ref name="msline"/>
       <ref name="msrow"/>
@@ -74,7 +72,7 @@
   </define>
   <define name="MsrowExpression">
     <choice>
-      <ref name="MathExpression"/>
+      <ref name="MathMalignExpression"/>
       <ref name="none"/>
     </choice>
   </define>
@@ -137,33 +135,12 @@
       <param name="pattern">\s*\S\s*</param>
     </data>
   </define>
-  <define name="group-alignment">
-    <choice>
-      <value>left</value>
-      <value>center</value>
-      <value>right</value>
-      <value>decimalpoint</value>
-    </choice>
-  </define>
-  <define name="group-alignment-list">
-    <list>
-      <oneOrMore>
-        <ref name="group-alignment"/>
-      </oneOrMore>
-    </list>
-  </define>
-  <define name="group-alignment-list-list">
-    <data type="string">
-      <param name="pattern">(\s*\{\s*(left|center|right|decimalpoint)(\s+(left|center|right|decimalpoint))*\})*\s*</param>
-    </data>
-  </define>
   <define name="positive-integer">
     <data type="positiveInteger"/>
   </define>
   <define name="token.content" combine="choice">
     <choice>
       <ref name="mglyph"/>
-      <ref name="malignmark"/>
       <text/>
     </choice>
   </define>
@@ -359,7 +336,7 @@
     </element>
   </define>
   <define name="mglyph.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="src">
         <data type="anyURI"/>
@@ -391,7 +368,7 @@
     </element>
   </define>
   <define name="msline.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="position">
         <ref name="integer"/>
@@ -436,15 +413,7 @@
     </element>
   </define>
   <define name="malignmark.attributes">
-    <ref name="GlobalAttributes"/>
-    <optional>
-      <attribute name="edge">
-        <choice>
-          <value>left</value>
-          <value>right</value>
-        </choice>
-      </attribute>
-    </optional>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="maligngroup">
     <element name="maligngroup">
@@ -453,22 +422,11 @@
     </element>
   </define>
   <define name="maligngroup.attributes">
-    <ref name="GlobalAttributes"/>
-    <optional>
-      <attribute name="groupalign">
-        <choice>
-          <value>left</value>
-          <value>center</value>
-          <value>right</value>
-          <value>decimalpoint</value>
-        </choice>
-      </attribute>
-    </optional>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="PresentationExpression">
     <choice>
       <ref name="TokenExpression"/>
-      <ref name="MalignExpression"/>
       <ref name="mrow"/>
       <ref name="mfrac"/>
       <ref name="msqrt"/>
@@ -526,12 +484,12 @@
   </define>
   <define name="mstyle.specificattributes">
     <optional>
-      <attribute name="scriptlevel">
+      <attribute name="Xscriptlevel">
         <ref name="integer"/>
       </attribute>
     </optional>
     <optional>
-      <attribute name="displaystyle">
+      <attribute name="Xdisplaystyle">
         <choice>
           <value>true</value>
           <value>false</value>
@@ -768,11 +726,6 @@
       </attribute>
     </optional>
     <optional>
-      <attribute name="groupalign">
-        <ref name="group-alignment-list-list"/>
-      </attribute>
-    </optional>
-    <optional>
       <attribute name="height">
         <ref name="length-percentage"/>
       </attribute>
@@ -964,14 +917,6 @@
           <value>tailed</value>
           <value>looped</value>
           <value>stretched</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="maxsize">
-        <choice>
-          <ref name="length-percentage"/>
-          <value>infinity</value>
         </choice>
       </attribute>
     </optional>
@@ -1168,13 +1113,11 @@
   <define name="mfenced">
     <element name="mfenced">
       <ref name="mfenced.attributes"/>
-      <zeroOrMore>
-        <ref name="MathExpression"/>
-      </zeroOrMore>
+      <ref name="ImpliedMrow"/>
     </element>
   </define>
   <define name="mfenced.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="open"/>
     </optional>
@@ -1192,7 +1135,7 @@
     </element>
   </define>
   <define name="menclose.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="notation"/>
     </optional>
@@ -1280,11 +1223,6 @@
             <ref name="columnalignstyle"/>
           </oneOrMore>
         </list>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="groupalign">
-        <ref name="group-alignment-list-list"/>
       </attribute>
     </optional>
     <optional>
@@ -1441,11 +1379,6 @@
         </list>
       </attribute>
     </optional>
-    <optional>
-      <attribute name="groupalign">
-        <ref name="group-alignment-list-list"/>
-      </attribute>
-    </optional>
   </define>
   <define name="mtd.attributes" combine="interleave">
     <optional>
@@ -1464,11 +1397,6 @@
         <ref name="columnalignstyle"/>
       </attribute>
     </optional>
-    <optional>
-      <attribute name="groupalign">
-        <ref name="group-alignment-list"/>
-      </attribute>
-    </optional>
   </define>
   <define name="mstack">
     <element name="mstack">
@@ -1479,7 +1407,7 @@
     </element>
   </define>
   <define name="mstack.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="align">
         <data type="string">
@@ -1555,7 +1483,7 @@
     </element>
   </define>
   <define name="msgroup.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="position">
         <ref name="integer"/>
@@ -1576,7 +1504,7 @@
     </element>
   </define>
   <define name="msrow.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="position">
         <ref name="integer"/>
@@ -1595,7 +1523,7 @@
     </element>
   </define>
   <define name="mscarries.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="position">
         <ref name="integer"/>
@@ -1645,7 +1573,7 @@
     </element>
   </define>
   <define name="mscarry.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="location">
         <choice>

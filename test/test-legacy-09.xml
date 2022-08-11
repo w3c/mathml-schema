@@ -1,0 +1,21 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML" >
+
+ <mfrac><mn>1</mn><malignmark/></mfrac>
+
+ <msup><mn>1</mn><malignmark/></msup>
+
+ <mn><malignmark/></mn>
+ 
+ <mtable groupalign="{left}">
+  <mtr groupalign="{left}">
+   <mtd groupalign="left"><mn>1</mn><maligngroup/><malignmark/></mtd>
+   <mtd groupalign="left"><mn>1</mn></mtd>
+  </mtr>
+ </mtable>
+
+ <mtable groupalign="{left right} {left right} ">
+</mtable>
+
+<mrow> <mi><mglyph/></mi> <malignmark/></mrow>
+ 
+ </math>

@@ -17,12 +17,10 @@
   <define name="math">
     <element name="math">
       <ref name="math.attributes"/>
-      <zeroOrMore>
-        <ref name="MathExpression"/>
-      </zeroOrMore>
+      <ref name="ImpliedMrow"/>
     </element>
   </define>
-  <define name="htmloneventattributes">
+  <define name="MathMLoneventAttributes">
     <optional>
       <attribute name="onabort"/>
     </optional>
@@ -285,7 +283,38 @@
       <attribute name="onpaste"/>
     </optional>
   </define>
-  <define name="GlobalAttributes">
+  <!--
+    Sample set. May need preprocessing 
+    or schema extension to allow more see MathML Core (and HTML) spec
+  -->
+  <define name="MathMLDataAttributes">
+    <optional>
+      <attribute name="data-other"/>
+    </optional>
+  </define>
+  <!-- sample set, like data- may need preprocessing to allow more -->
+  <define name="MathMLARIAattributes">
+    <optional>
+      <attribute name="aria-label"/>
+    </optional>
+    <optional>
+      <attribute name="aria-describedby"/>
+    </optional>
+    <optional>
+      <attribute name="aria-details"/>
+    </optional>
+  </define>
+  <define name="MathMLintentAttributes">
+    <optional>
+      <attribute name="intent"/>
+    </optional>
+    <optional>
+      <attribute name="arg">
+        <data type="NCName"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="MathMLPGlobalAttributes">
     <optional>
       <attribute name="id">
         <data type="ID"/>
@@ -293,20 +322,12 @@
     </optional>
     <optional>
       <attribute name="class">
-        <data type="NMTOKENS"/>
+        <data type="NCName"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="style">
         <data type="string"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="intent"/>
-    </optional>
-    <optional>
-      <attribute name="arg">
-        <data type="NMTOKEN"/>
       </attribute>
     </optional>
     <optional>
@@ -319,10 +340,7 @@
     </optional>
     <optional>
       <attribute name="mathbackground">
-        <choice>
-          <ref name="color"/>
-          <value>transparent</value>
-        </choice>
+        <ref name="color"/>
       </attribute>
     </optional>
     <optional>
@@ -353,9 +371,6 @@
       </attribute>
     </optional>
     <optional>
-      <attribute name="data-extra"/>
-    </optional>
-    <optional>
       <attribute name="tabindex">
         <data type="integer"/>
       </attribute>
@@ -363,10 +378,16 @@
     <optional>
       <attribute name="nonce"/>
     </optional>
-    <ref name="htmloneventattributes"/>
+    <ref name="MathMLoneventAttributes"/>
+    <!-- Extension attributes, no defined behavior -->
+    <ref name="MathMLDataAttributes"/>
+    <!-- No specified behavior in Core, see MathML4 -->
+    <ref name="MathMLintentAttributes"/>
+    <!-- No specified behavior in Core, see WAI-ARIA -->
+    <ref name="MathMLARIAattributes"/>
   </define>
   <define name="math.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="display">
         <choice>
@@ -375,10 +396,14 @@
         </choice>
       </attribute>
     </optional>
+    <optional>
+      <!-- No specified behavior in Core, see MathML4 -->
+      <attribute name="alttext"/>
+    </optional>
   </define>
   <define name="annotation">
     <element name="annotation">
-      <ref name="GlobalAttributes"/>
+      <ref name="MathMLPGlobalAttributes"/>
       <optional>
         <ref name="encoding"/>
       </optional>
@@ -413,7 +438,7 @@
     </element>
   </define>
   <define name="annotation-xml.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <ref name="encoding"/>
     </optional>
@@ -427,7 +452,7 @@
   </define>
   <define name="semantics">
     <element name="semantics">
-      <ref name="GlobalAttributes"/>
+      <ref name="semantics.attributes"/>
       <ref name="MathExpression"/>
       <zeroOrMore>
         <choice>
@@ -437,6 +462,9 @@
       </zeroOrMore>
     </element>
   </define>
+  <define name="semantics.attributes">
+    <ref name="MathMLPGlobalAttributes"/>
+  </define>
   <define name="mathml-boolean">
     <data type="string">
       <param name="pattern">\s*([Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee])\s*</param>
@@ -444,7 +472,7 @@
   </define>
   <define name="length-percentage">
     <data type="string">
-      <param name="pattern">\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%))|0)\s*</param>
+      <param name="pattern">\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(r?em|ex|in|cm|mm|p[xtc]|Q|v[hw]|vmin|vmax|%))|0)\s*</param>
     </data>
   </define>
   <define name="MathExpression">
@@ -470,9 +498,12 @@
       <ref name="semantics"/>
     </choice>
   </define>
+  <define name="MathMalignExpression">
+    <ref name="MathExpression"/>
+  </define>
   <define name="ImpliedMrow">
     <zeroOrMore>
-      <ref name="MathExpression"/>
+      <ref name="MathMalignExpression"/>
     </zeroOrMore>
   </define>
   <define name="TableRowExpression">
@@ -529,7 +560,7 @@
     </element>
   </define>
   <define name="mi.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="mn">
     <element name="mn">
@@ -538,7 +569,7 @@
     </element>
   </define>
   <define name="mn.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="mo">
     <element name="mo">
@@ -547,7 +578,7 @@
     </element>
   </define>
   <define name="mo.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="form">
         <choice>
@@ -589,7 +620,7 @@
     </optional>
     <optional>
       <attribute name="maxsize">
-        <ref name="maxsize-length"/>
+        <ref name="length-percentage"/>
       </attribute>
     </optional>
     <optional>
@@ -608,9 +639,6 @@
       </attribute>
     </optional>
   </define>
-  <define name="maxsize-length">
-    <ref name="length-percentage"/>
-  </define>
   <define name="mtext">
     <element name="mtext">
       <ref name="mtext.attributes"/>
@@ -618,7 +646,7 @@
     </element>
   </define>
   <define name="mtext.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="mspace">
     <element name="mspace">
@@ -627,7 +655,7 @@
     </element>
   </define>
   <define name="mspace.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="width">
         <ref name="length-percentage"/>
@@ -651,7 +679,7 @@
     </element>
   </define>
   <define name="ms.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="none">
     <element name="none">
@@ -660,7 +688,7 @@
     </element>
   </define>
   <define name="none.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="mprescripts">
     <element name="mprescripts">
@@ -669,18 +697,16 @@
     </element>
   </define>
   <define name="mprescripts.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="mrow">
     <element name="mrow">
       <ref name="mrow.attributes"/>
-      <zeroOrMore>
-        <ref name="MathExpression"/>
-      </zeroOrMore>
+      <ref name="ImpliedMrow"/>
     </element>
   </define>
   <define name="mrow.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="mfrac">
     <element name="mfrac">
@@ -690,7 +716,7 @@
     </element>
   </define>
   <define name="mfrac.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="linethickness">
         <ref name="length-percentage"/>
@@ -704,7 +730,7 @@
     </element>
   </define>
   <define name="msqrt.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="mroot">
     <element name="mroot">
@@ -714,7 +740,7 @@
     </element>
   </define>
   <define name="mroot.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="mstyle">
     <element name="mstyle">
@@ -723,7 +749,7 @@
     </element>
   </define>
   <define name="mstyle.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="merror">
     <element name="merror">
@@ -732,7 +758,7 @@
     </element>
   </define>
   <define name="merror.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="mpadded">
     <element name="mpadded">
@@ -741,7 +767,7 @@
     </element>
   </define>
   <define name="mpadded.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="height">
         <ref name="mpadded-length-percentage"/>
@@ -763,6 +789,11 @@
       </attribute>
     </optional>
     <optional>
+      <attribute name="rspace">
+        <ref name="mpadded-length-percentage"/>
+      </attribute>
+    </optional>
+    <optional>
       <attribute name="voffset">
         <ref name="mpadded-length-percentage"/>
       </attribute>
@@ -778,7 +809,7 @@
     </element>
   </define>
   <define name="mphantom.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="msub">
     <element name="msub">
@@ -788,7 +819,7 @@
     </element>
   </define>
   <define name="msub.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="msup">
     <element name="msup">
@@ -798,7 +829,7 @@
     </element>
   </define>
   <define name="msup.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="msubsup">
     <element name="msubsup">
@@ -809,7 +840,7 @@
     </element>
   </define>
   <define name="msubsup.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="munder">
     <element name="munder">
@@ -819,7 +850,7 @@
     </element>
   </define>
   <define name="munder.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="accentunder">
         <ref name="mathml-boolean"/>
@@ -834,7 +865,7 @@
     </element>
   </define>
   <define name="mover.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="accent">
         <ref name="mathml-boolean"/>
@@ -850,7 +881,7 @@
     </element>
   </define>
   <define name="munderover.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="accent">
         <ref name="mathml-boolean"/>
@@ -889,7 +920,7 @@
     </element>
   </define>
   <define name="mtable.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="mtr">
     <element name="mtr">
@@ -900,7 +931,7 @@
     </element>
   </define>
   <define name="mtr.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
   </define>
   <define name="mtd">
     <element name="mtd">
@@ -909,7 +940,7 @@
     </element>
   </define>
   <define name="mtd.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="rowspan">
         <data type="positiveInteger"/>
@@ -924,13 +955,11 @@
   <define name="maction">
     <element name="maction">
       <ref name="maction.attributes"/>
-      <oneOrMore>
-        <ref name="MathExpression"/>
-      </oneOrMore>
+      <ref name="ImpliedMrow"/>
     </element>
   </define>
   <define name="maction.attributes">
-    <ref name="GlobalAttributes"/>
+    <ref name="MathMLPGlobalAttributes"/>
     <optional>
       <attribute name="actiontype"/>
     </optional>

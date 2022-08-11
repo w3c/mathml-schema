@@ -133,10 +133,31 @@
       <data type="string"/>
     </attribute>
   </define>
-  <define name="CommonAtt" combine="choice">
+  <define name="math.attributes" combine="interleave">
+    <optional>
+      <attribute name="alttext"/>
+    </optional>
+  </define>
+  <define name="MathMLDataAttributes" combine="interleave">
+    <optional>
+      <attribute name="data-other"/>
+    </optional>
+  </define>
+  <define name="CommonAtt" combine="interleave">
     <zeroOrMore>
       <ref name="NonMathMLAtt"/>
     </zeroOrMore>
+    <ref name="MathMLDataAttributes"/>
+    <optional>
+      <attribute name="class">
+        <data type="NCName"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="style">
+        <data type="string"/>
+      </attribute>
+    </optional>
     <optional>
       <attribute name="href">
         <data type="anyURI"/>
@@ -1244,10 +1265,10 @@
   <define name="nary-stats.class">
     <choice>
       <ref name="mean"/>
-      <ref name="sdev"/>
-      <ref name="variance"/>
       <ref name="median"/>
       <ref name="mode"/>
+      <ref name="sdev"/>
+      <ref name="variance"/>
     </choice>
   </define>
   <define name="ContExp" combine="choice">
@@ -1255,20 +1276,6 @@
   </define>
   <define name="mean">
     <element name="mean">
-      <ref name="CommonAtt"/>
-      <ref name="DefEncAtt"/>
-      <empty/>
-    </element>
-  </define>
-  <define name="sdev">
-    <element name="sdev">
-      <ref name="CommonAtt"/>
-      <ref name="DefEncAtt"/>
-      <empty/>
-    </element>
-  </define>
-  <define name="variance">
-    <element name="variance">
       <ref name="CommonAtt"/>
       <ref name="DefEncAtt"/>
       <empty/>
@@ -1283,6 +1290,20 @@
   </define>
   <define name="mode">
     <element name="mode">
+      <ref name="CommonAtt"/>
+      <ref name="DefEncAtt"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="sdev">
+    <element name="sdev">
+      <ref name="CommonAtt"/>
+      <ref name="DefEncAtt"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="variance">
+    <element name="variance">
       <ref name="CommonAtt"/>
       <ref name="DefEncAtt"/>
       <empty/>

@@ -1,0 +1,14 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML" >
+
+ <mrow><mn>1</mn><malignmark/></mrow>
+
+ <mfenced><mn>1</mn><malignmark/></mfenced>
+
+ 
+ <mtable>
+  <mtr>
+   <mtd><mn>1</mn><maligngroup/><malignmark/></mtd>
+  </mtr>
+ </mtable>
+ 
+ </math>

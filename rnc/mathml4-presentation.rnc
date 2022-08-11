@@ -34,14 +34,16 @@ MathMLPGlobalAttributes &=
                    attribute href {xsd:anyURI}?,
                    attribute other {text}?
 
+MathMalignExpression |= MalignExpression
+			    
 MathExpression |= PresentationExpression
 
 TableRowExpression |= mlabeledtr
 
 
-MstackExpression = MathExpression|mscarries|msline|msrow|msgroup
+MstackExpression = MathMalignExpression|mscarries|msline|msrow|msgroup
 
-MsrowExpression = MathExpression|none
+MsrowExpression = MathMalignExpression|none
 
 
 linestyle = "none" | "solid" | "dashed"
@@ -81,14 +83,10 @@ character = xsd:string {
   pattern = '\s*\S\s*'}
 
 
-group-alignment = "left" | "center" | "right" | "decimalpoint"
-group-alignment-list = list {group-alignment+}
-group-alignment-list-list = xsd:string {
-  pattern = '(\s*\{\s*(left|center|right|decimalpoint)(\s+(left|center|right|decimalpoint))*\})*\s*' }
 positive-integer = xsd:positiveInteger
 
 
-token.content |= mglyph|malignmark|text
+token.content |= mglyph|text
 
 
 
@@ -142,23 +140,17 @@ msline.attributes =
   attribute rightoverhang {length-percentage}?,
   attribute mslinethickness {length-percentage | "thin" | "medium" | "thick"}?
 
-
-
 MalignExpression = maligngroup|malignmark
 
 malignmark = element malignmark {malignmark.attributes, empty}
-malignmark.attributes = 
-  MathMLPGlobalAttributes,
-  attribute edge {"left" | "right"}?
+malignmark.attributes =  MathMLPGlobalAttributes
 
 
 maligngroup = element maligngroup {maligngroup.attributes, empty}
-maligngroup.attributes = 
-  MathMLPGlobalAttributes,
-  attribute groupalign {"left" | "center" | "right" | "decimalpoint"}?
+maligngroup.attributes = MathMLPGlobalAttributes
+  
 
-
-PresentationExpression = TokenExpression|MalignExpression|
+PresentationExpression = TokenExpression|
                          mrow|mfrac|msqrt|mroot|mstyle|merror|mpadded|mphantom|
                          mfenced|menclose|msub|msup|msubsup|munder|mover|munderover|
                          mmultiscripts|mtable|mstack|mlongdiv|maction
@@ -179,8 +171,8 @@ mstyle.attributes &=
   mstyle.generalattributes
 
 mstyle.specificattributes =
-  attribute scriptlevel {integer}?,
-  attribute displaystyle {"true" | "false"}?,
+  attribute Xscriptlevel {integer}?,
+  attribute Xdisplaystyle {"true" | "false"}?,
   attribute scriptsizemultiplier {number}?,
   attribute scriptminsize {length-percentage}?,
   attribute infixlinebreakstyle {"before" | "after" | "duplicate"}?,
@@ -211,7 +203,6 @@ mstyle.generalattributes =
   attribute form {"prefix" | "infix" | "postfix"}?,
   attribute frame {linestyle}?,
   attribute framespacing {list {length-percentage, length-percentage}}?,
-  attribute groupalign {group-alignment-list-list}?,
   attribute height {length-percentage}?,
   attribute indentalign {"left" | "center" | "right" | "auto" | "id"}?,
   attribute indentalignfirst {"left" | "center" | "right" | "auto" | "id" | "indentalign"}?,
@@ -267,7 +258,7 @@ math.attributes &= mstyle.specificattributes
 math.attributes &= mstyle.generalattributes
 math.attributes &= attribute overflow {"linebreak" | "scroll" | "elide" | "truncate" | "scale"}?
 
-mfenced = element mfenced {mfenced.attributes, MathExpression*}
+mfenced = element mfenced {mfenced.attributes, ImpliedMrow}
 mfenced.attributes = 
   MathMLPGlobalAttributes,
   attribute open {text}?,
@@ -306,7 +297,6 @@ mtable.attributes &=
     pattern ='\s*(top|bottom|center|baseline|axis)(\s+-?[0-9]+)?\s*'}}?,
   attribute rowalign {list {verticalalign+} }?,
   attribute columnalign {list {columnalignstyle+} }?,
-  attribute groupalign {group-alignment-list-list}?,
   attribute alignmentscope {list {("true" | "false") +}}?,
   attribute columnwidth {list {("auto" | length-percentage | "fit") +}}?,
   attribute width {"auto" | length-percentage}?,
@@ -332,15 +322,12 @@ mlabeledtr.attributes =
       
 mtr.attributes &= 
   attribute rowalign {"top" | "bottom" | "center" | "baseline" | "axis"}?,
-  attribute columnalign {list {columnalignstyle+} }?,
-  attribute groupalign {group-alignment-list-list}?
-
+  attribute columnalign {list {columnalignstyle+} }?
 
 
 mtd.attributes &= 
   attribute rowalign {"top" | "bottom" | "center" | "baseline" | "axis"}?,
-  attribute columnalign {columnalignstyle}?,
-  attribute groupalign {group-alignment-list}?
+  attribute columnalign {columnalignstyle}?
 
 
 mstack = element mstack {mstack.attributes, MstackExpression*}

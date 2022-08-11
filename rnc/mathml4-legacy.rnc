@@ -81,3 +81,33 @@ mspace.attributes &= DeprecatedTokenAtt
 ms.attributes &= DeprecatedTokenAtt
 
 semantics.attributes &= DefEncAtt
+
+
+# malignmark in tokens
+token.content |= malignmark
+# malignmark in mfrac etc
+MathExpression |= MalignExpression
+
+maligngroup.attributes |=
+  attribute groupalign {"left" | "center" | "right" | "decimalpoint"}?
+
+malignmark.attributes |=
+  attribute edge {"left" | "right"}?
+
+# groupalign
+group-alignment = "left" | "center" | "right" | "decimalpoint"
+group-alignment-list = list {group-alignment+}
+group-alignment-list-list = xsd:string {
+  pattern = '(\s*\{\s*(left|center|right|decimalpoint)(\s+(left|center|right|decimalpoint))*\})*\s*' }
+
+mstyle.generalattributes &=
+  attribute groupalign {group-alignment-list-list}?
+
+mtable.attributes &=
+  attribute groupalign {group-alignment-list-list}?
+
+mtr.attributes &=
+  attribute groupalign {group-alignment-list-list}?
+		       
+mtd.attributes &=
+  attribute groupalign {group-alignment-list}?
