@@ -88,10 +88,13 @@ token.content |= malignmark
 # malignmark in mfrac etc
 MathExpression |= MalignExpression
 
-maligngroup.attributes |=
+maligngroup.attributes &=
   attribute groupalign {"left" | "center" | "right" | "decimalpoint"}?
 
-malignmark.attributes |=
+malignmark.attributes &=
+  attribute edge {"left" | "right"}?
+
+mstyle.generalattributes &=
   attribute edge {"left" | "right"}?
 
 # groupalign

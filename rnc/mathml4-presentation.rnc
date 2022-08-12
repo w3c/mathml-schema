@@ -196,7 +196,6 @@ mstyle.generalattributes =
   attribute denomalign {"left" | "center" | "right"}?,
   attribute depth {length-percentage}?,
   attribute dir {"ltr" | "rtl"}?,
-  attribute edge {"left" | "right"}?,
   attribute equalcolumns {"true" | "false"}?,
   attribute equalrows {"true" | "false"}?,
   attribute fence {"true" | "false"}?,
