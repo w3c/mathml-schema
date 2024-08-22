@@ -1,7 +1,7 @@
 
 ./build/makerng
 
-./build/makedtd
+# ./build/makedtd
 
 
 ./build/makexsd

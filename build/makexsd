@@ -11,7 +11,7 @@ echo saxon
  for f in mathml4 mathml4-core  mathml4-presentation  mathml4-content mathml4-strict-content mathml4-legacy
  do
  echo $f
- saxon9 -o:../xsd/${f}.xsd ${f}.xsd ../build/xsdxsd.xsl
+ java -jar ../build/saxon-he-10.jar -o:../xsd/${f}.xsd ${f}.xsd ../build/xsdxsd.xsl
  rm ${f}.xsd
  done
 
