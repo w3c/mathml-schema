@@ -589,16 +589,6 @@
       </attribute>
     </optional>
     <optional>
-      <attribute name="fence">
-        <ref name="mathml-boolean"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="separator">
-        <ref name="mathml-boolean"/>
-      </attribute>
-    </optional>
-    <optional>
       <attribute name="lspace">
         <ref name="length-percentage"/>
       </attribute>
