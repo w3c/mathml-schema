@@ -255,7 +255,7 @@
   <define name="MathExpression" combine="choice">
     <ref name="MalignExpression"/>
   </define>
-  <define name="maligngroup.attributes" combine="choice">
+  <define name="maligngroup.attributes" combine="interleave">
     <optional>
       <attribute name="groupalign">
         <choice>
@@ -267,7 +267,17 @@
       </attribute>
     </optional>
   </define>
-  <define name="malignmark.attributes" combine="choice">
+  <define name="malignmark.attributes" combine="interleave">
+    <optional>
+      <attribute name="edge">
+        <choice>
+          <value>left</value>
+          <value>right</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="mstyle.generalattributes" combine="interleave">
     <optional>
       <attribute name="edge">
         <choice>

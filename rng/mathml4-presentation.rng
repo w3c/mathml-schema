@@ -672,14 +672,6 @@
       </attribute>
     </optional>
     <optional>
-      <attribute name="edge">
-        <choice>
-          <value>left</value>
-          <value>right</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
       <attribute name="equalcolumns">
         <choice>
           <value>true</value>

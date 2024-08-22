@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:m="http://www.w3.org/1998/Math/MathML"
+<xs:schema xmlns:m="http://www.w3.org/1998/Math/MathML"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
            elementFormDefault="qualified"
            targetNamespace="http://www.w3.org/1998/Math/MathML">
+   <xs:attributeGroup name="CommonAtt">
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="xref"/>
+      <xs:anyAttribute namespace="##other" processContents="skip"/>
+      <xs:attributeGroup ref="m:MathMLDataAttributes"/>
+      <xs:attribute name="class" type="xs:NCName"/>
+      <xs:attribute name="style" type="xs:string"/>
+      <xs:attribute name="href" type="xs:anyURI"/>
+      <xs:attribute name="other"/>
+      <xs:attribute name="intent"/>
+      <xs:attribute name="arg" type="xs:NCName"/>
+   </xs:attributeGroup>
+   <xs:group name="math.strict">
+      <xs:sequence>
+         <xs:element name="math">
+            <xs:complexType>
+               <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:ContExp"/>
+               <xs:attributeGroup ref="m:math.attributes"/>
+            </xs:complexType>
+         </xs:element>
+      </xs:sequence>
+   </xs:group>
    <xs:group name="ContExp">
       <xs:choice>
 <!--Ambiguous content model altered (ContExp)-->
@@ -16,7 +38,6 @@
          <xs:element ref="m:cs"/>
          <xs:element ref="m:share"/>
          <xs:element ref="m:piecewise"/>
-         <xs:element ref="m:DeprecatedContExp"/>
          <xs:element ref="m:interval.class"/>
          <xs:element ref="m:unary-functional.class"/>
          <xs:element ref="m:lambda.class"/>
@@ -51,6 +72,16 @@
          <xs:element ref="m:binary-linalg.class"/>
          <xs:element ref="m:constant-set.class"/>
          <xs:element ref="m:constant-arith.class"/>
+         <!--Ambiguous content model altered (ContExp)-->
+         <xs:element ref="m:apply"/>
+         <xs:element ref="m:bind"/>
+         <xs:element ref="m:ci"/>
+         <xs:element ref="m:cn"/>
+         <xs:element ref="m:csymbol"/>
+         <xs:element ref="m:cbytes"/>
+         <xs:element ref="m:cerror"/>
+         <xs:element ref="m:cs"/>
+         <xs:element ref="m:share"/>
       </xs:choice>
    </xs:group>
    <xs:element name="cn">
@@ -72,11 +103,11 @@
                      <xs:group ref="m:semantics-ci"/>
                   </xs:choice>
                   <xs:choice minOccurs="0" maxOccurs="unbounded">
-                     <xs:element ref="m:annotation"/>
-                     <xs:element ref="m:annotation-xml"/>
+                     <xs:group ref="m:annotation"/>
+                     <xs:group ref="m:annotation-xml"/>
                   </xs:choice>
                </xs:sequence>
-               <xs:attributeGroup ref="m:semantics.attributes"/>
+               <xs:attributeGroup ref="m:CommonAtt"/>
             </xs:complexType>
          </xs:element>
       </xs:sequence>
@@ -86,13 +117,13 @@
          <xs:element name="semantics">
             <xs:complexType>
                <xs:sequence>
-                  <xs:group ref="m:ContExp"/>
+                  <xs:group ref="m:MathExpression"/>
                   <xs:choice minOccurs="0" maxOccurs="unbounded">
-                     <xs:element ref="m:annotation"/>
-                     <xs:element ref="m:annotation-xml"/>
+                     <xs:group ref="m:annotation"/>
+                     <xs:group ref="m:annotation-xml"/>
                   </xs:choice>
                </xs:sequence>
-               <xs:attributeGroup ref="m:semantics.attributes"/>
+               <xs:attributeGroup ref="m:CommonAtt"/>
             </xs:complexType>
          </xs:element>
       </xs:sequence>
@@ -118,6 +149,15 @@
    <xs:simpleType name="SymbolName">
       <xs:restriction base="xs:NCName"/>
    </xs:simpleType>
+   <xs:attributeGroup name="cd">
+      <xs:attribute name="cd" use="required" type="xs:NCName"/>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="name">
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="src">
+      <xs:attribute name="src" type="xs:anyURI"/>
+   </xs:attributeGroup>
    <xs:group name="BvarQ">
       <xs:sequence>
          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:bvar"/>
@@ -176,11 +216,4 @@
          <xs:attributeGroup ref="m:cs.attributes"/>
       </xs:complexType>
    </xs:element>
-   <xs:group name="MathExpression">
-      <xs:choice>
-         <xs:group ref="m:ContExp"/>
-         <xs:element ref="m:PresentationExpression"/>
-         <xs:group ref="m:semantics"/>
-      </xs:choice>
-   </xs:group>
 </xs:schema>

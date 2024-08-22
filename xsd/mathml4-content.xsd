@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:m="http://www.w3.org/1998/Math/MathML"
+<xs:schema xmlns:m="http://www.w3.org/1998/Math/MathML"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
            elementFormDefault="qualified"
            targetNamespace="http://www.w3.org/1998/Math/MathML">
    <xs:include schemaLocation="mathml4-strict-content.xsd"/>
    <xs:complexType name="cn.content" mixed="true">
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-         <xs:element ref="m:mglyph"/>
          <xs:element ref="m:sep"/>
          <xs:element ref="m:PresentationExpression"/>
       </xs:choice>
@@ -26,10 +25,9 @@
       <xs:attribute name="type" use="required"/>
    </xs:attributeGroup>
    <xs:complexType name="ci.content" mixed="true">
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-         <xs:element ref="m:mglyph"/>
-         <xs:element ref="m:PresentationExpression"/>
-      </xs:choice>
+      <xs:sequence>
+         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:PresentationExpression"/>
+      </xs:sequence>
    </xs:complexType>
    <xs:attributeGroup name="csymbol.attributes">
       <xs:attributeGroup ref="m:CommonAtt"/>
@@ -38,10 +36,9 @@
       <xs:attribute name="cd" type="xs:NCName"/>
    </xs:attributeGroup>
    <xs:complexType name="csymbol.content" mixed="true">
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-         <xs:element ref="m:mglyph"/>
-         <xs:element ref="m:PresentationExpression"/>
-      </xs:choice>
+      <xs:sequence>
+         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:PresentationExpression"/>
+      </xs:sequence>
    </xs:complexType>
    <xs:element name="bvar">
       <xs:complexType>
@@ -83,7 +80,10 @@
    <xs:element name="sep">
       <xs:complexType/>
    </xs:element>
-   <xs:element name="PresentationExpression" abstract="true"/>
+   <xs:attributeGroup name="DefEncAtt">
+      <xs:attribute name="encoding" type="xs:string"/>
+      <xs:attribute name="definitionURL" type="xs:anyURI"/>
+   </xs:attributeGroup>
    <xs:group name="DomainQ">
       <xs:sequence>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -180,35 +180,6 @@
       <xs:complexType>
          <xs:group ref="m:ContExp"/>
          <xs:attributeGroup ref="m:CommonAtt"/>
-         <xs:attributeGroup ref="m:DefEncAtt"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="DeprecatedContExp" abstract="true"/>
-   <xs:element name="reln" substitutionGroup="m:DeprecatedContExp">
-      <xs:complexType>
-         <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:ContExp"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="fn" substitutionGroup="m:DeprecatedContExp">
-      <xs:complexType>
-         <xs:group ref="m:ContExp"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:element name="declare" substitutionGroup="m:DeprecatedContExp">
-      <xs:complexType>
-         <xs:group maxOccurs="unbounded" ref="m:ContExp"/>
-         <xs:attribute name="type" type="xs:string"/>
-         <xs:attribute name="scope" type="xs:string"/>
-         <xs:attribute name="nargs" type="xs:nonNegativeInteger"/>
-         <xs:attribute name="occurrence">
-            <xs:simpleType>
-               <xs:restriction base="xs:token">
-                  <xs:enumeration value="prefix"/>
-                  <xs:enumeration value="infix"/>
-                  <xs:enumeration value="function-model"/>
-               </xs:restriction>
-            </xs:simpleType>
-         </xs:attribute>
          <xs:attributeGroup ref="m:DefEncAtt"/>
       </xs:complexType>
    </xs:element>
@@ -615,10 +586,10 @@
       </xs:complexType>
    </xs:element>
    <xs:element name="mean" substitutionGroup="m:nary-stats.class"/>
-   <xs:element name="sdev" substitutionGroup="m:nary-stats.class"/>
-   <xs:element name="variance" substitutionGroup="m:nary-stats.class"/>
    <xs:element name="median" substitutionGroup="m:nary-stats.class"/>
    <xs:element name="mode" substitutionGroup="m:nary-stats.class"/>
+   <xs:element name="sdev" substitutionGroup="m:nary-stats.class"/>
+   <xs:element name="variance" substitutionGroup="m:nary-stats.class"/>
    <xs:element name="nary-constructor.class" abstract="true">
       <xs:complexType>
          <xs:sequence>

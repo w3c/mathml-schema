@@ -166,6 +166,14 @@
     <optional>
       <attribute name="other"/>
     </optional>
+    <optional>
+      <attribute name="intent"/>
+    </optional>
+    <optional>
+      <attribute name="arg">
+        <data type="NCName"/>
+      </attribute>
+    </optional>
   </define>
   <define name="base">
     <attribute name="base"/>
