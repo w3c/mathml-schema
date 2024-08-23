@@ -377,14 +377,6 @@
             </xs:restriction>
          </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="fence">
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="true"/>
-               <xs:enumeration value="false"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
       <xs:attribute name="form">
          <xs:simpleType>
             <xs:restriction base="xs:token">
@@ -678,14 +670,6 @@
       <xs:attribute name="rquote"/>
       <xs:attribute name="rspace" type="m:length-percentage"/>
       <xs:attribute name="selection" type="m:positive-integer"/>
-      <xs:attribute name="separator">
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="true"/>
-               <xs:enumeration value="false"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
       <xs:attribute name="separators"/>
       <xs:attribute name="shift" type="m:integer"/>
       <xs:attribute name="side">

@@ -220,8 +220,23 @@
       </attribute>
     </optional>
   </define>
+  <define name="DeprecatedMoAtt">
+    <optional>
+      <attribute name="fence">
+        <ref name="mathml-boolean"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="separator">
+        <ref name="mathml-boolean"/>
+      </attribute>
+    </optional>
+  </define>
   <define name="mstyle.attributes" combine="interleave">
     <ref name="DeprecatedTokenAtt"/>
+  </define>
+  <define name="mstyle.attributes" combine="interleave">
+    <ref name="DeprecatedMoAtt"/>
   </define>
   <define name="mglyph.attributes" combine="interleave">
     <ref name="DeprecatedTokenAtt"/>
@@ -234,6 +249,9 @@
   </define>
   <define name="mo.attributes" combine="interleave">
     <ref name="DeprecatedTokenAtt"/>
+  </define>
+  <define name="mo.attributes" combine="interleave">
+    <ref name="DeprecatedMoAtt"/>
   </define>
   <define name="mtext.attributes" combine="interleave">
     <ref name="DeprecatedTokenAtt"/>

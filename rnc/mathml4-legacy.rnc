@@ -70,12 +70,18 @@ DeprecatedTokenAtt =
   attribute color {color}?,
   attribute background {color}?,
   attribute mathsize {"small" | "normal" | "big" }?
-					  
+
+DeprecatedMoAtt =
+  attribute fence {mathml-boolean}?,
+  attribute separator {mathml-boolean}?
+
 mstyle.attributes &= DeprecatedTokenAtt
+mstyle.attributes &= DeprecatedMoAtt
 mglyph.attributes &= DeprecatedTokenAtt
 mn.attributes &= DeprecatedTokenAtt
 mi.attributes &= DeprecatedTokenAtt
 mo.attributes &= DeprecatedTokenAtt
+mo.attributes &= DeprecatedMoAtt
 mtext.attributes &= DeprecatedTokenAtt
 mspace.attributes &= DeprecatedTokenAtt
 ms.attributes &= DeprecatedTokenAtt

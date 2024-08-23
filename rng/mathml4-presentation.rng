@@ -688,14 +688,6 @@
       </attribute>
     </optional>
     <optional>
-      <attribute name="fence">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
       <attribute name="form">
         <choice>
           <value>prefix</value>
@@ -1008,14 +1000,6 @@
     <optional>
       <attribute name="selection">
         <ref name="positive-integer"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="separator">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
       </attribute>
     </optional>
     <optional>

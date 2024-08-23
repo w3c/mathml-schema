@@ -210,8 +210,6 @@ mo = element mo {mo.attributes, token.content}
 mo.attributes = 
   MathMLPGlobalAttributes,
   attribute form {"prefix" | "infix" | "postfix"}?,
-  attribute fence {mathml-boolean}?,
-  attribute separator {mathml-boolean}?,
   attribute lspace {length-percentage}?,
   attribute rspace {length-percentage}?,
   attribute stretchy {mathml-boolean}?,
