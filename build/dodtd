@@ -3,6 +3,8 @@
 echo $1
 
 sed -e " 1 i <!DOCTYPE math SYSTEM 'mathml4.dtd'>" \
-   -e "s/<.xml.*>//" $1 > dtd/rxp.xml
+    -e "s/<.xml.*>//" \
+    -e "/dtd\/mathml4.dtd/ d" \
+    $1 > dtd/rxp.xml
 
 rxp -sxV dtd/rxp.xml
