@@ -1,3 +1,6 @@
+echo "dtd maintained by hand for mathml4"
+
+exit
 
 echo dtdrng
 java -jar build/saxon-he-10.jar -o:dtd/mathml4.rng rng/mathml4.rng build/rngdtd.xsl

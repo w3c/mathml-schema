@@ -2,7 +2,7 @@
 # 
 echo $1
 
-sed -e " 1 i <!DOCTYPE math SYSTEM '../dtd/mathml4.dtd'>" \
-   -e "s/<.xml.*>//" $1 > /tmp/rxp.xml
+sed -e " 1 i <!DOCTYPE math SYSTEM 'mathml4.dtd'>" \
+   -e "s/<.xml.*>//" $1 > dtd/rxp.xml
 
-rxp -sxV /tmp/rxp.xml
+rxp -sxV dtd/rxp.xml
