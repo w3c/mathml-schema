@@ -1188,6 +1188,7 @@
   mathbackground CDATA #IMPLIED
   displaystyle (%MathMLBoolean;) #IMPLIED
   scriptlevel CDATA #IMPLIED
+  autofocus (%MathMLBoolean;) #IMPLIED
   tabindex CDATA #IMPLIED
   nonce CDATA #IMPLIED
   %MathMLoneventAttributes;

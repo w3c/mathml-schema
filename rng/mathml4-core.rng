@@ -371,6 +371,11 @@
       </attribute>
     </optional>
     <optional>
+      <attribute name="autofocus">
+        <ref name="mathml-boolean"/>
+      </attribute>
+    </optional>
+    <optional>
       <attribute name="tabindex">
         <data type="integer"/>
       </attribute>
