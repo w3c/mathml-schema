@@ -113,10 +113,20 @@ mstyle.generalattributes &=
   attribute groupalign {group-alignment-list-list}?
 
 mtable.attributes &=
-  attribute groupalign {group-alignment-list-list}?
+  attribute groupalign {group-alignment-list-list}?,
+  attribute alignmentscope {list {("true" | "false") +}}?,
+  attribute side {"left" | "right" | "leftoverlap" | "rightoverlap"}?,
+  attribute minlabelspacing {length-percentage}?
 
 mtr.attributes &=
   attribute groupalign {group-alignment-list-list}?
 		       
 mtd.attributes &=
   attribute groupalign {group-alignment-list}?
+
+mlabeledtr = element mlabeledtr {mlabeledtr.attributes, mtd+}
+mlabeledtr.attributes = 
+  mtr.attributes
+
+TableRowExpression |= mlabeledtr
+

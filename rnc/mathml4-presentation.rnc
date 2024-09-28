@@ -38,9 +38,6 @@ MathMalignExpression |= MalignExpression
 			    
 MathExpression |= PresentationExpression
 
-TableRowExpression |= mlabeledtr
-
-
 MstackExpression = MathMalignExpression|mscarries|msline|msrow|msgroup
 
 MsrowExpression = MathMalignExpression|none
@@ -294,7 +291,6 @@ mtable.attributes &=
     pattern ='\s*(top|bottom|center|baseline|axis)(\s+-?[0-9]+)?\s*'}}?,
   attribute rowalign {list {verticalalign+} }?,
   attribute columnalign {list {columnalignstyle+} }?,
-  attribute alignmentscope {list {("true" | "false") +}}?,
   attribute columnwidth {list {("auto" | length-percentage | "fit") +}}?,
   attribute width {"auto" | length-percentage}?,
   attribute rowspacing {list {(length-percentage) +}}?,
@@ -305,18 +301,9 @@ mtable.attributes &=
   attribute framespacing {list {length-percentage, length-percentage}}?,
   attribute equalrows {"true" | "false"}?,
   attribute equalcolumns {"true" | "false"}?,
-  attribute displaystyle {"true" | "false"}?,
-  attribute side {"left" | "right" | "leftoverlap" | "rightoverlap"}?,
-  attribute minlabelspacing {length-percentage}?
+  attribute displaystyle {"true" | "false"}?
 
 
-mlabeledtr = element mlabeledtr {mlabeledtr.attributes, mtd+}
-mlabeledtr.attributes = 
-  mtr.attributes
-
-
-
-      
 mtr.attributes &= 
   attribute rowalign {"top" | "bottom" | "center" | "baseline" | "axis"}?,
   attribute columnalign {list {columnalignstyle+} }?
