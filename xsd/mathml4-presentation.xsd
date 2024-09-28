@@ -750,17 +750,6 @@
       <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
       <xs:attribute name="notation"/>
    </xs:attributeGroup>
-   <xs:element name="mlabeledtr" substitutionGroup="m:TableRowExpression">
-      <xs:complexType>
-         <xs:sequence>
-            <xs:element maxOccurs="unbounded" ref="m:mtd"/>
-         </xs:sequence>
-         <xs:attributeGroup ref="m:mlabeledtr.attributes"/>
-      </xs:complexType>
-   </xs:element>
-   <xs:attributeGroup name="mlabeledtr.attributes">
-      <xs:attributeGroup ref="m:mtr.attributes"/>
-   </xs:attributeGroup>
    <xs:element name="mstack" substitutionGroup="m:PresentationExpression">
       <xs:complexType>
          <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:MstackExpression"/>

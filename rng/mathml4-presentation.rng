@@ -58,9 +58,6 @@
   <define name="MathExpression" combine="choice">
     <ref name="PresentationExpression"/>
   </define>
-  <define name="TableRowExpression" combine="choice">
-    <ref name="mlabeledtr"/>
-  </define>
   <define name="MstackExpression">
     <choice>
       <ref name="MathMalignExpression"/>
@@ -1202,18 +1199,6 @@
       </attribute>
     </optional>
     <optional>
-      <attribute name="alignmentscope">
-        <list>
-          <oneOrMore>
-            <choice>
-              <value>true</value>
-              <value>false</value>
-            </choice>
-          </oneOrMore>
-        </list>
-      </attribute>
-    </optional>
-    <optional>
       <attribute name="columnwidth">
         <list>
           <oneOrMore>
@@ -1307,32 +1292,6 @@
         </choice>
       </attribute>
     </optional>
-    <optional>
-      <attribute name="side">
-        <choice>
-          <value>left</value>
-          <value>right</value>
-          <value>leftoverlap</value>
-          <value>rightoverlap</value>
-        </choice>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="minlabelspacing">
-        <ref name="length-percentage"/>
-      </attribute>
-    </optional>
-  </define>
-  <define name="mlabeledtr">
-    <element name="mlabeledtr">
-      <ref name="mlabeledtr.attributes"/>
-      <oneOrMore>
-        <ref name="mtd"/>
-      </oneOrMore>
-    </element>
-  </define>
-  <define name="mlabeledtr.attributes">
-    <ref name="mtr.attributes"/>
   </define>
   <define name="mtr.attributes" combine="interleave">
     <optional>
