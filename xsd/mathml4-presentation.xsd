@@ -168,15 +168,6 @@
    </xs:attributeGroup>
    <xs:element name="PresentationExpression" abstract="true"/>
    <xs:attributeGroup name="mstyle.specificattributes">
-      <xs:attribute name="Xscriptlevel" type="m:integer"/>
-      <xs:attribute name="Xdisplaystyle">
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="true"/>
-               <xs:enumeration value="false"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
       <xs:attribute name="scriptsizemultiplier" type="m:number"/>
       <xs:attribute name="scriptminsize" type="m:length-percentage"/>
       <xs:attribute name="infixlinebreakstyle">
@@ -191,22 +182,8 @@
       <xs:attribute name="decimalpoint" type="m:character"/>
    </xs:attributeGroup>
    <xs:attributeGroup name="mstyle.generalattributes">
-      <xs:attribute name="accent">
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="true"/>
-               <xs:enumeration value="false"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="accentunder">
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="true"/>
-               <xs:enumeration value="false"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
+      <xs:attribute name="accent" type="m:mathml-boolean"/>
+      <xs:attribute name="accentunder" type="m:mathml-boolean"/>
       <xs:attribute name="align">
          <xs:simpleType>
             <xs:restriction base="xs:token">
@@ -233,14 +210,7 @@
             </xs:restriction>
          </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="bevelled">
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="true"/>
-               <xs:enumeration value="false"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
+      <xs:attribute name="bevelled" type="m:mathml-boolean"/>
       <xs:attribute name="charalign">
          <xs:simpleType>
             <xs:restriction base="xs:token">
@@ -361,22 +331,8 @@
             </xs:restriction>
          </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="equalcolumns">
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="true"/>
-               <xs:enumeration value="false"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="equalrows">
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="true"/>
-               <xs:enumeration value="false"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
+      <xs:attribute name="equalcolumns" type="m:mathml-boolean"/>
+      <xs:attribute name="equalrows" type="m:mathml-boolean"/>
       <xs:attribute name="form">
          <xs:simpleType>
             <xs:restriction base="xs:token">
@@ -461,14 +417,7 @@
          </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="indenttarget"/>
-      <xs:attribute name="largeop">
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="true"/>
-               <xs:enumeration value="false"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
+      <xs:attribute name="largeop" type="m:mathml-boolean"/>
       <xs:attribute name="leftoverhang" type="m:length-percentage"/>
       <xs:attribute name="length" type="m:unsigned-integer"/>
       <xs:attribute name="linebreak">
@@ -594,14 +543,7 @@
       </xs:attribute>
       <xs:attribute name="minlabelspacing" type="m:length-percentage"/>
       <xs:attribute name="minsize" type="m:length-percentage"/>
-      <xs:attribute name="movablelimits">
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="true"/>
-               <xs:enumeration value="false"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
+      <xs:attribute name="movablelimits" type="m:mathml-boolean"/>
       <xs:attribute name="mslinethickness">
          <xs:simpleType>
             <xs:union memberTypes="m:length-percentage">
@@ -692,24 +634,10 @@
             </xs:restriction>
          </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="stretchy">
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="true"/>
-               <xs:enumeration value="false"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
+      <xs:attribute name="stretchy" type="m:mathml-boolean"/>
       <xs:attribute name="subscriptshift" type="m:length-percentage"/>
       <xs:attribute name="superscriptshift" type="m:length-percentage"/>
-      <xs:attribute name="symmetric">
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="true"/>
-               <xs:enumeration value="false"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
+      <xs:attribute name="symmetric" type="m:mathml-boolean"/>
       <xs:attribute name="valign" type="m:length-percentage"/>
       <xs:attribute name="width" type="m:length-percentage"/>
       <xs:attribute name="edge">

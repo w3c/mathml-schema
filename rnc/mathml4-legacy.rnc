@@ -35,6 +35,9 @@ declare = element declare {attribute type {xsd:string}?,
 
 # legacy attributes
 
+CommonAtt &= attribute other {text}?
+MathMLPGlobalAttributes &= attribute other {text}?
+
 
 mglyph.deprecatedattributes =
   attribute fontfamily {text}?,

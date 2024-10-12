@@ -31,8 +31,7 @@ NonMathMLAtt = attribute (* - (local:* | m:*)) {xsd:string}
 MathMLPGlobalAttributes &=
 		   NonMathMLAtt*,
 		   attribute xref {text}?,
-                   attribute href {xsd:anyURI}?,
-                   attribute other {text}?
+                   attribute href {xsd:anyURI}?
 
 MathMalignExpression |= MalignExpression
 			    
@@ -159,7 +158,7 @@ PresentationExpression = TokenExpression|
 mfrac.attributes &= 
   attribute numalign {"left" | "center" | "right"}?,
   attribute denomalign {"left" | "center" | "right"}?,
-  attribute bevelled {"true" | "false"}?
+  attribute bevelled {mathml-boolean}?
 
 
 
@@ -168,19 +167,17 @@ mstyle.attributes &=
   mstyle.generalattributes
 
 mstyle.specificattributes =
-  attribute Xscriptlevel {integer}?,
-  attribute Xdisplaystyle {"true" | "false"}?,
   attribute scriptsizemultiplier {number}?,
   attribute scriptminsize {length-percentage}?,
   attribute infixlinebreakstyle {"before" | "after" | "duplicate"}?,
   attribute decimalpoint {character}?
 
 mstyle.generalattributes =
-  attribute accent {"true" | "false"}?,
-  attribute accentunder {"true" | "false"}?,
+  attribute accent {mathml-boolean}?,
+  attribute accentunder {mathml-boolean}?,
   attribute align {"left" | "right" | "center"}?,
   attribute alignmentscope {list {("true" | "false") +}}?,
-  attribute bevelled {"true" | "false"}?,
+  attribute bevelled {mathml-boolean}?,
   attribute charalign {"left" | "center" | "right"}?,
   attribute charspacing {length-percentage | "loose" | "medium" | "tight"}?,
   attribute close {text}?,
@@ -193,8 +190,8 @@ mstyle.generalattributes =
   attribute denomalign {"left" | "center" | "right"}?,
   attribute depth {length-percentage}?,
   attribute dir {"ltr" | "rtl"}?,
-  attribute equalcolumns {"true" | "false"}?,
-  attribute equalrows {"true" | "false"}?,
+  attribute equalcolumns {mathml-boolean}?,
+  attribute equalrows {mathml-boolean}?,
   attribute form {"prefix" | "infix" | "postfix"}?,
   attribute frame {linestyle}?,
   attribute framespacing {list {length-percentage, length-percentage}}?,
@@ -206,7 +203,7 @@ mstyle.generalattributes =
   attribute indentshiftfirst {length-percentage | "indentshift"}?,
   attribute indentshiftlast {length-percentage | "indentshift"}?,
   attribute indenttarget {idref}?,
-  attribute largeop {"true" | "false"}?,
+  attribute largeop {mathml-boolean}?,
   attribute leftoverhang {length-percentage}?,
   attribute length {unsigned-integer}?,
   attribute linebreak {"auto" | "newline" | "nobreak" | "goodbreak" | "badbreak"}?,
@@ -222,7 +219,7 @@ mstyle.generalattributes =
   attribute mathvariant {"normal" | "bold" | "italic" | "bold-italic" | "double-struck" | "bold-fraktur" | "script" | "bold-script" | "fraktur" | "sans-serif" | "bold-sans-serif" | "sans-serif-italic" | "sans-serif-bold-italic" | "monospace" | "initial" | "tailed" | "looped" | "stretched"}?,
   attribute minlabelspacing {length-percentage}?,
   attribute minsize {length-percentage}?,
-  attribute movablelimits {"true" | "false"}?,
+  attribute movablelimits {mathml-boolean}?,
   attribute mslinethickness {length-percentage | "thin" | "medium" | "thick"}?,
   attribute notation {text}?,
   attribute numalign {"left" | "center" | "right"}?,
@@ -240,10 +237,10 @@ mstyle.generalattributes =
   attribute shift {integer}?,
   attribute side {"left" | "right" | "leftoverlap" | "rightoverlap"}?,
   attribute stackalign {"left" | "center" | "right" | "decimalpoint"}?,
-  attribute stretchy {"true" | "false"}?,
+  attribute stretchy {mathml-boolean}?,
   attribute subscriptshift {length-percentage}?,
   attribute superscriptshift {length-percentage}?,
-  attribute symmetric {"true" | "false"}?,
+  attribute symmetric {mathml-boolean}?,
   attribute valign {length-percentage}?,
   attribute width {length-percentage}?
 
@@ -299,9 +296,9 @@ mtable.attributes &=
   attribute columnlines {list {linestyle +}}?,
   attribute frame {linestyle}?,
   attribute framespacing {list {length-percentage, length-percentage}}?,
-  attribute equalrows {"true" | "false"}?,
-  attribute equalcolumns {"true" | "false"}?,
-  attribute displaystyle {"true" | "false"}?
+  attribute equalrows {mathml-boolean}?,
+  attribute equalcolumns {mathml-boolean}?,
+  attribute displaystyle {mathml-boolean}?
 
 
 mtr.attributes &= 

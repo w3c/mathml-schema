@@ -6,14 +6,14 @@
    <xs:attributeGroup name="CommonAtt">
       <xs:attribute name="id" type="xs:ID"/>
       <xs:attribute name="xref"/>
-      <xs:anyAttribute namespace="##other" processContents="skip"/>
       <xs:attributeGroup ref="m:MathMLDataAttributes"/>
       <xs:attribute name="class" type="xs:NCName"/>
       <xs:attribute name="style" type="xs:string"/>
       <xs:attribute name="href" type="xs:anyURI"/>
-      <xs:attribute name="other"/>
       <xs:attribute name="intent"/>
       <xs:attribute name="arg" type="xs:NCName"/>
+      <xs:attribute name="other"/>
+      <xs:anyAttribute namespace="##other" processContents="skip"/>
    </xs:attributeGroup>
    <xs:group name="math.strict">
       <xs:sequence>

@@ -57,8 +57,13 @@
 </xsl:template>
 
 <xsl:template match="xs:attributeGroup[@name='NonMathMLAtt']"/>
-<xsl:template match="xs:attributeGroup[@ref='m:NonMathMLAtt']">
-  <xs:anyAttribute namespace="##other" processContents="skip"/>
+<xsl:template match="xs:attributeGroup[@ref='m:NonMathMLAtt']"/>
+<xsl:template match="xs:attributeGroup[@name=('CommonAtt','MathMLPGlobalAttributes')]">
+ <xsl:copy>
+  <xsl:copy-of select="@*"/>
+  <xsl:apply-templates/>
+        <xs:anyAttribute namespace="##other" processContents="skip"/>
+ </xsl:copy>
 </xsl:template>
 
 <xsl:template match="xs:complexType[@name='annotation-xml.model']">
@@ -68,6 +73,10 @@
    <xs:any processContents="lax"/>    
   </xs:sequence>
  </xs:complexType>
+</xsl:template>
+
+<xsl:template match="@type[.='annotation-xml']">
+ <xsl:attribute name="type" select="'m:annotation-xml'"/>
 </xsl:template>
 
 </xsl:stylesheet>

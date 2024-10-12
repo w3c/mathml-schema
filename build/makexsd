@@ -12,6 +12,6 @@ echo saxon
  do
  echo $f
  java -jar ../build/saxon-he-10.jar -o:../xsd/${f}.xsd ${f}.xsd ../build/xsdxsd.xsl
- rm ${f}.xsd
+# rm ${f}.xsd
  done
 
