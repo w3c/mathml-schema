@@ -17,7 +17,7 @@
   <apply>
     <tendsto type="above"></tendsto>  
     <apply>
-      <power></power> 
+      <power other="ss"></power> 
       <ci>x</ci>  
       <cn>2</cn> 
     </apply> 
