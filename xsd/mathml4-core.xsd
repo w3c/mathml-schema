@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  MathML 4 (Core Level 1)
+  #######################
+-->
+<!--
+      Copyright 1998-2024 W3C (MIT, ERCIM, Keio, Beihang)
+  
+      Use and distribution of this code are permitted under the terms
+      W3C Software Notice and License
+      http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1998/Math/MathML" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <xs:element name="math">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="m:ImpliedMrow">
+          <xs:attributeGroup ref="m:math.attributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="MathMLoneventAttributes">
+    <xs:attribute name="onabort"/>
+    <xs:attribute name="onauxclick"/>
+    <xs:attribute name="onblur"/>
+    <xs:attribute name="oncancel"/>
+    <xs:attribute name="oncanplay"/>
+    <xs:attribute name="oncanplaythrough"/>
+    <xs:attribute name="onchange"/>
+    <xs:attribute name="onclick"/>
+    <xs:attribute name="onclose"/>
+    <xs:attribute name="oncontextlost"/>
+    <xs:attribute name="oncontextmenu"/>
+    <xs:attribute name="oncontextrestored"/>
+    <xs:attribute name="oncuechange"/>
+    <xs:attribute name="ondblclick"/>
+    <xs:attribute name="ondrag"/>
+    <xs:attribute name="ondragend"/>
+    <xs:attribute name="ondragenter"/>
+    <xs:attribute name="ondragleave"/>
+    <xs:attribute name="ondragover"/>
+    <xs:attribute name="ondragstart"/>
+    <xs:attribute name="ondrop"/>
+    <xs:attribute name="ondurationchange"/>
+    <xs:attribute name="onemptied"/>
+    <xs:attribute name="onended"/>
+    <xs:attribute name="onerror"/>
+    <xs:attribute name="onfocus"/>
+    <xs:attribute name="onformdata"/>
+    <xs:attribute name="oninput"/>
+    <xs:attribute name="oninvalid"/>
+    <xs:attribute name="onkeydown"/>
+    <xs:attribute name="onkeypress"/>
+    <xs:attribute name="onkeyup"/>
+    <xs:attribute name="onload"/>
+    <xs:attribute name="onloadeddata"/>
+    <xs:attribute name="onloadedmetadata"/>
+    <xs:attribute name="onloadstart"/>
+    <xs:attribute name="onmousedown"/>
+    <xs:attribute name="onmouseenter"/>
+    <xs:attribute name="onmouseleave"/>
+    <xs:attribute name="onmousemove"/>
+    <xs:attribute name="onmouseout"/>
+    <xs:attribute name="onmouseover"/>
+    <xs:attribute name="onmouseup"/>
+    <xs:attribute name="onpause"/>
+    <xs:attribute name="onplay"/>
+    <xs:attribute name="onplaying"/>
+    <xs:attribute name="onprogress"/>
+    <xs:attribute name="onratechange"/>
+    <xs:attribute name="onreset"/>
+    <xs:attribute name="onresize"/>
+    <xs:attribute name="onscroll"/>
+    <xs:attribute name="onsecuritypolicyviolation"/>
+    <xs:attribute name="onseeked"/>
+    <xs:attribute name="onseeking"/>
+    <xs:attribute name="onselect"/>
+    <xs:attribute name="onslotchange"/>
+    <xs:attribute name="onstalled"/>
+    <xs:attribute name="onsubmit"/>
+    <xs:attribute name="onsuspend"/>
+    <xs:attribute name="ontimeupdate"/>
+    <xs:attribute name="ontoggle"/>
+    <xs:attribute name="onvolumechange"/>
+    <xs:attribute name="onwaiting"/>
+    <xs:attribute name="onwebkitanimationend"/>
+    <xs:attribute name="onwebkitanimationiteration"/>
+    <xs:attribute name="onwebkitanimationstart"/>
+    <xs:attribute name="onwebkittransitionend"/>
+    <xs:attribute name="onwheel"/>
+    <xs:attribute name="onafterprint"/>
+    <xs:attribute name="onbeforeprint"/>
+    <xs:attribute name="onbeforeunload"/>
+    <xs:attribute name="onhashchange"/>
+    <xs:attribute name="onlanguagechange"/>
+    <xs:attribute name="onmessage"/>
+    <xs:attribute name="onmessageerror"/>
+    <xs:attribute name="onoffline"/>
+    <xs:attribute name="ononline"/>
+    <xs:attribute name="onpagehide"/>
+    <xs:attribute name="onpageshow"/>
+    <xs:attribute name="onpopstate"/>
+    <xs:attribute name="onrejectionhandled"/>
+    <xs:attribute name="onstorage"/>
+    <xs:attribute name="onunhandledrejection"/>
+    <xs:attribute name="onunload"/>
+    <xs:attribute name="oncopy"/>
+    <xs:attribute name="oncut"/>
+    <xs:attribute name="onpaste"/>
+  </xs:attributeGroup>
+  <!--
+    Sample set. May need preprocessing 
+    or schema extension to allow more see MathML Core (and HTML) spec
+  -->
+  <xs:attributeGroup name="MathMLDataAttributes">
+    <xs:attribute name="data-other"/>
+  </xs:attributeGroup>
+  <!-- sample set, like data- may need preprocessing to allow more -->
+  <xs:attributeGroup name="MathMLARIAattributes">
+    <xs:attribute name="aria-label"/>
+    <xs:attribute name="aria-describedby"/>
+    <xs:attribute name="aria-details"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="MathMLintentAttributes">
+    <xs:attribute name="intent"/>
+    <xs:attribute name="arg" type="xs:NCName"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="MathMLPGlobalAttributes">
+    <xs:attribute name="id" type="xs:ID"/>
+    <xs:attribute name="class" type="xs:NCName"/>
+    <xs:attribute name="style" type="xs:string"/>
+    <xs:attribute name="dir">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="ltr"/>
+          <xs:enumeration value="rtl"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="mathbackground" type="m:color"/>
+    <xs:attribute name="mathcolor" type="m:color"/>
+    <xs:attribute name="mathsize" type="m:length-percentage"/>
+    <xs:attribute name="mathvariant">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="\s*([Nn][Oo][Rr][Mm][Aa][Ll]|[Bb][Oo][Ll][Dd]|[Ii][Tt][Aa][Ll][Ii][Cc]|[Bb][Oo][Ll][Dd]-[Ii][Tt][Aa][Ll][Ii][Cc]|[Dd][Oo][Uu][Bb][Ll][Ee]-[Ss][Tt][Rr][Uu][Cc][Kk]|[Bb][Oo][Ll][Dd]-[Ff][Rr][Aa][Kk][Tt][Uu][Rr]|[Ss][Cc][Rr][Ii][Pp][Tt]|[Bb][Oo][Ll][Dd]-[Ss][Cc][Rr][Ii][Pp][Tt]|[Ff][Rr][Aa][Kk][Tt][Uu][Rr]|[Ss][Aa][Nn][Ss]-[Ss][Ee][Rr][Ii][Ff]|[Bb][Oo][Ll][Dd]-[Ss][Aa][Nn][Ss]-[Ss][Ee][Rr][Ii][Ff]|[Ss][Aa][Nn][Ss]-[Ss][Ee][Rr][Ii][Ff]-[Ii][Tt][Aa][Ll][Ii][Cc]|[Ss][Aa][Nn][Ss]-[Ss][Ee][Rr][Ii][Ff]-[Bb][Oo][Ll][Dd]-[Ii][Tt][Aa][Ll][Ii][Cc]|[Mm][Oo][Nn][Oo][Ss][Pp][Aa][Cc][Ee]|[Ii][Nn][Ii][Tt][Ii][Aa][Ll]|[Tt][Aa][Ii][Ll][Ee][Dd]|[Ll][Oo][Oo][Pp][Ee][Dd]|[Ss][Tt][Rr][Ee][Tt][Cc][Hh][Ee][Dd])\s*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="displaystyle" type="m:mathml-boolean"/>
+    <xs:attribute name="scriptlevel" type="xs:integer"/>
+    <xs:attribute name="autofocus" type="m:mathml-boolean"/>
+    <xs:attribute name="tabindex" type="xs:integer"/>
+    <xs:attribute name="nonce"/>
+    <xs:attributeGroup ref="m:MathMLoneventAttributes"/>
+    <xs:attributeGroup ref="m:MathMLDataAttributes"/>
+    <xs:attributeGroup ref="m:MathMLintentAttributes"/>
+    <xs:attributeGroup ref="m:MathMLARIAattributes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="math.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+    <xs:attribute name="display">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="block"/>
+          <xs:enumeration value="inline"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="alttext"/>
+  </xs:attributeGroup>
+  <xs:element name="annotation">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+      <xs:attributeGroup ref="m:encoding"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="anyElement">
+    <xs:sequence>
+      <xs:any processContents="skip"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="annotation-xml">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:MathExpression"/>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:anyElement"/>
+      </xs:choice>
+      <xs:attributeGroup ref="m:annotation-xml.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="annotation-xml.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+    <xs:attributeGroup ref="m:encoding"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="encoding">
+    <xs:attribute name="encoding" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:element name="semantics" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="m:MathExpression"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="m:annotation"/>
+          <xs:element ref="m:annotation-xml"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attributeGroup ref="m:semantics.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="semantics.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:simpleType name="mathml-boolean">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\s*([Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee])\s*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="length-percentage">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(r?em|ex|in|cm|mm|p[xtc]|Q|v[hw]|vmin|vmax|%))|0)\s*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MathExpression" abstract="true" substitutionGroup="m:MathMalignExpression"/>
+  <xs:element name="MathMalignExpression" abstract="true"/>
+  <xs:complexType name="ImpliedMrow">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:MathMalignExpression"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TableRowExpression" abstract="true">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:mtd"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="m:mtr.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="MultiScriptExpression">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element ref="m:MathExpression"/>
+        <xs:element ref="m:none"/>
+      </xs:choice>
+      <xs:choice>
+        <xs:element ref="m:MathExpression"/>
+        <xs:element ref="m:none"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+  <xs:simpleType name="color">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\s*((#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?)|[a-zA-Z]+|[a-zA-Z]+\s*\([0-9, %.]+\))\s*"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TokenExpression" abstract="true" substitutionGroup="m:MathExpression"/>
+  <xs:complexType name="textorHTML" mixed="true">
+    <xs:sequence>
+      <xs:any minOccurs="0" namespace="http://www.w3.org/1999/xhtml" processContents="skip"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="token.content">
+    <xs:complexContent>
+      <xs:extension base="m:textorHTML"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="mi" substitutionGroup="m:TokenExpression">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="m:token.content">
+          <xs:attributeGroup ref="m:mi.attributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="mi.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:element name="mn" substitutionGroup="m:TokenExpression">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="m:token.content">
+          <xs:attributeGroup ref="m:mn.attributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="mn.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:element name="mo" substitutionGroup="m:TokenExpression">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="m:token.content">
+          <xs:attributeGroup ref="m:mo.attributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="mo.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+    <xs:attribute name="form">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="prefix"/>
+          <xs:enumeration value="infix"/>
+          <xs:enumeration value="postfix"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="lspace" type="m:length-percentage"/>
+    <xs:attribute name="rspace" type="m:length-percentage"/>
+    <xs:attribute name="stretchy" type="m:mathml-boolean"/>
+    <xs:attribute name="symmetric" type="m:mathml-boolean"/>
+    <xs:attribute name="maxsize" type="m:length-percentage"/>
+    <xs:attribute name="minsize" type="m:length-percentage"/>
+    <xs:attribute name="largeop" type="m:mathml-boolean"/>
+    <xs:attribute name="movablelimits" type="m:mathml-boolean"/>
+  </xs:attributeGroup>
+  <xs:element name="mtext" substitutionGroup="m:TokenExpression">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="m:token.content">
+          <xs:attributeGroup ref="m:mtext.attributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="mtext.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:element name="mspace" substitutionGroup="m:TokenExpression">
+    <xs:complexType>
+      <xs:attributeGroup ref="m:mspace.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="mspace.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+    <xs:attribute name="width" type="m:length-percentage"/>
+    <xs:attribute name="height" type="m:length-percentage"/>
+    <xs:attribute name="depth" type="m:length-percentage"/>
+  </xs:attributeGroup>
+  <xs:element name="ms" substitutionGroup="m:TokenExpression">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="m:token.content">
+          <xs:attributeGroup ref="m:ms.attributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="ms.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:element name="none">
+    <xs:complexType>
+      <xs:attributeGroup ref="m:none.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="none.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:element name="mprescripts">
+    <xs:complexType>
+      <xs:attributeGroup ref="m:mprescripts.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="mprescripts.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:element name="mrow" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="m:ImpliedMrow">
+          <xs:attributeGroup ref="m:mrow.attributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="mrow.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:element name="mfrac" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="m:MathExpression"/>
+        <xs:element ref="m:MathExpression"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="m:mfrac.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="mfrac.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+    <xs:attribute name="linethickness" type="m:length-percentage"/>
+  </xs:attributeGroup>
+  <xs:element name="msqrt" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="m:ImpliedMrow">
+          <xs:attributeGroup ref="m:msqrt.attributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="msqrt.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:element name="mroot" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="m:MathExpression"/>
+        <xs:element ref="m:MathExpression"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="m:mroot.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="mroot.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:element name="mstyle" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="m:ImpliedMrow">
+          <xs:attributeGroup ref="m:mstyle.attributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="mstyle.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:element name="merror" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="m:ImpliedMrow">
+          <xs:attributeGroup ref="m:merror.attributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="merror.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:element name="mpadded" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="m:ImpliedMrow">
+          <xs:attributeGroup ref="m:mpadded.attributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="mpadded.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+    <xs:attribute name="height" type="m:mpadded-length-percentage"/>
+    <xs:attribute name="depth" type="m:mpadded-length-percentage"/>
+    <xs:attribute name="width" type="m:mpadded-length-percentage"/>
+    <xs:attribute name="lspace" type="m:mpadded-length-percentage"/>
+    <xs:attribute name="rspace" type="m:mpadded-length-percentage"/>
+    <xs:attribute name="voffset" type="m:mpadded-length-percentage"/>
+  </xs:attributeGroup>
+  <xs:simpleType name="mpadded-length-percentage">
+    <xs:restriction base="m:length-percentage"/>
+  </xs:simpleType>
+  <xs:element name="mphantom" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="m:ImpliedMrow">
+          <xs:attributeGroup ref="m:mphantom.attributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="mphantom.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:element name="msub" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="m:MathExpression"/>
+        <xs:element ref="m:MathExpression"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="m:msub.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="msub.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:element name="msup" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="m:MathExpression"/>
+        <xs:element ref="m:MathExpression"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="m:msup.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="msup.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:element name="msubsup" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="m:MathExpression"/>
+        <xs:element ref="m:MathExpression"/>
+        <xs:element ref="m:MathExpression"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="m:msubsup.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="msubsup.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:element name="munder" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="m:MathExpression"/>
+        <xs:element ref="m:MathExpression"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="m:munder.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="munder.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+    <xs:attribute name="accentunder" type="m:mathml-boolean"/>
+  </xs:attributeGroup>
+  <xs:element name="mover" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="m:MathExpression"/>
+        <xs:element ref="m:MathExpression"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="m:mover.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="mover.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+    <xs:attribute name="accent" type="m:mathml-boolean"/>
+  </xs:attributeGroup>
+  <xs:element name="munderover" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="m:MathExpression"/>
+        <xs:element ref="m:MathExpression"/>
+        <xs:element ref="m:MathExpression"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="m:munderover.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="munderover.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+    <xs:attribute name="accent" type="m:mathml-boolean"/>
+    <xs:attribute name="accentunder" type="m:mathml-boolean"/>
+  </xs:attributeGroup>
+  <xs:element name="mmultiscripts" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="m:MathExpression"/>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:MultiScriptExpression"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="m:mprescripts"/>
+          <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:MultiScriptExpression"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="m:mmultiscripts.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="mmultiscripts.attributes">
+    <xs:attributeGroup ref="m:msubsup.attributes"/>
+  </xs:attributeGroup>
+  <xs:element name="mtable" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:TableRowExpression"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="m:mtable.attributes"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="mtable.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:element name="mtr" substitutionGroup="m:TableRowExpression"/>
+  <xs:attributeGroup name="mtr.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+  </xs:attributeGroup>
+  <xs:element name="mtd">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="m:ImpliedMrow">
+          <xs:attributeGroup ref="m:mtd.attributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="mtd.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+    <xs:attribute name="rowspan" type="xs:positiveInteger"/>
+    <xs:attribute name="columnspan" type="xs:positiveInteger"/>
+  </xs:attributeGroup>
+  <xs:element name="maction" substitutionGroup="m:MathExpression">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="m:ImpliedMrow">
+          <xs:attributeGroup ref="m:maction.attributes"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="maction.attributes">
+    <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+    <xs:attribute name="actiontype"/>
+    <xs:attribute name="selection" type="xs:positiveInteger"/>
+  </xs:attributeGroup>
+</xs:schema>
