@@ -73,6 +73,16 @@
     </element>
   </define>
   <!-- legacy attributes -->
+  <define name="CommonAtt" combine="interleave">
+    <optional>
+      <attribute name="other"/>
+    </optional>
+  </define>
+  <define name="MathMLPGlobalAttributes" combine="interleave">
+    <optional>
+      <attribute name="other"/>
+    </optional>
+  </define>
   <define name="mglyph.deprecatedattributes">
     <optional>
       <attribute name="fontfamily"/>

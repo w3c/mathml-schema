@@ -48,9 +48,6 @@
         <data type="anyURI"/>
       </attribute>
     </optional>
-    <optional>
-      <attribute name="other"/>
-    </optional>
   </define>
   <define name="MathMalignExpression" combine="choice">
     <ref name="MalignExpression"/>
@@ -468,10 +465,7 @@
     </optional>
     <optional>
       <attribute name="bevelled">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
   </define>
@@ -480,19 +474,6 @@
     <ref name="mstyle.generalattributes"/>
   </define>
   <define name="mstyle.specificattributes">
-    <optional>
-      <attribute name="Xscriptlevel">
-        <ref name="integer"/>
-      </attribute>
-    </optional>
-    <optional>
-      <attribute name="Xdisplaystyle">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
-      </attribute>
-    </optional>
     <optional>
       <attribute name="scriptsizemultiplier">
         <ref name="number"/>
@@ -521,18 +502,12 @@
   <define name="mstyle.generalattributes">
     <optional>
       <attribute name="accent">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="accentunder">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
     <optional>
@@ -558,10 +533,7 @@
     </optional>
     <optional>
       <attribute name="bevelled">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
     <optional>
@@ -670,18 +642,12 @@
     </optional>
     <optional>
       <attribute name="equalcolumns">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="equalrows">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
     <optional>
@@ -774,10 +740,7 @@
     </optional>
     <optional>
       <attribute name="largeop">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
     <optional>
@@ -913,10 +876,7 @@
     </optional>
     <optional>
       <attribute name="movablelimits">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
     <optional>
@@ -1029,10 +989,7 @@
     </optional>
     <optional>
       <attribute name="stretchy">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
     <optional>
@@ -1047,10 +1004,7 @@
     </optional>
     <optional>
       <attribute name="symmetric">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
     <optional>
@@ -1270,26 +1224,17 @@
     </optional>
     <optional>
       <attribute name="equalrows">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="equalcolumns">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
     <optional>
       <attribute name="displaystyle">
-        <choice>
-          <value>true</value>
-          <value>false</value>
-        </choice>
+        <ref name="mathml-boolean"/>
       </attribute>
     </optional>
   </define>

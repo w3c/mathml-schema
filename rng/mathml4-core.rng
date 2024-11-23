@@ -301,6 +301,9 @@
       <attribute name="aria-describedby"/>
     </optional>
     <optional>
+      <attribute name="aria-description"/>
+    </optional>
+    <optional>
       <attribute name="aria-details"/>
     </optional>
   </define>

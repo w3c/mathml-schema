@@ -113,6 +113,7 @@ MathMLDataAttributes =
 MathMLARIAattributes =
   attribute aria-label {text}?,
   attribute aria-describedby {text}?,
+  attribute aria-description {text}?,
   attribute aria-details {text}?
 
 MathMLintentAttributes =
