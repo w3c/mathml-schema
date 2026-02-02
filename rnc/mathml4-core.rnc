@@ -103,6 +103,19 @@ MathMLoneventAttributes =
   attribute oncut {text}?,
   attribute onpaste {text}?
 
+MathMLlink.attributes=
+   attribute attributionsrc {text}?,
+   attribute download {mathml-boolean}?,
+   attribute filename {text}?,
+   attribute href {text}?,
+   attribute hreflang {text}?,
+   attribute referrerpolicy {text}?,
+   attribute rel {text}?,
+   attribute target {text}?,
+   attribute type {text}?
+
+
+   
 # Sample set. May need preprocessing 
 # or schema extension to allow more see MathML Core (and HTML) spec
 MathMLDataAttributes =
@@ -176,7 +189,7 @@ length-percentage = xsd:string {
 }
 
 MathExpression = TokenExpression|
-                     mrow|mfrac|msqrt|mroot|mstyle|merror|mpadded|mphantom|
+                     mrow|a|mfrac|msqrt|mroot|mstyle|merror|mpadded|mphantom|
                      msub|msup|msubsup|munder|mover|munderover|
                      mmultiscripts|mtable|maction|
 		     semantics
@@ -249,6 +262,8 @@ mprescripts.attributes =
 mrow = element mrow {mrow.attributes, ImpliedMrow}
 mrow.attributes = 
   MathMLPGlobalAttributes
+
+a = element a {mrow.attributes, MathMLlink.attributes, ImpliedMrow}
 
 mfrac = element mfrac {mfrac.attributes, MathExpression, MathExpression}
 mfrac.attributes = 

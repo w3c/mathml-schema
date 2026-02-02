@@ -152,7 +152,8 @@ PresentationExpression = TokenExpression|
                          mmultiscripts|mtable|mstack|mlongdiv|maction
 
 
-
+mrow.attributes &=
+  MathMLlink.attributes
 
 
 mfrac.attributes &= 

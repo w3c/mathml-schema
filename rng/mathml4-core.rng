@@ -283,6 +283,37 @@
       <attribute name="onpaste"/>
     </optional>
   </define>
+  <define name="MathMLlink.attributes">
+    <optional>
+      <attribute name="attributionsrc"/>
+    </optional>
+    <optional>
+      <attribute name="download">
+        <ref name="mathml-boolean"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="filename"/>
+    </optional>
+    <optional>
+      <attribute name="href"/>
+    </optional>
+    <optional>
+      <attribute name="hreflang"/>
+    </optional>
+    <optional>
+      <attribute name="referrerpolicy"/>
+    </optional>
+    <optional>
+      <attribute name="rel"/>
+    </optional>
+    <optional>
+      <attribute name="target"/>
+    </optional>
+    <optional>
+      <attribute name="type"/>
+    </optional>
+  </define>
   <!--
     Sample set. May need preprocessing 
     or schema extension to allow more see MathML Core (and HTML) spec
@@ -487,6 +518,7 @@
     <choice>
       <ref name="TokenExpression"/>
       <ref name="mrow"/>
+      <ref name="a"/>
       <ref name="mfrac"/>
       <ref name="msqrt"/>
       <ref name="mroot"/>
@@ -705,6 +737,13 @@
   </define>
   <define name="mrow.attributes">
     <ref name="MathMLPGlobalAttributes"/>
+  </define>
+  <define name="a">
+    <element name="a">
+      <ref name="mrow.attributes"/>
+      <ref name="MathMLlink.attributes"/>
+      <ref name="ImpliedMrow"/>
+    </element>
   </define>
   <define name="mfrac">
     <element name="mfrac">

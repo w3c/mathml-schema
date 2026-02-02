@@ -444,6 +444,9 @@
       <ref name="maction"/>
     </choice>
   </define>
+  <define name="mrow.attributes" combine="interleave">
+    <ref name="MathMLlink.attributes"/>
+  </define>
   <define name="mfrac.attributes" combine="interleave">
     <optional>
       <attribute name="numalign">
