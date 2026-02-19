@@ -113,7 +113,8 @@ group-alignment-list-list = xsd:string {
   pattern = '(\s*\{\s*(left|center|right|decimalpoint)(\s+(left|center|right|decimalpoint))*\})*\s*' }
 
 mstyle.generalattributes &=
-  attribute groupalign {group-alignment-list-list}?
+  attribute groupalign {group-alignment-list-list}?,
+  attribute alignmentscope {list {("true" | "false") +}}?
 
 mtable.attributes &=
   attribute groupalign {group-alignment-list-list}?,

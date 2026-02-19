@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:m="http://www.w3.org/1998/Math/MathML"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.w3.org/1998/Math/MathML">
+   <xs:include schemaLocation="mathml4.xsd"/>
+   <xs:simpleType name="length-percentage">
+      <xs:restriction base="xs:string">
+         <xs:pattern value="\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%)?)|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:element name="reln">
+      <xs:complexType>
+         <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:ContExp"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="fn">
+      <xs:complexType>
+         <xs:group ref="m:ContExp"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="declare">
+      <xs:complexType>
+         <xs:group maxOccurs="unbounded" ref="m:ContExp"/>
+         <xs:attribute name="type" type="xs:string"/>
+         <xs:attribute name="scope" type="xs:string"/>
+         <xs:attribute name="nargs" type="xs:nonNegativeInteger"/>
+         <xs:attribute name="occurrence">
+            <xs:simpleType>
+               <xs:restriction base="xs:token">
+                  <xs:enumeration value="prefix"/>
+                  <xs:enumeration value="infix"/>
+                  <xs:enumeration value="function-model"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:attribute>
+         <xs:attributeGroup ref="m:DefEncAtt"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:attributeGroup name="mglyph.deprecatedattributes">
+      <xs:attribute name="fontfamily"/>
+      <xs:attribute name="index" type="m:integer"/>
+      <xs:attribute name="mathvariant">
+         <xs:simpleType>
+            <xs:restriction base="xs:token">
+               <xs:enumeration value="normal"/>
+               <xs:enumeration value="bold"/>
+               <xs:enumeration value="italic"/>
+               <xs:enumeration value="bold-italic"/>
+               <xs:enumeration value="double-struck"/>
+               <xs:enumeration value="bold-fraktur"/>
+               <xs:enumeration value="script"/>
+               <xs:enumeration value="bold-script"/>
+               <xs:enumeration value="fraktur"/>
+               <xs:enumeration value="sans-serif"/>
+               <xs:enumeration value="bold-sans-serif"/>
+               <xs:enumeration value="sans-serif-italic"/>
+               <xs:enumeration value="sans-serif-bold-italic"/>
+               <xs:enumeration value="monospace"/>
+               <xs:enumeration value="initial"/>
+               <xs:enumeration value="tailed"/>
+               <xs:enumeration value="looped"/>
+               <xs:enumeration value="stretched"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mathsize">
+         <xs:simpleType>
+            <xs:union memberTypes="m:length-percentage">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:enumeration value="small"/>
+                  </xs:restriction>
+               </xs:simpleType>
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:enumeration value="normal"/>
+                  </xs:restriction>
+               </xs:simpleType>
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:enumeration value="big"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:union>
+         </xs:simpleType>
+      </xs:attribute>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="mstyle.deprecatedattributes">
+      <xs:attribute name="veryverythinmathspace" type="m:length-percentage"/>
+      <xs:attribute name="verythinmathspace" type="m:length-percentage"/>
+      <xs:attribute name="thinmathspace" type="m:length-percentage"/>
+      <xs:attribute name="mediummathspace" type="m:length-percentage"/>
+      <xs:attribute name="thickmathspace" type="m:length-percentage"/>
+      <xs:attribute name="verythickmathspace" type="m:length-percentage"/>
+      <xs:attribute name="veryverythickmathspace" type="m:length-percentage"/>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="math.deprecatedattributes">
+      <xs:attribute name="mode" type="xs:string"/>
+      <xs:attribute name="macros" type="xs:string"/>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="DeprecatedTokenAtt">
+      <xs:attribute name="fontfamily"/>
+      <xs:attribute name="fontweight">
+         <xs:simpleType>
+            <xs:restriction base="xs:token">
+               <xs:enumeration value="normal"/>
+               <xs:enumeration value="bold"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fontstyle">
+         <xs:simpleType>
+            <xs:restriction base="xs:token">
+               <xs:enumeration value="normal"/>
+               <xs:enumeration value="italic"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fontsize" type="m:length-percentage"/>
+      <xs:attribute name="color" type="m:color"/>
+      <xs:attribute name="background" type="m:color"/>
+      <xs:attribute name="mathsize">
+         <xs:simpleType>
+            <xs:restriction base="xs:token">
+               <xs:enumeration value="small"/>
+               <xs:enumeration value="normal"/>
+               <xs:enumeration value="big"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="DeprecatedMoAtt">
+      <xs:attribute name="fence" type="m:mathml-boolean"/>
+      <xs:attribute name="separator" type="m:mathml-boolean"/>
+   </xs:attributeGroup>
+   <xs:simpleType name="group-alignment">
+      <xs:restriction base="xs:token">
+         <xs:enumeration value="left"/>
+         <xs:enumeration value="center"/>
+         <xs:enumeration value="right"/>
+         <xs:enumeration value="decimalpoint"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="group-alignment-list">
+      <xs:restriction>
+         <xs:simpleType>
+            <xs:list itemType="m:group-alignment"/>
+         </xs:simpleType>
+         <xs:minLength value="1"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="group-alignment-list-list">
+      <xs:restriction base="xs:string">
+         <xs:pattern value="(\s*\{\s*(left|center|right|decimalpoint)(\s+(left|center|right|decimalpoint))*\})*\s*"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:element name="mlabeledtr" substitutionGroup="m:TableRowExpression">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element maxOccurs="unbounded" ref="m:mtd"/>
+         </xs:sequence>
+         <xs:attributeGroup ref="m:mlabeledtr.attributes"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:attributeGroup name="mlabeledtr.attributes">
+      <xs:attributeGroup ref="m:mtr.attributes"/>
+   </xs:attributeGroup>
+</xs:schema>

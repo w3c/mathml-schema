@@ -342,6 +342,18 @@
         <ref name="group-alignment-list-list"/>
       </attribute>
     </optional>
+    <optional>
+      <attribute name="alignmentscope">
+        <list>
+          <oneOrMore>
+            <choice>
+              <value>true</value>
+              <value>false</value>
+            </choice>
+          </oneOrMore>
+        </list>
+      </attribute>
+    </optional>
   </define>
   <define name="mtable.attributes" combine="interleave">
     <optional>
