@@ -177,7 +177,6 @@ mstyle.generalattributes =
   attribute accent {mathml-boolean}?,
   attribute accentunder {mathml-boolean}?,
   attribute align {"left" | "right" | "center"}?,
-  attribute alignmentscope {list {("true" | "false") +}}?,
   attribute bevelled {mathml-boolean}?,
   attribute charalign {"left" | "center" | "right"}?,
   attribute charspacing {length-percentage | "loose" | "medium" | "tight"}?,

@@ -523,18 +523,6 @@
       </attribute>
     </optional>
     <optional>
-      <attribute name="alignmentscope">
-        <list>
-          <oneOrMore>
-            <choice>
-              <value>true</value>
-              <value>false</value>
-            </choice>
-          </oneOrMore>
-        </list>
-      </attribute>
-    </optional>
-    <optional>
       <attribute name="bevelled">
         <ref name="mathml-boolean"/>
       </attribute>
