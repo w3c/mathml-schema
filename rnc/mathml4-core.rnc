@@ -209,9 +209,9 @@ color =  xsd:string {
 TokenExpression = mi|mn|mo|mtext|mspace|ms
 
 
-textorHTML = text | element (h:*)  {attribute * {text}*,textorHTML*}
+textorHTML = text | math | element (h:*) {attribute * {text}*,(textorHTML)*}
 			    
-token.content = textorHTML
+token.content = (textorHTML)*
 		    
 mi = element mi {mi.attributes, token.content}
 mi.attributes = 
