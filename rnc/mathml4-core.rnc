@@ -9,6 +9,7 @@
 
 default namespace m = "http://www.w3.org/1998/Math/MathML"
 namespace h = "http://www.w3.org/1999/xhtml"
+namespace svg = "http://www.w3.org/2000/svg"
 
 start |= math
 
@@ -209,7 +210,7 @@ color =  xsd:string {
 TokenExpression = mi|mn|mo|mtext|mspace|ms
 
 
-textorHTML = text | math | element (h:*) {attribute * {text}*,(textorHTML)*}
+textorHTML = text | math | element (h:*) {attribute * {text}*,(textorHTML)*} | element svg:svg {attribute * {text}*, anyElement*}
 			    
 token.content = (textorHTML)*
 		    

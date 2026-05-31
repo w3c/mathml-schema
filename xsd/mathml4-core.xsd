@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:m="http://www.w3.org/1998/Math/MathML"
+           xmlns:svg="http://www.w3.org/2000/svg"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            elementFormDefault="qualified"
            targetNamespace="http://www.w3.org/1998/Math/MathML">
+   <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="svg.xsd"/>
    <xs:group name="math">
       <xs:sequence>
          <xs:element name="math">
@@ -332,6 +334,7 @@
          <xs:choice minOccurs="0">
             <xs:group ref="m:math"/>
             <xs:any namespace="http://www.w3.org/1999/xhtml" processContents="skip"/>
+            <xs:element ref="svg:svg"/>
          </xs:choice>
       </xs:sequence>
    </xs:group>

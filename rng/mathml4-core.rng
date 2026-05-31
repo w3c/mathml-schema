@@ -10,7 +10,7 @@
       W3C Software Notice and License
       http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
 -->
-<grammar ns="http://www.w3.org/1998/Math/MathML" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+<grammar ns="http://www.w3.org/1998/Math/MathML" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <start combine="choice">
     <ref name="math"/>
   </start>
@@ -587,6 +587,16 @@
         </zeroOrMore>
         <zeroOrMore>
           <ref name="textorHTML"/>
+        </zeroOrMore>
+      </element>
+      <element name="svg:svg">
+        <zeroOrMore>
+          <attribute>
+            <anyName/>
+          </attribute>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="anyElement"/>
         </zeroOrMore>
       </element>
     </choice>
