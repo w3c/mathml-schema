@@ -577,6 +577,7 @@
   <define name="textorHTML">
     <choice>
       <text/>
+      <ref name="math"/>
       <element>
         <nsName ns="http://www.w3.org/1999/xhtml"/>
         <zeroOrMore>
@@ -591,7 +592,9 @@
     </choice>
   </define>
   <define name="token.content">
-    <ref name="textorHTML"/>
+    <zeroOrMore>
+      <ref name="textorHTML"/>
+    </zeroOrMore>
   </define>
   <define name="mi">
     <element name="mi">

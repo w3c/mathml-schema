@@ -329,14 +329,15 @@
                substitutionGroup="m:PresentationExpression"/>
    <xs:group name="textorHTML">
       <xs:sequence>
-         <xs:any minOccurs="0"
-                 namespace="http://www.w3.org/1999/xhtml"
-                 processContents="skip"/>
+         <xs:choice minOccurs="0">
+            <xs:group ref="m:math"/>
+            <xs:any namespace="http://www.w3.org/1999/xhtml" processContents="skip"/>
+         </xs:choice>
       </xs:sequence>
    </xs:group>
    <xs:complexType name="token.content" mixed="true">
       <xs:choice>
-         <xs:group ref="m:textorHTML"/>
+         <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:textorHTML"/>
          <xs:element minOccurs="0" ref="m:mglyph"/>
          <xs:element ref="m:malignmark"/>
       </xs:choice>
