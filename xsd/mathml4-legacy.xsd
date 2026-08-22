@@ -11,6 +11,40 @@
          <xs:pattern value="\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%)?)|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*"/>
       </xs:restriction>
    </xs:simpleType>
+   <xs:element name="malignmark" substitutionGroup="m:MalignExpression">
+      <xs:complexType>
+         <xs:attributeGroup ref="m:malignmark.attributes"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:attributeGroup name="malignmark.attributes">
+      <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+      <xs:attribute name="edge">
+         <xs:simpleType>
+            <xs:restriction base="xs:token">
+               <xs:enumeration value="left"/>
+               <xs:enumeration value="right"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+   </xs:attributeGroup>
+   <xs:element name="maligngroup" substitutionGroup="m:MalignExpression">
+      <xs:complexType>
+         <xs:attributeGroup ref="m:maligngroup.attributes"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:attributeGroup name="maligngroup.attributes">
+      <xs:attributeGroup ref="m:MathMLPGlobalAttributes"/>
+      <xs:attribute name="groupalign">
+         <xs:simpleType>
+            <xs:restriction base="xs:token">
+               <xs:enumeration value="left"/>
+               <xs:enumeration value="center"/>
+               <xs:enumeration value="right"/>
+               <xs:enumeration value="decimalpoint"/>
+            </xs:restriction>
+         </xs:simpleType>
+      </xs:attribute>
+   </xs:attributeGroup>
    <xs:element name="reln">
       <xs:complexType>
          <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:ContExp"/>

@@ -395,28 +395,7 @@
     </optional>
   </define>
   <define name="MalignExpression">
-    <choice>
-      <ref name="maligngroup"/>
-      <ref name="malignmark"/>
-    </choice>
-  </define>
-  <define name="malignmark">
-    <element name="malignmark">
-      <ref name="malignmark.attributes"/>
-      <empty/>
-    </element>
-  </define>
-  <define name="malignmark.attributes">
-    <ref name="MathMLPGlobalAttributes"/>
-  </define>
-  <define name="maligngroup">
-    <element name="maligngroup">
-      <ref name="maligngroup.attributes"/>
-      <empty/>
-    </element>
-  </define>
-  <define name="maligngroup.attributes">
-    <ref name="MathMLPGlobalAttributes"/>
+    <notAllowed/>
   </define>
   <define name="PresentationExpression">
     <choice>

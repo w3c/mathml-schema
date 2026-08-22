@@ -136,15 +136,8 @@ msline.attributes =
   attribute rightoverhang {length-percentage}?,
   attribute mslinethickness {length-percentage | "thin" | "medium" | "thick"}?
 
-MalignExpression = maligngroup|malignmark
+MalignExpression = notAllowed
 
-malignmark = element malignmark {malignmark.attributes, empty}
-malignmark.attributes =  MathMLPGlobalAttributes
-
-
-maligngroup = element maligngroup {maligngroup.attributes, empty}
-maligngroup.attributes = MathMLPGlobalAttributes
-  
 
 PresentationExpression = TokenExpression|
                          mrow|mfrac|msqrt|mroot|mstyle|merror|mpadded|mphantom|

@@ -21,6 +21,30 @@
     </define>
   </include>
   <!-- Removed MathML 1/2/3 elements -->
+  <define name="MalignExpression" combine="choice">
+    <choice>
+      <ref name="maligngroup"/>
+      <ref name="malignmark"/>
+    </choice>
+  </define>
+  <define name="malignmark">
+    <element name="malignmark">
+      <ref name="malignmark.attributes"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="malignmark.attributes">
+    <ref name="MathMLPGlobalAttributes"/>
+  </define>
+  <define name="maligngroup">
+    <element name="maligngroup">
+      <ref name="maligngroup.attributes"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="maligngroup.attributes">
+    <ref name="MathMLPGlobalAttributes"/>
+  </define>
   <define name="ContExp" combine="choice">
     <choice>
       <ref name="reln"/>

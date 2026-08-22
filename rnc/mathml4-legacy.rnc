@@ -20,6 +20,16 @@ length-percentage = xsd:string {
 
 # Removed MathML 1/2/3 elements
 
+MalignExpression |= maligngroup|malignmark
+
+malignmark = element malignmark {malignmark.attributes, empty}
+malignmark.attributes =  MathMLPGlobalAttributes
+
+
+maligngroup = element maligngroup {maligngroup.attributes, empty}
+maligngroup.attributes = MathMLPGlobalAttributes
+
+
 ContExp |= reln | fn | declare
 
 reln = element reln {ContExp*}
