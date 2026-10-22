@@ -1171,6 +1171,17 @@
  onpaste CDATA #IMPLIED
  ">
 
+<!ENTITY % MathMLdataAttributes "
+ data-other CDATA #IMPLIED
+ ">
+
+<!ENTITY % MathMLariaAttributes "
+ aria-label CDATA #IMPLIED
+ aria-describedby CDATA #IMPLIED
+ aria-description CDATA #IMPLIED
+ aria-details CDATA #IMPLIED
+ ">
+
 <!ENTITY % MathMLBoolean "TRUE|FALSE|true|false">
 
 <!ENTITY % CommonPresAtt "
@@ -1192,6 +1203,8 @@
   tabindex CDATA #IMPLIED
   nonce CDATA #IMPLIED
   %MathMLoneventAttributes;
+  %MathMLdataAttributes;
+  %MathMLariaAttributes;
   ">
 
 <!ATTLIST %mi.qname;
@@ -1673,7 +1686,7 @@
 <!ATTLIST %maction.qname;
   %CommonAtt;
   %CommonPresAtt;
-  actiontype CDATA #REQUIRED
+  actiontype CDATA #IMPLIED
   selection %positive-integer; #IMPLIED>
 
 <!-- end of mathml4-presentation.rng -->
