@@ -73,7 +73,8 @@
                             |%mspace.qname;|%ms.qname;">
 
 <!ENTITY % PresentationExpression "%TokenExpression;|%MalignExpression;
-                                   |%mrow.qname;|%mfrac.qname;|%msqrt.qname;
+                                   |%mrow.qname;|%matha.qname;
+                                   |%mfrac.qname;|%msqrt.qname;
                                    |%mroot.qname;|%mstyle.qname;
                                    |%merror.qname;|%mpadded.qname;
                                    |%mphantom.qname;|%mfenced.qname;
@@ -239,6 +240,18 @@
                     |%ci.qname;|%csymbol.qname;|%apply.qname;|%bind.qname;
                     |%share.qname;|%cerror.qname;|%cbytes.qname;|%cs.qname;">
 
+<!ENTITY % MathMLlink.attributes "
+   attributionsrc CDATA #IMPLIED
+   download CDATA #IMPLIED
+   filename CDATA #IMPLIED
+   href CDATA #IMPLIED
+   hreflang CDATA #IMPLIED
+   referrerpolicy CDATA #IMPLIED
+   rel CDATA #IMPLIED
+   target CDATA #IMPLIED
+   type CDATA #IMPLIED
+">
+
 <!ENTITY % CommonAtt "
   %MATHML.NamespaceDecl.attrib;
   %XLINK.prefix;:href CDATA #IMPLIED
@@ -249,7 +262,7 @@
   xref %MMLIDREFTYPE; #IMPLIED
   class CDATA #IMPLIED
   style CDATA #IMPLIED
-  href CDATA #IMPLIED
+  %MathMLlink.attributes;
   data-other CDATA #IMPLIED
   intent CDATA #IMPLIED
   arg CDATA #IMPLIED
@@ -1346,7 +1359,14 @@
 
 <!ELEMENT %mrow.qname; (%MathExpression;)*>
 
+<!ELEMENT %matha.qname; (%MathExpression;)*>
+
 <!ATTLIST %mrow.qname;
+  %CommonAtt;
+  %CommonPresAtt;
+  dir (ltr|rtl) #IMPLIED>
+
+<!ATTLIST %matha.qname;
   %CommonAtt;
   %CommonPresAtt;
   dir (ltr|rtl) #IMPLIED>

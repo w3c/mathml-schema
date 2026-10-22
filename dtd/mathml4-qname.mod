@@ -221,6 +221,7 @@
 <!ENTITY % mprescripts.qname "%MATHML.pfx;mprescripts" >
 <!ENTITY % mroot.qname "%MATHML.pfx;mroot" >
 <!ENTITY % mrow.qname "%MATHML.pfx;mrow" >
+<!ENTITY % matha.qname "%MATHML.pfx;a" >
 <!ENTITY % ms.qname "%MATHML.pfx;ms" >
 <!ENTITY % mscarries.qname "%MATHML.pfx;mscarries" >
 <!ENTITY % mscarry.qname "%MATHML.pfx;mscarry" >
