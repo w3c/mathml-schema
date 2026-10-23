@@ -1359,19 +1359,32 @@
 
 <!ELEMENT %mrow.qname; (%MathExpression;)*>
 
+<!--
+If this DTD is included into a combined HTML/SVG/MathML DTD without
+namespace prefixes, a will clash and this param entity may need adjusting
+before including this DTD
+ -->
+<!ENTITY % Matha.declare "INCLUDE" >
+<![%Matha.declare;[
+
 <!ENTITY % Matha.content "(%MathExpression;)*">
 
 <!ELEMENT %matha.qname; %Matha.content;>
+
+<!ATTLIST %matha.qname;
+  %CommonAtt;
+  %CommonPresAtt;
+  dir (ltr|rtl) #IMPLIED>
+
+]]>
+<!-- End of conditional declaration of a -->
+
 
 <!ATTLIST %mrow.qname;
   %CommonAtt;
   %CommonPresAtt;
   dir (ltr|rtl) #IMPLIED>
 
-<!ATTLIST %matha.qname;
-  %CommonAtt;
-  %CommonPresAtt;
-  dir (ltr|rtl) #IMPLIED>
 
 <!ELEMENT %mfrac.qname; ((%MathExpression;),(%MathExpression;))>
 
