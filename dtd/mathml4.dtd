@@ -1077,7 +1077,7 @@
 
 <!ENTITY % positive-integer "CDATA">
 
-<!ENTITY % token.content "#PCDATA|%mglyph.qname;|%malignmark.qname;">
+<!ENTITY % token.content "#PCDATA|%mglyph.qname;|%malignmark.qname;|%math.qname;">
 
 <!ELEMENT %mi.qname; (%token.content;)*>
 
@@ -1359,7 +1359,9 @@
 
 <!ELEMENT %mrow.qname; (%MathExpression;)*>
 
-<!ELEMENT %matha.qname; (%MathExpression;)*>
+<!ENTITY % Matha.content "(%MathExpression;)*">
+
+<!ELEMENT %matha.qname; %Matha.content;>
 
 <!ATTLIST %mrow.qname;
   %CommonAtt;
