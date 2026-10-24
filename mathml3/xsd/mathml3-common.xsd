@@ -19,7 +19,7 @@
       <xs:attribute name="style" type="xs:string"/>
       <xs:attribute name="href" type="xs:anyURI"/>
       <xs:attributeGroup ref="m:CommonDeprecatedAtt"/>
-      <xs:anyAttribute namespace="##other" processContents="skip"/>
+      <xs:anyAttribute namespace="##other" processContents="lax"/>
    </xs:attributeGroup>
    <xs:attributeGroup name="math.deprecatedattributes">
       <xs:attribute name="mode" type="xs:string"/>
