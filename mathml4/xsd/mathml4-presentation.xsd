@@ -6,7 +6,7 @@
   <!-- mathml4-->
    <xs:simpleType name="length-percentage">
       <xs:restriction base="xs:string">
-         <xs:pattern value="\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%)?)|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*"/>
+         <xs:pattern value="\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(r?e[mx]|in|cm|mm|p[xtc]|%|Q|v[hw]|vmin|vmax)?)|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*"/>
       </xs:restriction>
    </xs:simpleType>
    <xs:simpleType name="mpadded-length-percentage">
