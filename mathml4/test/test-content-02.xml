@@ -1,0 +1,8 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <list>
+    <apply><csymbol>sin</csymbol><ci>x</ci></apply>
+    <apply><sin/><ci>x</ci></apply>
+    <apply><selector/><ci>X</ci><cn>2</cn></apply>
+    <apply><csymbol cd="set1">set</csymbol><ci>a</ci><ci>b</ci><ci>c</ci></apply>
+  </list>
+</math>

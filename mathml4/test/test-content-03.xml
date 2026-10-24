@@ -1,0 +1,9 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<set>
+  <bvar><ci type="set">S</ci></bvar>
+  <condition>
+    <apply><in/><ci>S</ci><ci type="list">T</ci></apply>
+  </condition>
+  <ci>S</ci>
+</set>
+</math>
