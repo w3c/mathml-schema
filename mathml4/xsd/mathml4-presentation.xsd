@@ -272,6 +272,9 @@
          <xs:choice minOccurs="0">
             <xs:element ref="m:mglyph"/>
             <xs:element ref="m:malignmark"/>
+            <xs:element ref="m:math"/>
+	    <xs:any namespace="http://www.w3.org/1999/xhtml" processContents="lax"/>
+	    <xs:any namespace="http://www.w3.org/2000/svg" processContents="lax"/>
          </xs:choice>
       </xs:sequence>
    </xs:group>
