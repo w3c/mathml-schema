@@ -1,6 +1,8 @@
 # MathML Schema
 
-## Schema for MathML 4
+## Schema for [MathML 4](https://www.w3.org/TR/MathML4/)
+
+
 
 [rnc](https://github.com/w3c/mathml-schema/tree/main/mathml4/rnc)
 
@@ -10,7 +12,7 @@
 
 [xsd](https://github.com/w3c/mathml-schema/tree/main/mathml4/xsd)
 
-## Schema for MathML 3
+## Schema for [MathML 3](https://www.w3.org/TR/MathML3/)
 
 [rnc](https://github.com/w3c/mathml-schema/tree/main/mathml3/rnc)
 
