@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:m="http://www.w3.org/1998/Math/MathML"
-           xmlns:svg="http://www.w3.org/2000/svg"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:m="http://www.w3.org/1998/Math/MathML"
            elementFormDefault="qualified"
            targetNamespace="http://www.w3.org/1998/Math/MathML">
    <xs:include schemaLocation="mathml4-strict-content.xsd"/>
-   <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="svg.xsd"/>
    <xs:complexType name="cn.content" mixed="true">
       <xs:choice minOccurs="0" maxOccurs="unbounded">
+         <xs:element ref="m:mglyph"/>
          <xs:element ref="m:sep"/>
          <xs:element ref="m:PresentationExpression"/>
       </xs:choice>
@@ -27,9 +26,10 @@
       <xs:attribute name="type" use="required"/>
    </xs:attributeGroup>
    <xs:complexType name="ci.content" mixed="true">
-      <xs:sequence>
-         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:PresentationExpression"/>
-      </xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+         <xs:element ref="m:mglyph"/>
+         <xs:element ref="m:PresentationExpression"/>
+      </xs:choice>
    </xs:complexType>
    <xs:attributeGroup name="csymbol.attributes">
       <xs:attributeGroup ref="m:CommonAtt"/>
@@ -38,9 +38,10 @@
       <xs:attribute name="cd" type="xs:NCName"/>
    </xs:attributeGroup>
    <xs:complexType name="csymbol.content" mixed="true">
-      <xs:sequence>
-         <xs:element minOccurs="0" maxOccurs="unbounded" ref="m:PresentationExpression"/>
-      </xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+         <xs:element ref="m:mglyph"/>
+         <xs:element ref="m:PresentationExpression"/>
+      </xs:choice>
    </xs:complexType>
    <xs:element name="bvar">
       <xs:complexType>
@@ -63,7 +64,7 @@
       <xs:attributeGroup ref="m:DefEncAtt"/>
    </xs:attributeGroup>
    <!--Ambiguous content model altered (apply.content)-->
-   <xs:complexType name="apply.content">
+<xs:complexType name="apply.content">
       <xs:sequence>
          <xs:group ref="m:ContExp"/>
          <xs:group ref="m:BvarQ"/>
@@ -82,17 +83,13 @@
    <xs:element name="sep">
       <xs:complexType/>
    </xs:element>
-   <xs:attributeGroup name="DefEncAtt">
-      <xs:attribute name="encoding" type="xs:string"/>
-      <xs:attribute name="definitionURL" type="xs:anyURI"/>
-   </xs:attributeGroup>
+   <xs:element name="PresentationExpression" abstract="true"/>
    <xs:group name="DomainQ">
       <xs:sequence>
          <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element ref="m:domainofapplication"/>
             <xs:element ref="m:condition"/>
-            <!--Ambiguous content model altered (interval)-->
-            <xs:sequence>
+            <!--Ambiguous content model altered (interval)--><xs:sequence>
                <xs:element ref="m:lowlimit"/>
                <xs:element minOccurs="0" ref="m:uplimit"/>
             </xs:sequence>
@@ -182,6 +179,35 @@
       <xs:complexType>
          <xs:group ref="m:ContExp"/>
          <xs:attributeGroup ref="m:CommonAtt"/>
+         <xs:attributeGroup ref="m:DefEncAtt"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="DeprecatedContExp" abstract="true"/>
+   <xs:element name="reln" substitutionGroup="m:DeprecatedContExp">
+      <xs:complexType>
+         <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:ContExp"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="fn" substitutionGroup="m:DeprecatedContExp">
+      <xs:complexType>
+         <xs:group ref="m:ContExp"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="declare" substitutionGroup="m:DeprecatedContExp">
+      <xs:complexType>
+         <xs:group maxOccurs="unbounded" ref="m:ContExp"/>
+         <xs:attribute name="type" type="xs:string"/>
+         <xs:attribute name="scope" type="xs:string"/>
+         <xs:attribute name="nargs" type="xs:nonNegativeInteger"/>
+         <xs:attribute name="occurrence">
+            <xs:simpleType>
+               <xs:restriction base="xs:token">
+                  <xs:enumeration value="prefix"/>
+                  <xs:enumeration value="infix"/>
+                  <xs:enumeration value="function-model"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:attribute>
          <xs:attributeGroup ref="m:DefEncAtt"/>
       </xs:complexType>
    </xs:element>
@@ -279,9 +305,7 @@
    <xs:group name="unary-arith.class">
       <xs:choice>
          <xs:element ref="m:factorial"/>
-         <!--Ambiguous content model altered (minus)-->
-         <!--Ambiguous content model altered (root)-->
-         <xs:element ref="m:abs"/>
+         <!--Ambiguous content model altered (minus)--><!--Ambiguous content model altered (root)--><xs:element ref="m:abs"/>
          <xs:element ref="m:conjugate"/>
          <xs:element ref="m:arg"/>
          <xs:element ref="m:real"/>
@@ -588,10 +612,10 @@
       </xs:complexType>
    </xs:element>
    <xs:element name="mean" substitutionGroup="m:nary-stats.class"/>
-   <xs:element name="median" substitutionGroup="m:nary-stats.class"/>
-   <xs:element name="mode" substitutionGroup="m:nary-stats.class"/>
    <xs:element name="sdev" substitutionGroup="m:nary-stats.class"/>
    <xs:element name="variance" substitutionGroup="m:nary-stats.class"/>
+   <xs:element name="median" substitutionGroup="m:nary-stats.class"/>
+   <xs:element name="mode" substitutionGroup="m:nary-stats.class"/>
    <xs:element name="nary-constructor.class" abstract="true">
       <xs:complexType>
          <xs:sequence>
