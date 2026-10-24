@@ -66,10 +66,22 @@
    <!--Ambiguous content model altered (apply.content)-->
 <xs:complexType name="apply.content">
       <xs:sequence>
-         <xs:group ref="m:ContExp"/>
-         <xs:group ref="m:BvarQ"/>
-         <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:Qualifier"/>
-         <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:ContExp"/>
+	 <xs:choice>
+           <xs:group ref="m:ContExp"/>
+	   <xs:group ref="m:semantics-contexp"/>
+	 </xs:choice>
+	 <xs:choice>
+           <xs:group ref="m:BvarQ"/>
+	   <xs:group ref="m:semantics-contexp"/>
+	 </xs:choice>
+	 <xs:choice>
+	   <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:Qualifier"/>
+	   <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:semantics-contexp"/>
+	 </xs:choice>
+	 <xs:choice>
+           <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:ContExp"/>
+	   <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:semantics-contexp"/>
+	 </xs:choice>
       </xs:sequence>
    </xs:complexType>
    <xs:complexType name="bind.content">
