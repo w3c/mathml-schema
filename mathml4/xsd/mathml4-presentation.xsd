@@ -677,7 +677,6 @@
       <xs:attribute name="nonce"/>
       <xs:attributeGroup ref="m:MathMLoneventAttributes"/>
       <xs:attributeGroup ref="m:MathMLDataAttributes"/>
-      <xs:attributeGroup ref="m:MathMLintentAttributes"/>
       <xs:attributeGroup ref="m:MathMLARIAattributes"/>
    </xs:attributeGroup>
    <xs:attributeGroup name="TokenAtt">
