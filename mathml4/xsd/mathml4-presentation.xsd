@@ -3,6 +3,138 @@
            xmlns:m="http://www.w3.org/1998/Math/MathML"
            elementFormDefault="qualified"
            targetNamespace="http://www.w3.org/1998/Math/MathML">
+  <!-- mathml4-->
+   <xs:simpleType name="length-percentage">
+      <xs:restriction base="xs:string">
+         <xs:pattern value="\s*((-?[0-9]*([0-9]\.?|\.[0-9])[0-9]*(e[mx]|in|cm|mm|p[xtc]|%)?)|(negative)?((very){0,2}thi(n|ck)|medium)mathspace)\s*"/>
+      </xs:restriction>
+   </xs:simpleType>
+   <xs:simpleType name="mpadded-length-percentage">
+      <xs:restriction base="xs:string">
+         <xs:pattern value="\s*([\+\-]?[0-9]*([0-9]\.?|\.[0-9])[0-9]*\s*((%?\s*(height|depth|width)?)|r?em|ex|in|cm|mm|p[xtc]|Q|v[hw]|vmin|vmax|%|((negative)?((very){0,2}thi(n|ck)|medium)mathspace))?)\s*"/>
+      </xs:restriction>
+   </xs:simpleType>
+     <xs:attributeGroup name="MathMLoneventAttributes">
+      <xs:attribute name="onabort"/>
+      <xs:attribute name="onauxclick"/>
+      <xs:attribute name="onblur"/>
+      <xs:attribute name="oncancel"/>
+      <xs:attribute name="oncanplay"/>
+      <xs:attribute name="oncanplaythrough"/>
+      <xs:attribute name="onchange"/>
+      <xs:attribute name="onclick"/>
+      <xs:attribute name="onclose"/>
+      <xs:attribute name="oncontextlost"/>
+      <xs:attribute name="oncontextmenu"/>
+      <xs:attribute name="oncontextrestored"/>
+      <xs:attribute name="oncuechange"/>
+      <xs:attribute name="ondblclick"/>
+      <xs:attribute name="ondrag"/>
+      <xs:attribute name="ondragend"/>
+      <xs:attribute name="ondragenter"/>
+      <xs:attribute name="ondragleave"/>
+      <xs:attribute name="ondragover"/>
+      <xs:attribute name="ondragstart"/>
+      <xs:attribute name="ondrop"/>
+      <xs:attribute name="ondurationchange"/>
+      <xs:attribute name="onemptied"/>
+      <xs:attribute name="onended"/>
+      <xs:attribute name="onerror"/>
+      <xs:attribute name="onfocus"/>
+      <xs:attribute name="onformdata"/>
+      <xs:attribute name="oninput"/>
+      <xs:attribute name="oninvalid"/>
+      <xs:attribute name="onkeydown"/>
+      <xs:attribute name="onkeypress"/>
+      <xs:attribute name="onkeyup"/>
+      <xs:attribute name="onload"/>
+      <xs:attribute name="onloadeddata"/>
+      <xs:attribute name="onloadedmetadata"/>
+      <xs:attribute name="onloadstart"/>
+      <xs:attribute name="onmousedown"/>
+      <xs:attribute name="onmouseenter"/>
+      <xs:attribute name="onmouseleave"/>
+      <xs:attribute name="onmousemove"/>
+      <xs:attribute name="onmouseout"/>
+      <xs:attribute name="onmouseover"/>
+      <xs:attribute name="onmouseup"/>
+      <xs:attribute name="onpause"/>
+      <xs:attribute name="onplay"/>
+      <xs:attribute name="onplaying"/>
+      <xs:attribute name="onprogress"/>
+      <xs:attribute name="onratechange"/>
+      <xs:attribute name="onreset"/>
+      <xs:attribute name="onresize"/>
+      <xs:attribute name="onscroll"/>
+      <xs:attribute name="onsecuritypolicyviolation"/>
+      <xs:attribute name="onseeked"/>
+      <xs:attribute name="onseeking"/>
+      <xs:attribute name="onselect"/>
+      <xs:attribute name="onslotchange"/>
+      <xs:attribute name="onstalled"/>
+      <xs:attribute name="onsubmit"/>
+      <xs:attribute name="onsuspend"/>
+      <xs:attribute name="ontimeupdate"/>
+      <xs:attribute name="ontoggle"/>
+      <xs:attribute name="onvolumechange"/>
+      <xs:attribute name="onwaiting"/>
+      <xs:attribute name="onwebkitanimationend"/>
+      <xs:attribute name="onwebkitanimationiteration"/>
+      <xs:attribute name="onwebkitanimationstart"/>
+      <xs:attribute name="onwebkittransitionend"/>
+      <xs:attribute name="onwheel"/>
+      <xs:attribute name="onafterprint"/>
+      <xs:attribute name="onbeforeprint"/>
+      <xs:attribute name="onbeforeunload"/>
+      <xs:attribute name="onhashchange"/>
+      <xs:attribute name="onlanguagechange"/>
+      <xs:attribute name="onmessage"/>
+      <xs:attribute name="onmessageerror"/>
+      <xs:attribute name="onoffline"/>
+      <xs:attribute name="ononline"/>
+      <xs:attribute name="onpagehide"/>
+      <xs:attribute name="onpageshow"/>
+      <xs:attribute name="onpopstate"/>
+      <xs:attribute name="onrejectionhandled"/>
+      <xs:attribute name="onstorage"/>
+      <xs:attribute name="onunhandledrejection"/>
+      <xs:attribute name="onunload"/>
+      <xs:attribute name="oncopy"/>
+      <xs:attribute name="oncut"/>
+      <xs:attribute name="onpaste"/>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="MathMLlink.attributes">
+      <xs:attribute name="attributionsrc"/>
+      <xs:attribute name="download" type="m:mathml-boolean"/>
+      <xs:attribute name="filename"/>
+      <xs:attribute name="href"/>
+      <xs:attribute name="hreflang"/>
+      <xs:attribute name="referrerpolicy"/>
+      <xs:attribute name="rel"/>
+      <xs:attribute name="target"/>
+<!--      <xs:attribute name="type"/>-->
+   </xs:attributeGroup>
+   <xs:attributeGroup name="MathMLDataAttributes">
+      <xs:attribute name="data-other"/>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="MathMLARIAattributes">
+      <xs:attribute name="aria-label"/>
+      <xs:attribute name="aria-describedby"/>
+      <xs:attribute name="aria-description"/>
+      <xs:attribute name="aria-details"/>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="MathMLintentAttributes">
+      <xs:attribute name="intent"/>
+      <xs:attribute name="arg" type="xs:NCName"/>
+   </xs:attributeGroup>
+   <xs:simpleType name="mathml-boolean">
+      <xs:restriction base="xs:string">
+         <xs:pattern value="\s*([Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee])\s*"/>
+      </xs:restriction>
+   </xs:simpleType>
+
+
+   
    <xs:complexType name="ImpliedMrow">
       <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:MathExpression"/>
    </xs:complexType>
@@ -106,7 +238,7 @@
    </xs:simpleType>
    <xs:simpleType name="color">
       <xs:restriction base="xs:string">
-         <xs:pattern value="\s*((#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?)|[aA][qQ][uU][aA]|[bB][lL][aA][cC][kK]|[bB][lL][uU][eE]|[fF][uU][cC][hH][sS][iI][aA]|[gG][rR][aA][yY]|[gG][rR][eE][eE][nN]|[lL][iI][mM][eE]|[mM][aA][rR][oO][oO][nN]|[nN][aA][vV][yY]|[oO][lL][iI][vV][eE]|[pP][uU][rR][pP][lL][eE]|[rR][eE][dD]|[sS][iI][lL][vV][eE][rR]|[tT][eE][aA][lL]|[wW][hH][iI][tT][eE]|[yY][eE][lL][lL][oO][wW])\s*"/>
+        <xs:pattern value="\s*((#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?)|[a-zA-Z]+|[a-zA-Z]+\s*\([0-9, %.]+\))\s*"/>
       </xs:restriction>
    </xs:simpleType>
    <xs:simpleType name="group-alignment">
@@ -462,51 +594,7 @@
    </xs:attributeGroup>
    <xs:attributeGroup name="mglyph.deprecatedattributes">
       <xs:attribute name="index" type="m:integer"/>
-      <xs:attribute name="mathvariant">
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="normal"/>
-               <xs:enumeration value="bold"/>
-               <xs:enumeration value="italic"/>
-               <xs:enumeration value="bold-italic"/>
-               <xs:enumeration value="double-struck"/>
-               <xs:enumeration value="bold-fraktur"/>
-               <xs:enumeration value="script"/>
-               <xs:enumeration value="bold-script"/>
-               <xs:enumeration value="fraktur"/>
-               <xs:enumeration value="sans-serif"/>
-               <xs:enumeration value="bold-sans-serif"/>
-               <xs:enumeration value="sans-serif-italic"/>
-               <xs:enumeration value="sans-serif-bold-italic"/>
-               <xs:enumeration value="monospace"/>
-               <xs:enumeration value="initial"/>
-               <xs:enumeration value="tailed"/>
-               <xs:enumeration value="looped"/>
-               <xs:enumeration value="stretched"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="mathsize">
-         <xs:simpleType>
-            <xs:union memberTypes="m:length">
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="small"/>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="normal"/>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="big"/>
-                  </xs:restriction>
-               </xs:simpleType>
-            </xs:union>
-         </xs:simpleType>
-      </xs:attribute>
+      <xs:attribute name="mathsize" type="m:length-percentage"/>
       <xs:attributeGroup ref="m:DeprecatedTokenAtt"/>
    </xs:attributeGroup>
    <xs:element name="msline">
@@ -574,53 +662,26 @@
             </xs:union>
          </xs:simpleType>
       </xs:attribute>
-   </xs:attributeGroup>
-   <xs:attributeGroup name="TokenAtt">
+ <!--mml4-->
       <xs:attribute name="mathvariant">
          <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="normal"/>
-               <xs:enumeration value="bold"/>
-               <xs:enumeration value="italic"/>
-               <xs:enumeration value="bold-italic"/>
-               <xs:enumeration value="double-struck"/>
-               <xs:enumeration value="bold-fraktur"/>
-               <xs:enumeration value="script"/>
-               <xs:enumeration value="bold-script"/>
-               <xs:enumeration value="fraktur"/>
-               <xs:enumeration value="sans-serif"/>
-               <xs:enumeration value="bold-sans-serif"/>
-               <xs:enumeration value="sans-serif-italic"/>
-               <xs:enumeration value="sans-serif-bold-italic"/>
-               <xs:enumeration value="monospace"/>
-               <xs:enumeration value="initial"/>
-               <xs:enumeration value="tailed"/>
-               <xs:enumeration value="looped"/>
-               <xs:enumeration value="stretched"/>
+            <xs:restriction base="xs:string">
+               <xs:pattern value="\s*([Nn][Oo][Rr][Mm][Aa][Ll]|[Bb][Oo][Ll][Dd]|[Ii][Tt][Aa][Ll][Ii][Cc]|[Bb][Oo][Ll][Dd]-[Ii][Tt][Aa][Ll][Ii][Cc]|[Dd][Oo][Uu][Bb][Ll][Ee]-[Ss][Tt][Rr][Uu][Cc][Kk]|[Bb][Oo][Ll][Dd]-[Ff][Rr][Aa][Kk][Tt][Uu][Rr]|[Ss][Cc][Rr][Ii][Pp][Tt]|[Bb][Oo][Ll][Dd]-[Ss][Cc][Rr][Ii][Pp][Tt]|[Ff][Rr][Aa][Kk][Tt][Uu][Rr]|[Ss][Aa][Nn][Ss]-[Ss][Ee][Rr][Ii][Ff]|[Bb][Oo][Ll][Dd]-[Ss][Aa][Nn][Ss]-[Ss][Ee][Rr][Ii][Ff]|[Ss][Aa][Nn][Ss]-[Ss][Ee][Rr][Ii][Ff]-[Ii][Tt][Aa][Ll][Ii][Cc]|[Ss][Aa][Nn][Ss]-[Ss][Ee][Rr][Ii][Ff]-[Bb][Oo][Ll][Dd]-[Ii][Tt][Aa][Ll][Ii][Cc]|[Mm][Oo][Nn][Oo][Ss][Pp][Aa][Cc][Ee]|[Ii][Nn][Ii][Tt][Ii][Aa][Ll]|[Tt][Aa][Ii][Ll][Ee][Dd]|[Ll][Oo][Oo][Pp][Ee][Dd]|[Ss][Tt][Rr][Ee][Tt][Cc][Hh][Ee][Dd])\s*"/>
             </xs:restriction>
          </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mathsize">
-         <xs:simpleType>
-            <xs:union memberTypes="m:length">
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="small"/>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="normal"/>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="big"/>
-                  </xs:restriction>
-               </xs:simpleType>
-            </xs:union>
-         </xs:simpleType>
-      </xs:attribute>
+      <xs:attribute name="displaystyle" type="m:mathml-boolean"/>
+      <xs:attribute name="scriptlevel" type="xs:integer"/>
+      <xs:attribute name="autofocus" type="m:mathml-boolean"/>
+      <xs:attribute name="tabindex" type="xs:integer"/>
+      <xs:attribute name="nonce"/>
+      <xs:attributeGroup ref="m:MathMLoneventAttributes"/>
+      <xs:attributeGroup ref="m:MathMLDataAttributes"/>
+      <xs:attributeGroup ref="m:MathMLintentAttributes"/>
+      <xs:attributeGroup ref="m:MathMLARIAattributes"/>
+   </xs:attributeGroup>
+   <xs:attributeGroup name="TokenAtt">
+     <xs:attribute name="mathsize" type="m:length-percentage"/>
       <xs:attribute name="dir">
          <xs:simpleType>
             <xs:restriction base="xs:token">
@@ -702,6 +763,12 @@
       </xs:attribute>
    </xs:attributeGroup>
    <xs:element name="mrow" substitutionGroup="m:PresentationExpression">
+      <xs:complexType>
+         <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:MathExpression"/>
+         <xs:attributeGroup ref="m:mrow.attributes"/>
+      </xs:complexType>
+   </xs:element>
+   <xs:element name="a" substitutionGroup="m:PresentationExpression">
       <xs:complexType>
          <xs:group minOccurs="0" maxOccurs="unbounded" ref="m:MathExpression"/>
          <xs:attributeGroup ref="m:mrow.attributes"/>
@@ -822,15 +889,6 @@
       <xs:attributeGroup ref="m:mstyle.deprecatedattributes"/>
    </xs:attributeGroup>
    <xs:attributeGroup name="mstyle.specificattributes">
-      <xs:attribute name="scriptlevel" type="m:integer"/>
-      <xs:attribute name="displaystyle">
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="true"/>
-               <xs:enumeration value="false"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
       <xs:attribute name="scriptsizemultiplier" type="m:number"/>
       <xs:attribute name="scriptminsize" type="m:length"/>
       <xs:attribute name="infixlinebreakstyle">
@@ -1218,51 +1276,8 @@
       </xs:attribute>
       <xs:attribute name="lquote"/>
       <xs:attribute name="lspace" type="m:length"/>
-      <xs:attribute name="mathsize">
-         <xs:simpleType>
-            <xs:union memberTypes="m:length">
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="small"/>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="normal"/>
-                  </xs:restriction>
-               </xs:simpleType>
-               <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                     <xs:enumeration value="big"/>
-                  </xs:restriction>
-               </xs:simpleType>
-            </xs:union>
-         </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="mathvariant">
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="normal"/>
-               <xs:enumeration value="bold"/>
-               <xs:enumeration value="italic"/>
-               <xs:enumeration value="bold-italic"/>
-               <xs:enumeration value="double-struck"/>
-               <xs:enumeration value="bold-fraktur"/>
-               <xs:enumeration value="script"/>
-               <xs:enumeration value="bold-script"/>
-               <xs:enumeration value="fraktur"/>
-               <xs:enumeration value="sans-serif"/>
-               <xs:enumeration value="bold-sans-serif"/>
-               <xs:enumeration value="sans-serif-italic"/>
-               <xs:enumeration value="sans-serif-bold-italic"/>
-               <xs:enumeration value="monospace"/>
-               <xs:enumeration value="initial"/>
-               <xs:enumeration value="tailed"/>
-               <xs:enumeration value="looped"/>
-               <xs:enumeration value="stretched"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
+      <xs:attribute name="mathsize" type="m:length-percentage"/>
+
       <xs:attribute name="maxsize">
          <xs:simpleType>
             <xs:union memberTypes="m:length">
@@ -1859,14 +1874,6 @@
             </xs:restriction>
          </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="displaystyle">
-         <xs:simpleType>
-            <xs:restriction base="xs:token">
-               <xs:enumeration value="true"/>
-               <xs:enumeration value="false"/>
-            </xs:restriction>
-         </xs:simpleType>
-      </xs:attribute>
       <xs:attribute name="side">
          <xs:simpleType>
             <xs:restriction base="xs:token">
@@ -2145,7 +2152,7 @@
    <xs:attributeGroup name="maction.attributes">
       <xs:attributeGroup ref="m:CommonAtt"/>
       <xs:attributeGroup ref="m:CommonPresAtt"/>
-      <xs:attribute name="actiontype" use="required"/>
+      <xs:attribute name="actiontype"/>
       <xs:attribute name="selection" type="m:positive-integer"/>
    </xs:attributeGroup>
 </xs:schema>
