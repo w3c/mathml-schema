@@ -6,16 +6,16 @@
 
 ### [rnc](https://github.com/w3c/mathml-schema/tree/main/mathml4/rnc)
 
-The Grammar for MathML is developed in Relax NG format compact syntax (rnc).
+The grammar for MathML is developed in Relax NG compact syntax (rnc).
 
 
 * [`mathml4.rnc`](https://github.com/w3c/mathml-schema/tree/main/mathml4/rnc/mathml4.rnc)
 
-  The main MathML 4 Schema.
+  The main MathML 4 schema.
 
 * [`mathml4-legacy.rnc`](https://github.com/w3c/mathml-schema/tree/main/mathml4/rnc/mathml4-legacy.rnc)
 
-  An extension of `mathhml4.rnc` including legacy constructs such as `<malignmark/>`.
+  An extension of `mathml4.rnc` including legacy constructs such as `<malignmark/>`.
 
 * [`mathml4-core.rnc`](https://github.com/w3c/mathml-schema/tree/main/mathml4/rnc/mathml4-core.rnc)
 
@@ -32,7 +32,7 @@ The Grammar for MathML is developed in Relax NG format compact syntax (rnc).
 
 * [`mathml4-content.rnc`](https://github.com/w3c/mathml-schema/tree/main/mathml4/rnc/mathml4-content.rnc)
 
-  the Schema for Content MathML, an extension of `mathml4-strict-content.rnc` adding the MathML elements for specific
+  The schema for Content MathML, an extension of `mathml4-strict-content.rnc`, adding the MathML elements for specific
   functions such as `<sin/>` and containers such as `<set>`.
 
 
@@ -40,7 +40,7 @@ The Grammar for MathML is developed in Relax NG format compact syntax (rnc).
 
 The Relax NG Grammar in XML syntax (rng).
 
-### [dtd](https://github.com/w3c/mathml-schema/tree/main/mathml4/dtd)
+### [dtd](https://github.com/w3c/m<athml-schema/tree/main/mathml4/dtd)
 
 The MathML4 DTD is derived from the MathML3 DTD, updated to MathML 4.
 Note that MathML 4 includes an `<a>` element. If this DTD is used to
