@@ -1,0 +1,13 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+    <apply>
+        <semantics>
+            <csymbol id="operation">OP</csymbol>
+            <annotation>OPERATOR</annotation>
+        </semantics>
+        <semantics>
+            <ci id="input">x</ci>
+            <annotation>INPUT</annotation>
+        </semantics>
+    </apply>
+</math>
+

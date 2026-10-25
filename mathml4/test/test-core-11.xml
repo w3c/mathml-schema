@@ -1,0 +1,5 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <a target="_blank" href="http://example.com">
+    <msup mathvariant="bold"><mn>1</mn><mi>x</mi></msup>
+  </a>
+</math>
