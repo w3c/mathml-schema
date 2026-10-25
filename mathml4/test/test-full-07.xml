@@ -1,0 +1,8 @@
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mtext>mixed p and c</mtext>
+  <mo>+</mo>
+  <apply>
+    <tan/>
+    <ci>ϑ</ci>
+  </apply>
+</math> 

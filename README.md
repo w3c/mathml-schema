@@ -38,7 +38,7 @@ The grammar for MathML is developed in Relax NG compact syntax (rnc).
 
 ### [rng](https://github.com/w3c/mathml-schema/tree/main/mathml4/rng)
 
-The Relax NG Grammar in XML syntax (rng).
+The Relax NG grammar in XML syntax (rng).
 
 ### [dtd](https://github.com/w3c/m<athml-schema/tree/main/mathml4/dtd)
 
@@ -53,7 +53,7 @@ The DTD includes legacy constructs so should be broadly equivalent to the
 
 ### [xsd](https://github.com/w3c/mathml-schema/tree/main/mathml4/xsd)
 
-The MathML 4 Grammar in W3C XML Schema syntax (xsd).
+The MathML 4 grammar in W3C XML Schema syntax (xsd).
 
 This is derived from the MathML3 Schema updated to MathML4.
 
