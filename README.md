@@ -4,7 +4,7 @@
 
 
 
-[rnc](https://github.com/w3c/mathml-schema/tree/main/mathml4/rnc)
+### [rnc](https://github.com/w3c/mathml-schema/tree/main/mathml4/rnc)
 
 The Grammar for MathML is developed in Relax NG format compact syntax (rnc).
 
@@ -36,11 +36,11 @@ The Grammar for MathML is developed in Relax NG format compact syntax (rnc).
   functions such as `<sin/>` and containers such as `<set>`.
 
 
-[rng](https://github.com/w3c/mathml-schema/tree/main/mathml4/rng)
+### [rng](https://github.com/w3c/mathml-schema/tree/main/mathml4/rng)
 
 The Relax NG Grammar in XML syntax (rng).
 
-[dtd](https://github.com/w3c/mathml-schema/tree/main/mathml4/dtd)
+### [dtd](https://github.com/w3c/mathml-schema/tree/main/mathml4/dtd)
 
 The MathML4 DTD is derived from the MathML3 DTD, updated to MathML 4.
 Note that MathML 4 includes an `<a>` element. If this DTD is used to
@@ -51,7 +51,7 @@ comments in the file.
 The DTD includes legacy constructs so should be broadly equivalent to the
 `mathml4-legacy` Relax NG.
 
-[xsd](https://github.com/w3c/mathml-schema/tree/main/mathml4/xsd)
+### [xsd](https://github.com/w3c/mathml-schema/tree/main/mathml4/xsd)
 
 The MathML 4 Grammar in W3C XML Schema syntax (xsd).
 
