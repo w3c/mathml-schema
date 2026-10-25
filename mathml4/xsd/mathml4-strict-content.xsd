@@ -85,13 +85,22 @@
       <xs:sequence>
          <xs:element name="semantics">
             <xs:complexType>
-               <xs:sequence>
+              <xs:choice>
+		  <xs:sequence>
                   <xs:group ref="m:ContExp"/>
                   <xs:choice minOccurs="0" maxOccurs="unbounded">
                      <xs:element ref="m:annotation"/>
                      <xs:element ref="m:annotation-xml"/>
                   </xs:choice>
-               </xs:sequence>
+		  </xs:sequence>
+		  <xs:sequence>
+		    <xs:any namespace="##any"/>
+		    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                      <xs:element ref="m:annotation"/>
+                      <xs:element ref="m:annotation-xml"/><!-- content mathml-->
+                    </xs:choice>
+		  </xs:sequence>
+	      </xs:choice>
                <xs:attributeGroup ref="m:semantics.attributes"/>
             </xs:complexType>
          </xs:element>
